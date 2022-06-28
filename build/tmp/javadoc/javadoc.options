@@ -1,0 +1,7 @@
+-classpath 'C:\\Users\\alexg\\IdeaProjects\\Test\\build\\classes\\java\\main;C:\\Users\\alexg\\IdeaProjects\\Test\\build\\resources\\main;C:\\Users\\alexg\\.gradle\\caches\\modules-2\\files-2.1\\org.jsoup\\jsoup\\1.15.1\\c4e25ce7c04dc4ae8f6db08f2391f38e9111231f\\jsoup-1.15.1.jar'
+-d 'C:\\Users\\alexg\\IdeaProjects\\Test\\build\\docs\\javadoc'
+-doctitle 'Test 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'Test 1.0-SNAPSHOT API'
+'C:\\Users\\alexg\\IdeaProjects\\Test\\src\\main\\java\\Test.java'
