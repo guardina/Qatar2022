@@ -7,15 +7,231 @@
     android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/screen"
-        android:layout_width="117dp"
-        android:layout_height="60dp"
+        android:id="@+id/group_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:text="TextView"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/groupNameBottom"
+        app:layout_constraintEnd_toEndOf="@id/groupNameRight"
+        app:layout_constraintStart_toStartOf="@id/groupNameLeft"
+        app:layout_constraintTop_toBottomOf="@id/groupNameTop" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logoLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logoRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/teamNameLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/groupNameLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/teamNameRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/groupNameRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+
+
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/groupNameTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/groupNameBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="73dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/firstTeamTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="91dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/firstTeamBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.175" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/secondTeamTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/secondTeamBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thirdTeamTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.275" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thirdTeamBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.325" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fourthTeamTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fourthTeamBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/first_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoRight"
+        app:layout_constraintStart_toStartOf="@id/logoLeft"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+    <TextView
+        android:id="@+id/first_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/teamNameRight"
+        app:layout_constraintStart_toStartOf="@id/teamNameLeft"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+
+
+    <ImageView
+        android:id="@+id/second_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoRight"
+        app:layout_constraintStart_toStartOf="@id/logoLeft"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+    <TextView
+        android:id="@+id/second_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/teamNameRight"
+        app:layout_constraintStart_toStartOf="@id/teamNameLeft"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+
+
+    <ImageView
+        android:id="@+id/third_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoRight"
+        app:layout_constraintStart_toStartOf="@id/logoLeft"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+    <TextView
+        android:id="@+id/third_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/teamNameRight"
+        app:layout_constraintStart_toStartOf="@id/teamNameLeft"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+
+
+    <ImageView
+        android:id="@+id/fourth_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoRight"
+        app:layout_constraintStart_toStartOf="@id/logoLeft"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+    <TextView
+        android:id="@+id/fourth_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/teamNameRight"
+        app:layout_constraintStart_toStartOf="@id/teamNameLeft"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

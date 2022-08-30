@@ -27,23 +27,21 @@ public class ResultsScreen extends AppCompatActivity {
 
         ResultsRetriever ir = ResultsRetriever.getRR();
 
-        ArrayList<ArrayList<Match>> results = ir.getAllMatches();
+        ArrayList<Match> results = ir.getAllMatches();
 
         res_view.setMovementMethod(new ScrollingMovementMethod());
-        for (ArrayList<Match> list : results) {
-            for (Match match : list) {
-                res_view.append(match.getDate() + "\n");
-                res_view.append(match.getFirst_team() + "  " + match.getFirst_score() + "    ");
-                res_view.append(match.getSecond_team() + "  " + match.getFirst_score());
-                res_view.append("\n\n");
-            }
+
+        for (Match match : results) {
+            res_view.append(match.getDate() + "\n");
+            res_view.append(match.getFirst_team() + "  " + match.getFirst_score() + "    ");
+            res_view.append(match.getSecond_team() + "  " + match.getFirst_score());
+            res_view.append("\n\n");
         }
+
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(ResultsScreen.this, MainScreen.class);
-                //startActivity(intent);
                 finish();
             }
         });

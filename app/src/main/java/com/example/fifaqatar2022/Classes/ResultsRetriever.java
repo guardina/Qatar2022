@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<ArrayList<Match>>> {
+public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match>> {
 
     private static ResultsRetriever ir = null;
 
@@ -19,31 +19,27 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Array
     static public ResultsRetriever getRR() {
         if (ir == null) {
             ResultsRetriever newIr = new ResultsRetriever();
-            newIr.execute();
+            //newIr.execute();
             return newIr;
         }
         return ir;
     }
 
-    static ArrayList<ArrayList<Match>> all_matches = new ArrayList();
+    static ArrayList<Match> all_matches = new ArrayList();
 
 
     @Override
-    protected ArrayList<ArrayList<Match>> doInBackground(String... strings) {
+    protected ArrayList<Match> doInBackground(String... strings) {
 
-        ArrayList<ArrayList<Match>> results = new ArrayList<>();
+        ArrayList<Match> results = new ArrayList<>();
 
         try {
             Document doc = Jsoup.connect("https://onefootball.com/it/competizione/mondiale-12/partite").get();
             Elements matchdays = doc.select("of-match-cards-list");
 
-            int i = 0;
-
             for (Element matchday : matchdays) {
 
                 String day = matchday.select("h3[class^=title-7]").text();
-
-                results.add(new ArrayList<>());
 
                 Elements matches = matchday.select("[class=simple-match-card__content]");
                 for (Element match : matches) {
@@ -84,9 +80,8 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Array
                         }
                         first = false;
                     }
-                    results.get(i).add(m);
+                    results.add(m);
                 }
-                i++;
             }
 
 
@@ -99,7 +94,7 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Array
     }
 
 
-    public ArrayList<ArrayList<Match>> getAllMatches() {
+    public ArrayList<Match> getAllMatches() {
         return all_matches;
     }
 }

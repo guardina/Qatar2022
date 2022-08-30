@@ -1,5 +1,7 @@
 package com.example.fifaqatar2022.Classes;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 
 import org.jsoup.Jsoup;
@@ -8,21 +10,22 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Group>> {
 
-    private static PlacementsRetriever cr = null;
+    private static PlacementsRetriever pr = null;
 
     public PlacementsRetriever() {}
 
-    static public PlacementsRetriever getCR() {
-        if (cr == null) {
-            PlacementsRetriever newCr = new PlacementsRetriever();
-            newCr.execute();
-            return newCr;
+    static public PlacementsRetriever getPR() {
+        if (pr == null) {
+            return new PlacementsRetriever();
         }
-        return cr;
+        return pr;
     }
 
 
@@ -43,15 +46,38 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
                 String group_name = group.select("[class*=standings__table-header-text]").text();
                 newGroup.setName(group_name);
 
-                ArrayList<String> teams = new ArrayList<>();
+                ArrayList<Team> teams = new ArrayList<>();
+                ArrayList<String> team_names = new ArrayList<>();
 
                 for (Element team : group.select("[class*=standings__row--link]")) {
 
                     String team_name = team.select("[class*=standings__team-name]").text();
-                    teams.add(team_name);
+                    String logo_link = team.select("img").first().absUrl("src");
+
+                    InputStream is = (InputStream) new URL(logo_link).getContent();
+                    Drawable logo = Drawable.createFromStream(is, "image");
+
+                    Team newTeam = new Team(team_name);
+                    newTeam.setLogo(logo);
+
+
+                    teams.add(newTeam);
+                    team_names.add(team_name);
                 }
 
                 newGroup.setTeams(teams);
+                newGroup.setTeam_names(team_names);
+
+
+                ResultsRetriever rr = ResultsRetriever.getRR();
+
+                ArrayList<Match> matches = rr.getAllMatches();
+
+                for (Match match : matches) {
+                    if (newGroup.getTeam_names().contains(match.getFirst_team())) {
+                        newGroup.add_match(match);
+                    }
+                }
 
                 placements.add(newGroup);
             }

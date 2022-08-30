@@ -9,13 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
+import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class PredictionScreen extends AppCompatActivity {
+
+    boolean executed = false;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
@@ -31,13 +35,21 @@ public class PredictionScreen extends AppCompatActivity {
         Button buttonG = findViewById(R.id.buttonG);
         Button buttonH = findViewById(R.id.buttonH);
 
-        ResultsRetriever ir = ResultsRetriever.getRR();
-        PlacementsRetriever pr = PlacementsRetriever.getCR();
 
+        ResultsRetriever rr = ResultsRetriever.getRR();
 
-        ArrayList<Group> groups = pr.getAllGroups();
+        try {
+            if (!executed) {
+                ArrayList<Match> list = rr.execute().get();
+                executed = true;
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-
+        
 
         buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
