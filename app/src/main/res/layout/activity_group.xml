@@ -11,7 +11,7 @@
         android:id="@+id/group_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/my_button"
+        android:background="@drawable/my_background"
         android:fontFamily="@font/arial_bold"
         android:gravity="center"
         android:textColor="#000000"
@@ -25,7 +25,7 @@
         android:id="@+id/groupBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/my_button"
+        android:background="@drawable/my_background"
         app:layout_constraintBottom_toTopOf="@id/backgroundGroupBottom"
         app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
         app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
@@ -35,11 +35,30 @@
         android:id="@+id/predictionBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/my_button"
+        android:background="@drawable/my_background"
         app:layout_constraintBottom_toTopOf="@id/backgroundPredictionBottom"
         app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
         app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
-        app:layout_constraintTop_toBottomOf="@id/backgroundPredictionTop" />
+        app:layout_constraintTop_toBottomOf="@id/backgroundPredictionTop" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableRow
+                android:id="@+id/match1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/homeLogo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+        </LinearLayout>
+    </ScrollView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/backgroundGroupLeft"

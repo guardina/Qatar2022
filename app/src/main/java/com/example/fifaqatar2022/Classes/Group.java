@@ -46,6 +46,10 @@ public class Group {
         this.team_names = team_names;
     }
 
+    public ArrayList<Match> getMatches() {
+        return matches;
+    }
+
 
 
     ///// OTHER METHODS /////

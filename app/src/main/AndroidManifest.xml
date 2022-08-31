@@ -23,7 +23,7 @@
 
         <activity android:name=".Screens.MainScreen"></activity>
         <activity android:name=".Screens.ResultsScreen"></activity>
-        <activity android:name=".Screens.PredictionScreen"></activity>
+        <activity android:name=".Screens.GroupSelectionScreen"></activity>
         <activity android:name=".Screens.GroupScreen"></activity>
     </application>
 

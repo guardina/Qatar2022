@@ -1,19 +1,16 @@
 package com.example.fifaqatar2022.Classes;
 
-import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Group>> {
 
@@ -74,7 +71,7 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
                 ArrayList<Match> matches = rr.getAllMatches();
 
                 for (Match match : matches) {
-                    if (newGroup.getTeam_names().contains(match.getFirst_team())) {
+                    if (newGroup.getTeam_names().contains(match.getFirst_team().getName())) {
                         newGroup.add_match(match);
                     }
                 }

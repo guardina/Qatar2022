@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="@color/red_qatar"
-    tools:context=".Screens.PredictionScreen">
+    tools:context=".Screens.GroupSelectionScreen">
 
 
     <ScrollView

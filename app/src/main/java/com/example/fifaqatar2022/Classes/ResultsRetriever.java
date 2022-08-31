@@ -18,9 +18,7 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match
 
     static public ResultsRetriever getRR() {
         if (ir == null) {
-            ResultsRetriever newIr = new ResultsRetriever();
-            //newIr.execute();
-            return newIr;
+            return new ResultsRetriever();
         }
         return ir;
     }
@@ -56,27 +54,26 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match
                     for (Element team : teams.select("[class=simple-match-card-team]")) {
                         String team_name = team.select("[class*=team__name]").text();
                         String score = team.select(("[class*=team__score]")).text();
-                        String picture_link = team.select(".of-image__img").first().absUrl("src");
+
+                        Team newTeam = new Team(team_name);
 
 
                         if (first) {
-                            m.setFirst_team(team_name);
+                            m.setFirst_team(newTeam);
 
                             if (score.equals("")) {
                                 score = "-";
                             }
 
                             m.setFirst_score(score);
-                            m.setFirst_picture(picture_link);
                         } else {
-                            m.setSecond_team(team_name);
+                            m.setSecond_team(newTeam);
 
                             if (score.equals("")) {
                                 score = "-";
                             }
 
                             m.setSecond_score(score);
-                            m.setSecond_picture(picture_link);
                         }
                         first = false;
                     }

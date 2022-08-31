@@ -7,17 +7,15 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
-import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.R;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class PredictionScreen extends AppCompatActivity {
+public class GroupSelectionScreen extends AppCompatActivity {
 
     boolean executed = false;
 
@@ -55,7 +53,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.A;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -63,7 +61,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.B;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -71,7 +69,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.C;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -79,7 +77,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.D;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -87,7 +85,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.E;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -95,7 +93,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.F;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -103,7 +101,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.G;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
 
@@ -111,7 +109,7 @@ public class PredictionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GroupScreen.selected_group = Group_enum.H;
-                startActivity(new Intent(PredictionScreen.this, GroupScreen.class));
+                startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
     }
