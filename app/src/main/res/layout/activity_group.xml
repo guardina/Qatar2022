@@ -4,40 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:backgroundTint="@color/red_qatar">
 
     <TextView
         android:id="@+id/group_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/my_button"
+        android:fontFamily="@font/arial_bold"
         android:gravity="center"
         android:textColor="#000000"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/groupNameBottom"
         app:layout_constraintEnd_toEndOf="@id/groupNameRight"
         app:layout_constraintStart_toStartOf="@id/groupNameLeft"
         app:layout_constraintTop_toBottomOf="@id/groupNameTop" />
+
+    <TextView
+        android:id="@+id/groupBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_button"
+        app:layout_constraintBottom_toTopOf="@id/backgroundGroupBottom"
+        app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
+        app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
+        app:layout_constraintTop_toBottomOf="@id/backgroundGroupTop" />
+
+    <ScrollView
+        android:id="@+id/predictionBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_button"
+        app:layout_constraintBottom_toTopOf="@id/backgroundPredictionBottom"
+        app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
+        app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
+        app:layout_constraintTop_toBottomOf="@id/backgroundPredictionTop" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backgroundGroupLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/logoLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.075" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/logoRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/teamNameLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.175" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/groupNameLeft"
@@ -65,7 +95,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.925" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backgroundGroupRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
 
 
 
@@ -85,66 +123,105 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="73dp" />
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backgroundGroupTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/firstTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="91dp" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/firstTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.175" />
+        app:layout_constraintGuide_percent="0.16" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/secondTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/secondTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.22" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/thirdTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.275" />
+        app:layout_constraintGuide_percent="0.24" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/thirdTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.325" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/fourthTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.30" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/fourthTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.34" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backgroundGroupBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backgroundPredictionTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/predictionTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/predictionBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backgroundPredictionBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96"/>
 
 
 
@@ -161,13 +238,14 @@
         android:id="@+id/first_name"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
         android:gravity="center_vertical"
         android:textColor="#000000"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
         app:layout_constraintEnd_toEndOf="@id/teamNameRight"
         app:layout_constraintStart_toStartOf="@id/teamNameLeft"
         app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
-
 
 
     <ImageView
@@ -183,13 +261,14 @@
         android:id="@+id/second_name"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
         android:gravity="center_vertical"
         android:textColor="#000000"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
         app:layout_constraintEnd_toEndOf="@id/teamNameRight"
         app:layout_constraintStart_toStartOf="@id/teamNameLeft"
         app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
-
 
 
     <ImageView
@@ -205,13 +284,14 @@
         android:id="@+id/third_name"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
         android:gravity="center_vertical"
         android:textColor="#000000"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
         app:layout_constraintEnd_toEndOf="@id/teamNameRight"
         app:layout_constraintStart_toStartOf="@id/teamNameLeft"
         app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
-
 
 
     <ImageView
@@ -227,8 +307,10 @@
         android:id="@+id/fourth_name"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
         android:gravity="center_vertical"
         android:textColor="#000000"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
         app:layout_constraintEnd_toEndOf="@id/teamNameRight"
         app:layout_constraintStart_toStartOf="@id/teamNameLeft"
