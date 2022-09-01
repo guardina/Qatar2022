@@ -56,6 +56,13 @@ public class Group {
 
 
     public void add_match(Match match) {
+        for (Team team : this.teams) {
+            if (team.getName().equals(match.getFirst_team().getName())) {
+                match.getFirst_team().setLogo(team.getLogo());
+            } else if (team.getName().equals(match.getSecond_team().getName())) {
+                match.getSecond_team().setLogo(team.getLogo());
+            }
+        }
         this.matches.add(match);
     }
 

@@ -1,6 +1,9 @@
 package com.example.fifaqatar2022.Screens;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -113,25 +116,91 @@ public class GroupScreen extends AppCompatActivity {
         }
 
 
-        ArrayList<ImageView> imageViewsMatches = new ArrayList<>();
+        ArrayList<ImageView> imageViewsMatchesHome = new ArrayList<>();
+        ArrayList<ImageView> imageViewsMatchesVisitors = new ArrayList<>();
 
-        imageViewsMatches.add(findViewById(R.id.homeLogo1));
-        /*imageViewsMatches.add(findViewById(R.id.homeLogo2));
-        imageViewsMatches.add(findViewById(R.id.homeLogo3));
-        imageViewsMatches.add(findViewById(R.id.homeLogo4));
-        imageViewsMatches.add(findViewById(R.id.homeLogo5));
-        imageViewsMatches.add(findViewById(R.id.homeLogo6));*/
+        imageViewsMatchesHome.add(findViewById(R.id.logoH1));
+        imageViewsMatchesHome.add(findViewById(R.id.logoH2));
+        imageViewsMatchesHome.add(findViewById(R.id.logoH3));
+        imageViewsMatchesHome.add(findViewById(R.id.logoH4));
+        imageViewsMatchesHome.add(findViewById(R.id.logoH5));
+        imageViewsMatchesHome.add(findViewById(R.id.logoH6));
+
+        imageViewsMatchesVisitors.add(findViewById(R.id.logoV1));
+        imageViewsMatchesVisitors.add(findViewById(R.id.logoV2));
+        imageViewsMatchesVisitors.add(findViewById(R.id.logoV3));
+        imageViewsMatchesVisitors.add(findViewById(R.id.logoV4));
+        imageViewsMatchesVisitors.add(findViewById(R.id.logoV5));
+        imageViewsMatchesVisitors.add(findViewById(R.id.logoV6));
+
+        ArrayList<TextView> textViewsMatchesHome = new ArrayList<>();
+        ArrayList<TextView> textViewsMatchesVisitors = new ArrayList<>();
+
+        textViewsMatchesHome.add(findViewById(R.id.nameH1));
+        textViewsMatchesHome.add(findViewById(R.id.nameH2));
+        textViewsMatchesHome.add(findViewById(R.id.nameH3));
+        textViewsMatchesHome.add(findViewById(R.id.nameH4));
+        textViewsMatchesHome.add(findViewById(R.id.nameH5));
+        textViewsMatchesHome.add(findViewById(R.id.nameH6));
+
+        textViewsMatchesVisitors.add(findViewById(R.id.nameV1));
+        textViewsMatchesVisitors.add(findViewById(R.id.nameV2));
+        textViewsMatchesVisitors.add(findViewById(R.id.nameV3));
+        textViewsMatchesVisitors.add(findViewById(R.id.nameV4));
+        textViewsMatchesVisitors.add(findViewById(R.id.nameV5));
+        textViewsMatchesVisitors.add(findViewById(R.id.nameV6));
 
         int posMatch = 0;
 
-        imageViewsMatches.get(0).setImageDrawable(group.getMatches().get(0).getFirst_team().getLogo());
 
-        /*
         for (Match match : group.getMatches()) {
-            imageViewsMatches.get(posMatch).setImageDrawable(match.getFirst_team().getLogo());
+            imageViewsMatchesHome.get(posMatch).setImageDrawable(match.getFirst_team().getLogo());
+            imageViewsMatchesVisitors.get(posMatch).setImageDrawable(match.getSecond_team().getLogo());
+
+            textViewsMatchesHome.get(posMatch).append(match.getFirst_team().getName());
+            textViewsMatchesVisitors.get(posMatch).append(match.getSecond_team().getName());
+
             posMatch++;
         }
-        */
+
+
+        ArrayList<EditText> scoresHome = new ArrayList<>();
+        ArrayList<EditText> scoresVisitors = new ArrayList<>();
+
+        scoresHome.add(findViewById(R.id.scoreH1));
+        scoresHome.add(findViewById(R.id.scoreH2));
+        scoresHome.add(findViewById(R.id.scoreH3));
+        scoresHome.add(findViewById(R.id.scoreH4));
+        scoresHome.add(findViewById(R.id.scoreH5));
+        scoresHome.add(findViewById(R.id.scoreH6));
+
+        scoresVisitors.add(findViewById(R.id.scoreV1));
+        scoresVisitors.add(findViewById(R.id.scoreV2));
+        scoresVisitors.add(findViewById(R.id.scoreV3));
+        scoresVisitors.add(findViewById(R.id.scoreV4));
+        scoresVisitors.add(findViewById(R.id.scoreV5));
+        scoresVisitors.add(findViewById(R.id.scoreV6));
+
+
+
+
+
+
+        Button resetButton = findViewById(R.id.resetButton);
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (EditText score : scoresHome) {
+                    score.setText("");
+                }
+
+                for (EditText score : scoresVisitors) {
+                    score.setText("");
+                }
+            }
+        });
+
     }
 
 }

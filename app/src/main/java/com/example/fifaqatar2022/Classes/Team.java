@@ -4,11 +4,11 @@ import android.graphics.drawable.Drawable;
 
 public class Team {
 
-    String name;
-    Drawable logo;
-    int points;
-    int goals_scored;
-    int goals_conceded;
+    private String name;
+    private Drawable logo;
+    private int points;
+    private int goals_scored;
+    private int goals_conceded;
 
 
 
