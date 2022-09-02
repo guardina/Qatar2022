@@ -1,11 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="@color/red_qatar">
+
+
+    <TextView
+        android:id="@+id/groupBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_background"
+        app:layout_constraintBottom_toTopOf="@id/backgroundGroupBottom"
+        app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
+        app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
+        app:layout_constraintTop_toBottomOf="@id/backgroundGroupTop" />
+
+    <TextView
+        android:id="@+id/match1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/win1"
+        app:layout_constraintStart_toStartOf="@id/scoreRight"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+    <TextView
+        android:id="@+id/win1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/draw1"
+        app:layout_constraintStart_toEndOf="@id/match1"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+    <TextView
+        android:id="@+id/draw1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/loss1"
+        app:layout_constraintStart_toEndOf="@id/win1"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+    <TextView
+        android:id="@+id/loss1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/goals1"
+        app:layout_constraintStart_toEndOf="@id/draw1"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+    <TextView
+        android:id="@+id/goals1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/point1"
+        app:layout_constraintStart_toEndOf="@id/loss1"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+    <TextView
+        android:id="@+id/point1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/firstTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoVRight"
+        app:layout_constraintStart_toEndOf="@id/goals1"
+        app:layout_constraintTop_toBottomOf="@id/firstTeamTop" />
+
+
+    <TextView
+        android:id="@+id/match2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/win2"
+        app:layout_constraintStart_toStartOf="@id/scoreRight"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+    <TextView
+        android:id="@+id/win2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/draw2"
+        app:layout_constraintStart_toEndOf="@id/match2"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+    <TextView
+        android:id="@+id/draw2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/loss2"
+        app:layout_constraintStart_toEndOf="@id/win2"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+    <TextView
+        android:id="@+id/loss2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/goals2"
+        app:layout_constraintStart_toEndOf="@id/draw2"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+    <TextView
+        android:id="@+id/goals2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/point2"
+        app:layout_constraintStart_toEndOf="@id/loss2"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+    <TextView
+        android:id="@+id/point2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/secondTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoVRight"
+        app:layout_constraintStart_toEndOf="@id/goals2"
+        app:layout_constraintTop_toBottomOf="@id/secondTeamTop" />
+
+
+    <TextView
+        android:id="@+id/match3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/win3"
+        app:layout_constraintStart_toStartOf="@id/scoreRight"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+    <TextView
+        android:id="@+id/win3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/draw3"
+        app:layout_constraintStart_toEndOf="@id/match3"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+    <TextView
+        android:id="@+id/draw3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/loss3"
+        app:layout_constraintStart_toEndOf="@id/win3"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+    <TextView
+        android:id="@+id/loss3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/goals3"
+        app:layout_constraintStart_toEndOf="@id/draw3"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+    <TextView
+        android:id="@+id/goals3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/point3"
+        app:layout_constraintStart_toEndOf="@id/loss3"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+    <TextView
+        android:id="@+id/point3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/thirdTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoVRight"
+        app:layout_constraintStart_toEndOf="@id/goals3"
+        app:layout_constraintTop_toBottomOf="@id/thirdTeamTop" />
+
+
+    <TextView
+        android:id="@+id/match4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/win4"
+        app:layout_constraintStart_toStartOf="@id/scoreRight"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+    <TextView
+        android:id="@+id/win4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/draw4"
+        app:layout_constraintStart_toEndOf="@id/match4"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+    <TextView
+        android:id="@+id/draw4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/loss4"
+        app:layout_constraintStart_toEndOf="@id/win4"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+    <TextView
+        android:id="@+id/loss4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/goals4"
+        app:layout_constraintStart_toEndOf="@id/draw4"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+    <TextView
+        android:id="@+id/goals4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toStartOf="@id/point4"
+        app:layout_constraintStart_toEndOf="@id/loss4"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+    <TextView
+        android:id="@+id/point4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/fourthTeamBottom"
+        app:layout_constraintEnd_toEndOf="@id/logoVRight"
+        app:layout_constraintStart_toEndOf="@id/goals4"
+        app:layout_constraintTop_toBottomOf="@id/fourthTeamTop" />
+
+
+
 
     <TextView
         android:id="@+id/backgroundResults"
@@ -143,7 +495,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/nameH2"
         app:layout_constraintEnd_toEndOf="@id/groupNameLeft"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/teamNameLeft"
         app:layout_constraintTop_toTopOf="@id/predictionTop" />
 
@@ -315,16 +667,6 @@
         app:layout_constraintStart_toStartOf="@id/groupNameLeft"
         app:layout_constraintTop_toBottomOf="@id/groupNameTop" />
 
-    <TextView
-        android:id="@+id/groupBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/my_background"
-        app:layout_constraintBottom_toTopOf="@id/backgroundGroupBottom"
-        app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
-        app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
-        app:layout_constraintTop_toBottomOf="@id/backgroundGroupTop" />
-
 
     <EditText
         android:id="@+id/scoreH1"
@@ -336,10 +678,28 @@
         android:inputType="number"
         android:maxLength="2"
         android:textColor="#000000"
+        android:nextFocusDown="@id/scoreV1"
         app:layout_constraintBottom_toTopOf="@+id/scoreH2"
         app:layout_constraintEnd_toEndOf="@id/centerLine"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/scoreLeft"
+        app:layout_constraintTop_toBottomOf="@id/predictionTop" />
+
+    <EditText
+        android:id="@+id/scoreV1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_score_background"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="#000000"
+        android:nextFocusDown="@id/scoreH2"
+        app:layout_constraintBottom_toTopOf="@+id/scoreV2"
+        app:layout_constraintEnd_toEndOf="@id/scoreRight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/centerLine"
         app:layout_constraintTop_toBottomOf="@id/predictionTop" />
 
     <EditText
@@ -352,90 +712,12 @@
         android:inputType="number"
         android:maxLength="2"
         android:textColor="#000000"
+        android:nextFocusDown="@id/scoreV2"
         app:layout_constraintBottom_toTopOf="@+id/scoreH3"
         app:layout_constraintEnd_toEndOf="@id/centerLine"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/scoreLeft"
         app:layout_constraintTop_toBottomOf="@+id/scoreH1" />
-
-    <EditText
-        android:id="@+id/scoreH3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/my_score_background"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/scoreH4"
-        app:layout_constraintEnd_toEndOf="@id/centerLine"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/scoreLeft"
-        app:layout_constraintTop_toBottomOf="@+id/scoreH2" />
-
-    <EditText
-        android:id="@+id/scoreH4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/my_score_background"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/scoreH5"
-        app:layout_constraintEnd_toEndOf="@id/centerLine"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/scoreLeft"
-        app:layout_constraintTop_toBottomOf="@+id/scoreH3" />
-
-    <EditText
-        android:id="@+id/scoreH5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/my_score_background"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/scoreH6"
-        app:layout_constraintEnd_toEndOf="@id/centerLine"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/scoreLeft"
-        app:layout_constraintTop_toBottomOf="@+id/scoreH4" />
-
-    <EditText
-        android:id="@+id/scoreH6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/my_score_background"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@id/predictionBottom"
-        app:layout_constraintEnd_toEndOf="@id/centerLine"
-        app:layout_constraintStart_toStartOf="@id/scoreLeft"
-        app:layout_constraintTop_toBottomOf="@id/scoreH5" />
-
-    <EditText
-        android:id="@+id/scoreV1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/my_score_background"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/scoreV2"
-        app:layout_constraintEnd_toEndOf="@id/scoreRight"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/centerLine"
-        app:layout_constraintTop_toBottomOf="@id/predictionTop" />
 
     <EditText
         android:id="@+id/scoreV2"
@@ -447,11 +729,29 @@
         android:inputType="number"
         android:maxLength="2"
         android:textColor="#000000"
+        android:nextFocusDown="@id/scoreH3"
         app:layout_constraintBottom_toTopOf="@+id/scoreV3"
         app:layout_constraintEnd_toEndOf="@id/scoreRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/centerLine"
         app:layout_constraintTop_toBottomOf="@+id/scoreV1" />
+
+    <EditText
+        android:id="@+id/scoreH3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_score_background"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="#000000"
+        android:nextFocusDown="@id/scoreV3"
+        app:layout_constraintBottom_toTopOf="@+id/scoreH4"
+        app:layout_constraintEnd_toEndOf="@id/centerLine"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/scoreLeft"
+        app:layout_constraintTop_toBottomOf="@+id/scoreH2" />
 
     <EditText
         android:id="@+id/scoreV3"
@@ -463,11 +763,29 @@
         android:inputType="number"
         android:maxLength="2"
         android:textColor="#000000"
+        android:nextFocusDown="@id/scoreH4"
         app:layout_constraintBottom_toTopOf="@+id/scoreV4"
         app:layout_constraintEnd_toEndOf="@id/scoreRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/centerLine"
         app:layout_constraintTop_toBottomOf="@+id/scoreV2" />
+
+    <EditText
+        android:id="@+id/scoreH4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_score_background"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="#000000"
+        android:nextFocusDown="@id/scoreV4"
+        app:layout_constraintBottom_toTopOf="@+id/scoreH5"
+        app:layout_constraintEnd_toEndOf="@id/centerLine"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/scoreLeft"
+        app:layout_constraintTop_toBottomOf="@+id/scoreH3" />
 
     <EditText
         android:id="@+id/scoreV4"
@@ -479,11 +797,29 @@
         android:inputType="number"
         android:maxLength="2"
         android:textColor="#000000"
+        android:nextFocusDown="@id/scoreH5"
         app:layout_constraintBottom_toTopOf="@+id/scoreV5"
         app:layout_constraintEnd_toEndOf="@id/scoreRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/centerLine"
         app:layout_constraintTop_toBottomOf="@+id/scoreV3" />
+
+    <EditText
+        android:id="@+id/scoreH5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_score_background"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="#000000"
+        android:nextFocusDown="@id/scoreV5"
+        app:layout_constraintBottom_toTopOf="@+id/scoreH6"
+        app:layout_constraintEnd_toEndOf="@id/centerLine"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/scoreLeft"
+        app:layout_constraintTop_toBottomOf="@+id/scoreH4" />
 
     <EditText
         android:id="@+id/scoreV5"
@@ -495,11 +831,28 @@
         android:inputType="number"
         android:maxLength="2"
         android:textColor="#000000"
+        android:nextFocusDown="@id/scoreH6"
         app:layout_constraintBottom_toTopOf="@+id/scoreV6"
         app:layout_constraintEnd_toEndOf="@id/scoreRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/centerLine"
         app:layout_constraintTop_toBottomOf="@+id/scoreV4" />
+
+    <EditText
+        android:id="@+id/scoreH6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/my_score_background"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="#000000"
+        android:nextFocusDown="@id/scoreV6"
+        app:layout_constraintBottom_toTopOf="@id/predictionBottom"
+        app:layout_constraintEnd_toEndOf="@id/centerLine"
+        app:layout_constraintStart_toStartOf="@id/scoreLeft"
+        app:layout_constraintTop_toBottomOf="@id/scoreH5" />
 
     <EditText
         android:id="@+id/scoreV6"
@@ -832,30 +1185,20 @@
         android:id="@+id/resetButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
+        android:text="CANCELLA"
+        app:layout_constraintBottom_toTopOf="@id/backgroundPredictionTop"
         app:layout_constraintEnd_toEndOf="@id/groupNameLeft"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop"
-        app:layout_constraintBottom_toTopOf="@id/backgroundPredictionTop"
-        android:text="CANCELLA" />
-
-    <Button
-        android:id="@+id/refreshButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/groupNameLeft"
-        app:layout_constraintEnd_toEndOf="@id/groupNameRight"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop"
-        app:layout_constraintBottom_toTopOf="@id/backgroundPredictionTop"
-        android:text="AGGIORNA" />
+        app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
+        app:layout_constraintTop_toBottomOf="@id/buttonTop" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/groupNameRight"
-        app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop"
+        android:text="SALVA"
         app:layout_constraintBottom_toTopOf="@id/backgroundPredictionTop"
-        android:text="SALVA" />
+        app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
+        app:layout_constraintStart_toStartOf="@id/groupNameRight"
+        app:layout_constraintTop_toBottomOf="@id/buttonTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

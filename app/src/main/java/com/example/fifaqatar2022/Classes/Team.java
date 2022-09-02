@@ -4,11 +4,17 @@ import android.graphics.drawable.Drawable;
 
 public class Team {
 
+    static final int GAMES = 0;
+    static final int WINS = 1;
+    static final int DRAWS = 2;
+    static final int LOSSES = 3;
+    static final int GOALDIFF = 4;
+    static final int POINTS = 5;
+
     private String name;
     private Drawable logo;
-    private int points;
-    private int goals_scored;
-    private int goals_conceded;
+
+    private int[] teamInfo = new int[6];
 
 
 
@@ -19,10 +25,7 @@ public class Team {
         this.name = name;
     }
 
-
-
-
-    ///// GETTERS AND SETTER /////
+///// GETTERS AND SETTER /////
 
     public String getName() {
         return name;
@@ -36,27 +39,10 @@ public class Team {
         this.logo = logo;
     }
 
-    public int getPoints() {
-        return points;
-    }
 
-    public void addPoints(int points) {
-        this.points += points;
-    }
+    ///// OTHER METHODS /////
 
-    public int getGoals_scored() {
-        return goals_scored;
-    }
-
-    public void scored_goals(int goals_scored) {
-        this.goals_scored += goals_scored;
-    }
-
-    public int getGoals_conceded() {
-        return goals_conceded;
-    }
-
-    public void conceded_goals(int goals_conceded) {
-        this.goals_conceded += goals_conceded;
+    public int[] getTeamInfo() {
+        return teamInfo;
     }
 }

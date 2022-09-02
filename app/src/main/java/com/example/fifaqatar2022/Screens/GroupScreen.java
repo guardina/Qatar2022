@@ -16,6 +16,7 @@ import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
+import com.google.android.gms.common.api.Result;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -111,7 +112,7 @@ public class GroupScreen extends AppCompatActivity {
 
         for (Team team : group.getTeams()) {
             imageViewsPlacement.get(posPlace).setImageDrawable(team.getLogo());
-            textViewsPlacement.get(posPlace).append(team.getName());
+            textViewsPlacement.get(posPlace).setText(team.getName());
             posPlace++;
         }
 
@@ -183,9 +184,6 @@ public class GroupScreen extends AppCompatActivity {
 
 
 
-
-
-
         Button resetButton = findViewById(R.id.resetButton);
 
         resetButton.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +195,99 @@ public class GroupScreen extends AppCompatActivity {
 
                 for (EditText score : scoresVisitors) {
                     score.setText("");
+                }
+            }
+        });
+
+
+
+
+
+
+        ArrayList<ArrayList<TextView>> cells = new ArrayList<>();
+        ArrayList<TextView> team1Info = new ArrayList<>();
+        ArrayList<TextView> team2Info = new ArrayList<>();
+        ArrayList<TextView> team3Info = new ArrayList<>();
+        ArrayList<TextView> team4Info = new ArrayList<>();
+
+        team1Info.add(findViewById(R.id.match1));
+        team1Info.add(findViewById(R.id.win1));
+        team1Info.add(findViewById(R.id.draw1));
+        team1Info.add(findViewById(R.id.loss1));
+        team1Info.add(findViewById(R.id.goals1));
+        team1Info.add(findViewById(R.id.point1));
+
+        team2Info.add(findViewById(R.id.match2));
+        team2Info.add(findViewById(R.id.win2));
+        team2Info.add(findViewById(R.id.draw2));
+        team2Info.add(findViewById(R.id.loss2));
+        team2Info.add(findViewById(R.id.goals2));
+        team2Info.add(findViewById(R.id.point2));
+
+        team3Info.add(findViewById(R.id.match3));
+        team3Info.add(findViewById(R.id.win3));
+        team3Info.add(findViewById(R.id.draw3));
+        team3Info.add(findViewById(R.id.loss3));
+        team3Info.add(findViewById(R.id.goals3));
+        team3Info.add(findViewById(R.id.point3));
+
+        team4Info.add(findViewById(R.id.match4));
+        team4Info.add(findViewById(R.id.win4));
+        team4Info.add(findViewById(R.id.draw4));
+        team4Info.add(findViewById(R.id.loss4));
+        team4Info.add(findViewById(R.id.goals4));
+        team4Info.add(findViewById(R.id.point4));
+
+        cells.add(team1Info);
+        cells.add(team2Info);
+        cells.add(team3Info);
+        cells.add(team4Info);
+
+
+
+
+        Button saveButton = findViewById(R.id.saveButton);
+
+        Group finalGroup = group;
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int savePos = 0;
+
+                for (Match match : finalGroup.getMatches()) {
+                    int scoreHome = Integer.parseInt(scoresHome.get(savePos).getText().toString());
+                    int scoreVisitor = Integer.parseInt(scoresVisitors.get(savePos).getText().toString());
+
+                    match.setFirst_score(String.valueOf(scoreHome));
+                    match.setSecond_score(String.valueOf(scoreVisitor));
+
+                    if (scoreHome > scoreVisitor) {
+                        finalGroup.match_result(Group.Result.ONE, match);
+                    } else if (scoreHome == scoreVisitor) {
+                        finalGroup.match_result(Group.Result.X, match);
+                    } else {
+                        finalGroup.match_result(Group.Result.TWO, match);
+                    }
+
+                    savePos++;
+                }
+
+
+                ArrayList<Team> finalPlacement = finalGroup.get_placement();
+
+
+                int tablePos = 0;
+
+                for (Team team : finalPlacement) {
+                    imageViewsPlacement.get(tablePos).setImageDrawable(team.getLogo());
+                    textViewsPlacement.get(tablePos).setText(team.getName());
+
+                    int cellPos = 0;
+                    int[] teamInfo = team.getTeamInfo();
+                    for (TextView cell : cells.get(tablePos)) {
+                        cell.setText(String.valueOf(teamInfo[cellPos++]));
+                    }
                 }
             }
         });

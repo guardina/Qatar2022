@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Group {
 
-    enum Result {ONE, X, TWO}
+    public enum Result {ONE, X, TWO}
 
     String name;
     ArrayList<Team> teams = new ArrayList<>();
     ArrayList<String> team_names = new ArrayList<>();
-    String[] placement = new String[4];
 
     ArrayList<Match> matches = new ArrayList<>();
+    ArrayList<Match> predictions = new ArrayList<>();
 
 
     ///// CONSTRUCTOR /////
 
-    public Group() {}
-
+    public Group() {
+    }
 
 
     ///// GETTERS AND SETTERS /////
@@ -51,7 +51,6 @@ public class Group {
     }
 
 
-
     ///// OTHER METHODS /////
 
 
@@ -69,14 +68,12 @@ public class Group {
     public void match_result(Result result, Match match) {
 
         for (Team team : teams) {
-            if (team.getName().equals(match.getFirst_team())) {
-                team.scored_goals(Integer.getInteger(match.getFirst_score()));
-                team.conceded_goals(Integer.getInteger(match.getSecond_score()));
-            }
+            if (team.getName().equals(match.getFirst_team().getName())) {
+                team.getTeamInfo()[Team.GOALDIFF] += Integer.parseInt(match.getFirst_score()) - Integer.parseInt(match.getSecond_score());
 
-            if (team.getName().equals(match.getSecond_team())) {
-                team.scored_goals(Integer.getInteger(match.getSecond_score()));
-                team.conceded_goals(Integer.getInteger(match.getFirst_score()));
+            } else if (team.getName().equals(match.getSecond_team().getName())) {
+                team.getTeamInfo()[Team.GOALDIFF] += Integer.parseInt(match.getSecond_score()) - Integer.parseInt(match.getFirst_score());
+
             }
         }
 
@@ -84,24 +81,30 @@ public class Group {
         switch (result) {
             case ONE:
                 for (Team team : teams) {
-                    if (team.getName().equals(match.getFirst_team())) {
-                        team.addPoints(3);
+                    if (team.getName().equals(match.getFirst_team().getName())) {
+                        team.getTeamInfo()[Team.POINTS] += 3;
+                        team.getTeamInfo()[Team.GAMES]++;
+                        team.getTeamInfo()[Team.WINS]++;
                     }
                 }
                 break;
 
             case X:
                 for (Team team : teams) {
-                    if (team.getName().equals(match.getFirst_team()) || team.getName().equals(match.getSecond_team())) {
-                        team.addPoints(1);
+                    if (team.getName().equals(match.getFirst_team().getName()) || team.getName().equals(match.getSecond_team().getName())) {
+                        team.getTeamInfo()[Team.POINTS] += 1;
+                        team.getTeamInfo()[Team.GAMES]++;
+                        team.getTeamInfo()[Team.DRAWS]++;
                     }
                 }
                 break;
 
             case TWO:
                 for (Team team : teams) {
-                    if (team.getName().equals(match.getSecond_team())) {
-                        team.addPoints(3);
+                    if (team.getName().equals(match.getSecond_team().getName())) {
+                        team.getTeamInfo()[Team.POINTS] += 3;
+                        team.getTeamInfo()[Team.GAMES]++;
+                        team.getTeamInfo()[Team.WINS]++;
                     }
                 }
                 break;
@@ -109,24 +112,23 @@ public class Group {
     }
 
 
-    public void do_placement() {
+    public ArrayList<Team> get_placement() {
+
+        ArrayList<Team> placement = new ArrayList<>();
 
         int max = Integer.MIN_VALUE;
         int pos = 0;
 
         for (int i = 0; i < teams.size(); i++) {
-            for (int j = i; j < teams.size()-i; j++) {
-                if (teams.get(j).getPoints() > max) {
-                    max = teams.get(j).getPoints();
+            for (int j = i; j < teams.size() - i; j++) {
+                if (teams.get(j).getTeamInfo()[Team.POINTS] > max) {
+                    max = teams.get(j).getTeamInfo()[Team.POINTS];
                     pos = j;
                 }
             }
-            placement[i] = teams.get(pos).getName();
+            placement.add(teams.get(pos));
         }
-    }
 
-    public String[] get_placement() {
         return placement;
     }
-
 }
