@@ -1,6 +1,7 @@
 package com.example.fifaqatar2022.Classes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Group {
 
@@ -70,10 +71,11 @@ public class Group {
         for (Team team : teams) {
             if (team.getName().equals(match.getFirst_team().getName())) {
                 team.getTeamInfo()[Team.GOALDIFF] += Integer.parseInt(match.getFirst_score()) - Integer.parseInt(match.getSecond_score());
+                team.scored_goals(Integer.parseInt(match.getFirst_score()));
 
             } else if (team.getName().equals(match.getSecond_team().getName())) {
                 team.getTeamInfo()[Team.GOALDIFF] += Integer.parseInt(match.getSecond_score()) - Integer.parseInt(match.getFirst_score());
-
+                team.scored_goals(Integer.parseInt(match.getSecond_score()));
             }
         }
 
@@ -85,6 +87,9 @@ public class Group {
                         team.getTeamInfo()[Team.POINTS] += 3;
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.WINS]++;
+                    } else if (team.getName().equals(match.getSecond_team().getName())) {
+                        team.getTeamInfo()[Team.GAMES]++;
+                        team.getTeamInfo()[Team.LOSSES]++;
                     }
                 }
                 break;
@@ -105,6 +110,9 @@ public class Group {
                         team.getTeamInfo()[Team.POINTS] += 3;
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.WINS]++;
+                    } else if (team.getName().equals(match.getFirst_team().getName())) {
+                        team.getTeamInfo()[Team.GAMES]++;
+                        team.getTeamInfo()[Team.LOSSES]++;
                     }
                 }
                 break;
@@ -112,20 +120,42 @@ public class Group {
     }
 
 
+    public void resetInfo() {
+        for (Team team : teams) {
+            team.resetInfo();
+        }
+    }
+
+
     public ArrayList<Team> get_placement() {
 
+        ArrayList<String> chosen_teams = new ArrayList<>();
         ArrayList<Team> placement = new ArrayList<>();
 
-        int max = Integer.MIN_VALUE;
-        int pos = 0;
-
         for (int i = 0; i < teams.size(); i++) {
-            for (int j = i; j < teams.size() - i; j++) {
-                if (teams.get(j).getTeamInfo()[Team.POINTS] > max) {
-                    max = teams.get(j).getTeamInfo()[Team.POINTS];
-                    pos = j;
+
+            int max = Integer.MIN_VALUE;
+            int pos = 0;
+
+            for (int j = 0; j < teams.size(); j++) {
+                if (!chosen_teams.contains(teams.get(j).getName())) {
+                    if (teams.get(j).getTeamInfo()[Team.POINTS] > max) {
+                        max = teams.get(j).getTeamInfo()[Team.POINTS];
+                        pos = j;
+                    } else if (teams.get(j).getTeamInfo()[Team.POINTS] == max) {
+                        if (teams.get(j).getTeamInfo()[Team.GOALDIFF] > teams.get(pos).getTeamInfo()[Team.GOALDIFF]) {
+                            max = teams.get(j).getTeamInfo()[Team.POINTS];
+                            pos = j;
+                        } else if (teams.get(j).getTeamInfo()[Team.GOALDIFF] == teams.get(pos).getTeamInfo()[Team.GOALDIFF]) {
+                            if (teams.get(j).getGoal_scored() > teams.get(pos).getGoal_scored()) {
+                                max = teams.get(j).getTeamInfo()[Team.POINTS];
+                                pos = j;
+                            }
+                        }
+                    }
                 }
             }
+            chosen_teams.add(teams.get(pos).getName());
             placement.add(teams.get(pos));
         }
 

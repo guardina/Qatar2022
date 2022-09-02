@@ -253,11 +253,25 @@ public class GroupScreen extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finalGroup.resetInfo();
                 int savePos = 0;
 
                 for (Match match : finalGroup.getMatches()) {
-                    int scoreHome = Integer.parseInt(scoresHome.get(savePos).getText().toString());
-                    int scoreVisitor = Integer.parseInt(scoresVisitors.get(savePos).getText().toString());
+
+                    int scoreHome = 0;
+                    int scoreVisitor = 0;
+
+                    if (!scoresHome.get(savePos).getText().toString().equals("")) {
+                        scoreHome = Integer.parseInt(scoresHome.get(savePos).getText().toString());
+                    } else {
+                        scoresHome.get(savePos).setText("0");
+                    }
+
+                    if (!scoresVisitors.get(savePos).getText().toString().equals("")) {
+                        scoreVisitor = Integer.parseInt(scoresVisitors.get(savePos).getText().toString());
+                    } else {
+                        scoresVisitors.get(savePos).setText("0");
+                    }
 
                     match.setFirst_score(String.valueOf(scoreHome));
                     match.setSecond_score(String.valueOf(scoreVisitor));
@@ -288,6 +302,7 @@ public class GroupScreen extends AppCompatActivity {
                     for (TextView cell : cells.get(tablePos)) {
                         cell.setText(String.valueOf(teamInfo[cellPos++]));
                     }
+                    tablePos++;
                 }
             }
         });

@@ -13,6 +13,7 @@ public class Team {
 
     private String name;
     private Drawable logo;
+    private int goal_scored;
 
     private int[] teamInfo = new int[6];
 
@@ -39,10 +40,28 @@ public class Team {
         this.logo = logo;
     }
 
+    public int getGoal_scored() {
+        return goal_scored;
+    }
+
 
     ///// OTHER METHODS /////
 
+    public void scored_goals(int goals) {
+        this.goal_scored += goals;
+    }
+
     public int[] getTeamInfo() {
         return teamInfo;
+    }
+
+    public void resetInfo() {
+        teamInfo[GAMES] = 0;
+        teamInfo[WINS] = 0;
+        teamInfo[DRAWS] = 0;
+        teamInfo[LOSSES] = 0;
+        teamInfo[GOALDIFF] = 0;
+        teamInfo[POINTS] = 0;
+        goal_scored = 0;
     }
 }
