@@ -1,5 +1,7 @@
 package com.example.fifaqatar2022.Screens;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
+import com.example.fifaqatar2022.Classes.MemoryEditor;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
-import com.google.android.gms.common.api.Result;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -24,8 +26,8 @@ import java.util.concurrent.ExecutionException;
 public class GroupScreen extends AppCompatActivity {
 
     static Group_enum selected_group = null;
-
     static boolean executed = false;
+    static int test = 0;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
@@ -57,8 +59,11 @@ public class GroupScreen extends AppCompatActivity {
         }
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPrefW", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
         ArrayList<Group> groups = pr.getAllGroups();
-        ArrayList<Match> matches = rr.getAllMatches();
 
         TextView group_text = findViewById(R.id.group_text);
 
@@ -93,6 +98,18 @@ public class GroupScreen extends AppCompatActivity {
 
         group_text.append(group.getName());
 
+        int posMatches = 0;
+        ArrayList<ArrayList<Integer>> scores = new ArrayList<>();
+
+        for (Match match : group.getMatches()) {
+            scores.add(new ArrayList<>());
+            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), MODE_APPEND));
+            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), MODE_APPEND));
+            posMatches++;
+        }
+        group.updateGroup(scores);
+        test++;
+
 
         ArrayList<ImageView> imageViewsPlacement = new ArrayList<>();
 
@@ -110,7 +127,7 @@ public class GroupScreen extends AppCompatActivity {
 
         int posPlace = 0;
 
-        for (Team team : group.getTeams()) {
+        for (Team team : group.getPlacement()) {
             imageViewsPlacement.get(posPlace).setImageDrawable(team.getLogo());
             textViewsPlacement.get(posPlace).setText(team.getName());
             posPlace++;
@@ -151,8 +168,9 @@ public class GroupScreen extends AppCompatActivity {
         textViewsMatchesVisitors.add(findViewById(R.id.nameV5));
         textViewsMatchesVisitors.add(findViewById(R.id.nameV6));
 
-        int posMatch = 0;
 
+
+        int posMatch = 0;
 
         for (Match match : group.getMatches()) {
             imageViewsMatchesHome.get(posMatch).setImageDrawable(match.getFirst_team().getLogo());
@@ -182,6 +200,18 @@ public class GroupScreen extends AppCompatActivity {
         scoresVisitors.add(findViewById(R.id.scoreV5));
         scoresVisitors.add(findViewById(R.id.scoreV6));
 
+
+        int posScoreH = 0;
+        for (EditText scoreH : scoresHome) {
+            scoreH.setText(String.valueOf(scores.get(posScoreH).get(0)));
+            posScoreH++;
+        }
+
+        int posScoreV = 0;
+        for (EditText scoreV : scoresVisitors) {
+            scoreV.setText(String.valueOf(scores.get(posScoreV).get(1)));
+            posScoreV++;
+        }
 
 
         Button resetButton = findViewById(R.id.resetButton);
@@ -243,6 +273,8 @@ public class GroupScreen extends AppCompatActivity {
         cells.add(team3Info);
         cells.add(team4Info);
 
+        group.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
+
 
 
 
@@ -253,6 +285,7 @@ public class GroupScreen extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 finalGroup.resetInfo();
                 int savePos = 0;
 
@@ -273,6 +306,8 @@ public class GroupScreen extends AppCompatActivity {
                         scoresVisitors.get(savePos).setText("0");
                     }
 
+                    editor.putInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), scoreHome);
+                    editor.putInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), scoreVisitor);
                     match.setFirst_score(String.valueOf(scoreHome));
                     match.setSecond_score(String.valueOf(scoreVisitor));
 
@@ -287,23 +322,10 @@ public class GroupScreen extends AppCompatActivity {
                     savePos++;
                 }
 
+                editor.commit();
 
-                ArrayList<Team> finalPlacement = finalGroup.get_placement();
 
-
-                int tablePos = 0;
-
-                for (Team team : finalPlacement) {
-                    imageViewsPlacement.get(tablePos).setImageDrawable(team.getLogo());
-                    textViewsPlacement.get(tablePos).setText(team.getName());
-
-                    int cellPos = 0;
-                    int[] teamInfo = team.getTeamInfo();
-                    for (TextView cell : cells.get(tablePos)) {
-                        cell.setText(String.valueOf(teamInfo[cellPos++]));
-                    }
-                    tablePos++;
-                }
+                finalGroup.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
             }
         });
 

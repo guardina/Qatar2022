@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fifaqatar2022.Classes.MemoryEditor;
 import com.example.fifaqatar2022.R;
 
 public class MainScreen extends AppCompatActivity {

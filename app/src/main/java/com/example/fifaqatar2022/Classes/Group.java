@@ -1,5 +1,9 @@
 package com.example.fifaqatar2022.Classes;
 
+import android.content.SharedPreferences;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,13 +16,12 @@ public class Group {
     ArrayList<String> team_names = new ArrayList<>();
 
     ArrayList<Match> matches = new ArrayList<>();
-    ArrayList<Match> predictions = new ArrayList<>();
+    //ArrayList<Match> predictions = new ArrayList<>();
 
 
     ///// CONSTRUCTOR /////
 
-    public Group() {
-    }
+    public Group() {}
 
 
     ///// GETTERS AND SETTERS /////
@@ -68,14 +71,24 @@ public class Group {
 
     public void match_result(Result result, Match match) {
 
+        int goalsHome = 0;
+        int goalsVisitor = 0;
+
+        if (!match.getFirst_score().equals("-")) {
+            goalsHome = Integer.parseInt(match.getFirst_score());
+        }
+        if (!match.getSecond_score().equals("-")) {
+            goalsVisitor = Integer.parseInt(match.getSecond_score());
+        }
+
         for (Team team : teams) {
             if (team.getName().equals(match.getFirst_team().getName())) {
-                team.getTeamInfo()[Team.GOALDIFF] += Integer.parseInt(match.getFirst_score()) - Integer.parseInt(match.getSecond_score());
-                team.scored_goals(Integer.parseInt(match.getFirst_score()));
+                team.getTeamInfo()[Team.GOALDIFF] += goalsHome - goalsVisitor;
+                team.scored_goals(goalsHome);
 
             } else if (team.getName().equals(match.getSecond_team().getName())) {
-                team.getTeamInfo()[Team.GOALDIFF] += Integer.parseInt(match.getSecond_score()) - Integer.parseInt(match.getFirst_score());
-                team.scored_goals(Integer.parseInt(match.getSecond_score()));
+                team.getTeamInfo()[Team.GOALDIFF] += goalsVisitor - goalsHome;
+                team.scored_goals(goalsVisitor);
             }
         }
 
@@ -127,7 +140,7 @@ public class Group {
     }
 
 
-    public ArrayList<Team> get_placement() {
+    public ArrayList<Team> getPlacement() {
 
         ArrayList<String> chosen_teams = new ArrayList<>();
         ArrayList<Team> placement = new ArrayList<>();
@@ -161,4 +174,47 @@ public class Group {
 
         return placement;
     }
+
+    public void updatePlacementView(ArrayList<ImageView> logoViews, ArrayList<TextView> nameViews, ArrayList<ArrayList<TextView>> cells) {
+        ArrayList<Team> placement = getPlacement();
+        int tablePos = 0;
+
+        for (Team team : placement) {
+            logoViews.get(tablePos).setImageDrawable(team.getLogo());
+            nameViews.get(tablePos).setText(team.getName());
+
+            int cellPos = 0;
+            int[] teamInfo = team.getTeamInfo();
+            for (TextView cell : cells.get(tablePos)) {
+                cell.setText(String.valueOf(teamInfo[cellPos++]));
+            }
+            tablePos++;
+        }
+    }
+
+
+    public void updateGroup(ArrayList<ArrayList<Integer>> scores) {
+
+        this.resetInfo();
+
+        int posMatch = 0;
+
+        for (ArrayList list : scores) {
+
+            int scoreHome = (int) list.get(0);
+            int scoreVisitor = (int) list.get(1);
+            Match match = matches.get(posMatch);
+
+            if (scoreHome > scoreVisitor) {
+                this.match_result(Group.Result.ONE, match);
+            } else if (scoreHome == scoreVisitor) {
+                this.match_result(Group.Result.X, match);
+            } else {
+                this.match_result(Group.Result.TWO, match);
+            }
+
+            posMatch++;
+        }
+    }
+
 }
