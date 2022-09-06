@@ -12,14 +12,19 @@
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/empty_divider.xml" value="0.1796875" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/my_background.xml" value="0.20092592592592592" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/my_button.xml" value="0.1" />
+        <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/my_button_pressed.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/my_image_holder.xml" value="0.23981481481481481" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/my_score_background.xml" value="0.2935185185185185" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/drawable/splashscreen.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout-land/activity_prediction.xml" value="0.25" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_group.xml" value="0.5" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_init.xml" value="0.1" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_phase.xml" value="0.25" />
+        <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_phase_selection.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_prediction.xml" value="0.33" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_results.xml" value="0.33" />
+        <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/layout/activity_start.xml" value="0.25" />
         <entry key="..\:/Users/alexg/AndroidStudioProjects/FIFAQatar2022/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
       </map>
     </option>

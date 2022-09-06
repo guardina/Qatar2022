@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="@color/red_qatar">
+    android:background="#610e2a">
 
 
     <TextView
@@ -16,6 +15,90 @@
         app:layout_constraintEnd_toEndOf="@id/backgroundGroupRight"
         app:layout_constraintStart_toStartOf="@id/backgroundGroupLeft"
         app:layout_constraintTop_toBottomOf="@id/backgroundGroupTop" />
+
+    <TextView
+        android:id="@+id/keyMatches"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/scoreRight"
+        app:layout_constraintEnd_toStartOf="@id/keyWins"
+        app:layout_constraintTop_toBottomOf="@id/keyTop"
+        app:layout_constraintBottom_toTopOf="@id/keyBottom"
+        android:text="G"
+        android:fontFamily="@font/helvetica_normal"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/keyWins"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/keyMatches"
+        app:layout_constraintEnd_toStartOf="@id/keyDraws"
+        app:layout_constraintTop_toBottomOf="@id/keyTop"
+        app:layout_constraintBottom_toTopOf="@id/keyBottom"
+        android:text="V"
+        android:fontFamily="@font/helvetica_normal"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/keyDraws"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/keyWins"
+        app:layout_constraintEnd_toStartOf="@id/keyLosses"
+        app:layout_constraintTop_toBottomOf="@id/keyTop"
+        app:layout_constraintBottom_toTopOf="@id/keyBottom"
+        android:text="N"
+        android:fontFamily="@font/helvetica_normal"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/keyLosses"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/keyDraws"
+        app:layout_constraintEnd_toStartOf="@id/keyGoals"
+        app:layout_constraintTop_toBottomOf="@id/keyTop"
+        app:layout_constraintBottom_toTopOf="@id/keyBottom"
+        android:text="P"
+        android:fontFamily="@font/helvetica_normal"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/keyGoals"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/keyLosses"
+        app:layout_constraintEnd_toStartOf="@id/keyPoints"
+        app:layout_constraintTop_toBottomOf="@id/keyTop"
+        app:layout_constraintBottom_toTopOf="@id/keyBottom"
+        android:text="DR"
+        android:fontFamily="@font/helvetica_normal"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/keyPoints"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/keyGoals"
+        app:layout_constraintEnd_toStartOf="@id/logoVRight"
+        app:layout_constraintTop_toBottomOf="@id/keyTop"
+        app:layout_constraintBottom_toTopOf="@id/keyBottom"
+        android:text="PT"
+        android:fontFamily="@font/helvetica_normal"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/match1"
@@ -951,84 +1034,98 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.03" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/groupNameBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/backgroundGroupTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11" />
+        app:layout_constraintGuide_percent="0.09" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/firstTeamTop"
+        android:id="@+id/keyTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/keyBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/firstTeamTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/firstTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.16" />
+        app:layout_constraintGuide_percent="0.17" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/secondTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+        app:layout_constraintGuide_percent="0.19" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/secondTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
+        app:layout_constraintGuide_percent="0.23" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/thirdTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/thirdTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.28" />
+        app:layout_constraintGuide_percent="0.29" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/fourthTeamTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.31" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/fourthTeamBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.34" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/backgroundGroupBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.36" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/buttonTop"

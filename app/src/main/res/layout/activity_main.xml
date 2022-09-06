@@ -4,37 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="@color/white">
+    android:background="#610e2a">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mainBorderLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mainBorderRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <ImageView
+        android:id="@+id/mainLogo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:contentDescription="Official image of FIFA 2022"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/mainBorderRight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/mainBorderLeft"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/fifa" />
 
     <Button
-        android:id="@+id/res_button"
-        android:layout_width="250dp"
-        android:layout_height="41dp"
-        android:text="Get results"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:id="@+id/predButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_button"
+        android:text="PRONOSTICA"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/generalPlacementButton"
+        app:layout_constraintEnd_toEndOf="@id/mainBorderRight"
+        app:layout_constraintStart_toStartOf="@id/mainBorderLeft"
+        app:layout_constraintTop_toBottomOf="@+id/mainLogo" />
 
     <Button
-        android:id="@+id/pred_button"
-        android:layout_width="250dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="10dp"
-        android:text="Predict"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/res_button" />
+        android:id="@+id/generalPlacementButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_button"
+        android:text="CLASSIFICA"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/mainBorderRight"
+        app:layout_constraintStart_toStartOf="@id/mainBorderLeft"
+        app:layout_constraintTop_toBottomOf="@id/predButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

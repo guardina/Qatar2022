@@ -3,6 +3,7 @@
     package="com.example.fifaqatar2022">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,19 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".Screens.InitialScreen"
-            android:exported="true">
+            android:name=".Screens.StartScreen"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Screens.MainScreen"></activity>
-        <activity android:name=".Screens.ResultsScreen"></activity>
-        <activity android:name=".Screens.GroupSelectionScreen"></activity>
-        <activity android:name=".Screens.GroupScreen"></activity>
+        <activity android:name=".Screens.MainScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screens.GroupSelectionScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screens.GroupScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screens.PhaseSelectorScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screens.InitialScreen"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

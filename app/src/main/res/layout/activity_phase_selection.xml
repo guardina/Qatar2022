@@ -4,21 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="@color/red_qatar"
+    android:background="#610e2a"
     tools:context=".Screens.GroupSelectionScreen">
+
+    <Button
+        android:id="@+id/chooseGroupsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GRUPPI"
+        android:background="@drawable/my_button"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/chooseFinalsButton"
+        app:layout_constraintStart_toStartOf="@+id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/borderGroupSelectorTop"/>
+
+    <Button
+        android:id="@+id/chooseFinalsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FINALI"
+        android:background="@drawable/my_button"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/borderGroupSelectionRight"
+        app:layout_constraintStart_toEndOf="@id/chooseGroupsButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/borderGroupSelectorTop"/>
+
 
 
     <ScrollView
+        android:id="@+id/groupsView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="15dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/borderGroupSelectorTop">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,6 +151,88 @@
         </LinearLayout>
     </ScrollView>
 
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
+        app:layout_constraintTop_toBottomOf="@id/borderGroupSelectorTop"
+        app:layout_constraintBottom_toTopOf="@id/borderFinalsSelectorTop">
+
+        <Button
+            android:id="@+id/eigthButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/my_button"
+            android:text="1/8"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/borderGroupSelectionLeft"
+            app:layout_constraintEnd_toStartOf="@id/fourthButton"/>
+
+        <Button
+            android:id="@+id/fourthButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1/4"
+            android:background="@drawable/my_button"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/eigthButton"
+            app:layout_constraintEnd_toStartOf="@id/semiButton"/>
+
+        <Button
+            android:id="@+id/semiButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1/2"
+            android:background="@drawable/my_button"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/fourthButton"
+            app:layout_constraintEnd_toStartOf="@id/finalButton"/>
+
+        <Button
+            android:id="@+id/finalButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FINALE"
+            android:background="@drawable/my_button"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/semiButton"
+            app:layout_constraintEnd_toStartOf="@id/borderGroupSelectionRight"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/finalsView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:scrollbars="none"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toTopOf="@id/borderFinalsSelectorTop">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_divider"
+            android:orientation="vertical"
+            android:showDividers="middle" />
+
+    </ScrollView>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/borderGroupSelectionLeft"
         android:layout_width="wrap_content"
@@ -139,10 +247,21 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
+
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/borderGroupSelectorTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/borderFinalsSelectorTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

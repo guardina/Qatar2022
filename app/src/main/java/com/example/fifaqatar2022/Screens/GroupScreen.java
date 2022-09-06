@@ -1,6 +1,5 @@
 package com.example.fifaqatar2022.Screens;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
-import com.example.fifaqatar2022.Classes.MemoryEditor;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
@@ -59,7 +57,7 @@ public class GroupScreen extends AppCompatActivity {
         }
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPrefW", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
