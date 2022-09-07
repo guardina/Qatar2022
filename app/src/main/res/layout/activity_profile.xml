@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#610e2a">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileLeftBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileRightBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centralVerticalLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centralSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+
+
+    <TextView
+        android:id="@+id/firstNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nome: "
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/lastNameText"
+        app:layout_constraintEnd_toStartOf="@id/centralVerticalLine"
+        app:layout_constraintStart_toStartOf="@id/profileLeftBorder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/firstNameChanger"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@id/lastNameChanger"
+        app:layout_constraintEnd_toEndOf="@id/profileRightBorder"
+        app:layout_constraintStart_toEndOf="@id/centralVerticalLine"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/lastNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cognome: "
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/centralVerticalLine"
+        app:layout_constraintStart_toStartOf="@id/profileLeftBorder"
+        app:layout_constraintTop_toBottomOf="@id/firstNameText"
+        app:layout_constraintBottom_toTopOf="@id/userNameText"/>
+
+
+    <EditText
+        android:id="@+id/lastNameChanger"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/profileRightBorder"
+        app:layout_constraintStart_toEndOf="@id/centralVerticalLine"
+        app:layout_constraintTop_toBottomOf="@id/firstNameChanger"
+        app:layout_constraintBottom_toTopOf="@id/userNameChanger"/>
+
+
+    <TextView
+        android:id="@+id/userNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Username: "
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/centralVerticalLine"
+        app:layout_constraintStart_toStartOf="@id/profileLeftBorder"
+        app:layout_constraintBottom_toTopOf="@id/pointsShower"
+        app:layout_constraintTop_toBottomOf="@id/lastNameText"/>
+
+
+    <EditText
+        android:id="@+id/userNameChanger"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/profileRightBorder"
+        app:layout_constraintStart_toEndOf="@id/centralVerticalLine"
+        app:layout_constraintBottom_toTopOf="@id/pointsShower"
+        app:layout_constraintTop_toBottomOf="@id/lastNameChanger"/>
+
+
+    <TextView
+        android:id="@+id/pointsShower"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Punti: "
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/perfectResultsShower"
+        app:layout_constraintEnd_toEndOf="@id/centralVerticalLine"
+        app:layout_constraintStart_toStartOf="@id/profileLeftBorder"
+        app:layout_constraintTop_toBottomOf="@id/userNameText" />
+
+    <TextView
+        android:id="@+id/perfectResultsShower"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Risultati esatti: "
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/centralSeparator"
+        app:layout_constraintEnd_toEndOf="@id/centralVerticalLine"
+        app:layout_constraintStart_toStartOf="@id/profileLeftBorder"
+        app:layout_constraintTop_toBottomOf="@id/pointsShower" />
+
+
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/my_button"
+        android:text="SALVA"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/profileButtonRight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/profileButtonLeft" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileButtonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+</androidx.constraintlayout.widget.ConstraintLayout>

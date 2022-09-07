@@ -1,19 +1,51 @@
 package com.example.fifaqatar2022.Classes;
 
-import android.graphics.drawable.Drawable;
+import java.util.UUID;
 
 public class Profile {
 
-    private String firstName;
-    private String lastName;
-    private String userName;
-    private Drawable picture;
-    private int points;
+    public String firstName;
+    public String lastName;
+    public String userName;
+    public int points;
+    public int perfectResults;
+    private String uuid;
 
-    public Profile(String firstName, String lastName, String userName, Drawable picture) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.picture = picture;
+    static Profile profile = null;
+
+    private Profile() {
+        this.uuid = UUID.randomUUID().toString();
     }
+
+    static public Profile getProfile() {
+        if (profile == null) {
+            return new Profile();
+        }
+        return profile;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void addPoints(int points) {
+        this.points += points;
+    }
+
+    public void gotPerfectResult() {
+        this.perfectResults++;
+    }
+
 }

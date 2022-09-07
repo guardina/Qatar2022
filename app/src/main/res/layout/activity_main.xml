@@ -7,11 +7,25 @@
     android:background="#610e2a">
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/mainBorderLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/mainBorderRight"
@@ -21,6 +35,17 @@
         app:layout_constraintGuide_percent="0.9"/>
 
     <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/profileLeft"
+        app:layout_constraintBottom_toTopOf="@id/profileBottom"
+        app:srcCompat="@drawable/default_user" />
+
+    <ImageView
         android:id="@+id/mainLogo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="@id/mainBorderRight"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/mainBorderLeft"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePic"
         app:srcCompat="@drawable/fifa" />
 
     <Button

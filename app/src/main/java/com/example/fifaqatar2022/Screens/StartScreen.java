@@ -1,41 +1,40 @@
 package com.example.fifaqatar2022.Screens;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.R;
-
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class StartScreen extends AppCompatActivity {
 
     String prevStarted = "yes";
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance("https://qatar-2022-64fef-default-rtdb.europe-west1.firebasedatabase.app");
+    DatabaseReference myRef = database.getReference();
+    //FirebaseStorage storage = FirebaseStorage.getInstance();
+    //StorageReference storageReference = storage.getReference();
+
 
     protected void onResume() {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(prevStarted, false)) {
+        if (sharedPreferences.getBoolean(prevStarted, true)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(prevStarted, Boolean.TRUE);
             editor.apply();
@@ -50,58 +49,90 @@ public class StartScreen extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
 
-        ImageView profilePicure = findViewById(R.id.profilePicture);
-        EditText firstnameEditText = findViewById(R.id.firstnameEditText);
-        EditText lastnameEditText = findViewById(R.id.lastnameEditText);
-        EditText usernameEditText = findViewById(R.id.surnameEditText);
+        ImageView profilePicture = findViewById(R.id.profilePicture);
+        EditText firstnameEditText = findViewById(R.id.firstnameCreator);
+        EditText lastnameEditText = findViewById(R.id.lastnameCreator);
+        EditText usernameEditText = findViewById(R.id.surnameCreator);
         Button saveInfo = findViewById(R.id.saveProfileButton);
 
-        profilePicure.setOnClickListener(new View.OnClickListener() {
+
+        /*profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent photoPicker = new Intent(Intent.ACTION_PICK);
-                photoPicker.setType("image/*");
-                pictureActivity.launch(photoPicker);
+                startCropActivity();
             }
-        });
+        });*/
 
 
         saveInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String firstName = firstnameEditText.getText().toString();
                 String lastName = lastnameEditText.getText().toString();
                 String userName = usernameEditText.getText().toString();
-                Drawable picture = profilePicure.getDrawable();
-                Profile newProfile = new Profile(firstName, lastName, userName, picture);
+
+
+                if (firstName.equals("") || userName.equals("")) {
+                    Toast.makeText(StartScreen.this, "Elementi richiesti mancanti!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Profile newProfile = Profile.getProfile();
+
+                newProfile.setFirstName(firstName);
+                newProfile.setLastName(lastName);
+                newProfile.setUserName(userName);
+
+
+
+                //StorageReference profilePicsRef = storageReference.child("pictures/" + userName + ".jpg");
+
+                myRef.child("users").child(newProfile.getUuid()).setValue(newProfile);
+
+                /*Bitmap bitmap = ((BitmapDrawable) picture).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+
+                profilePicsRef.putBytes(data);*/
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString("uuid", newProfile.getUuid());
+                editor.apply();
+
+                startActivity(new Intent(StartScreen.this, MainScreen.class));
             }
         });
     }
 
-    ActivityResultLauncher<Intent> pictureActivity = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
+    private void startCropActivity() {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(this);
+    }
 
-                        ImageView profilePicture = findViewById(R.id.profilePicture);
-                        TextView profilePicText = findViewById(R.id.profilePicText);
 
-                        try {
-                            Intent data = result.getData();
-                            Uri selectedStream = data.getData();
-                            InputStream imageStream = getContentResolver().openInputStream(selectedStream);
-                            Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                            profilePicture.setImageBitmap(selectedImage);
-                            profilePicText.setText("");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+
+            ImageView profilePicture = findViewById(R.id.profilePicture);
+            TextView profilePicText = findViewById(R.id.profilePicText);
+
+            CropImage.ActivityResult activityResult = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri pictureURI = activityResult.getUri();
+                profilePicture.setImageURI(pictureURI);
+                profilePicText.setText("");
             }
-    );
+        }
+    }
+
 
     public void moveToSecondary() {
         Intent intent = new Intent(StartScreen.this, MainScreen.class);
