@@ -39,9 +39,8 @@
         android:id="@+id/groupsView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="15dp"
         android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
         app:layout_constraintTop_toTopOf="@id/borderGroupSelectorTop">
@@ -148,6 +147,7 @@
                 android:text="GRUPPO H"
                 android:textColor="#000000"
                 android:textSize="14sp" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -263,5 +263,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/scrollViewBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90"/>
+
+    <Button
+        android:id="@+id/groupSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SALVA"
+        android:background="@drawable/my_save_button"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
+        app:layout_constraintTop_toBottomOf="@id/scrollViewBottom"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

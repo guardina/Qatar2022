@@ -1,11 +1,9 @@
 package com.example.fifaqatar2022.Classes;
 
-import android.content.SharedPreferences;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Group {
 
@@ -14,14 +12,45 @@ public class Group {
     String name;
     ArrayList<Team> teams = new ArrayList<>();
     ArrayList<String> team_names = new ArrayList<>();
+    int group;
 
     ArrayList<Match> matches = new ArrayList<>();
-    //ArrayList<Match> predictions = new ArrayList<>();
 
 
     ///// CONSTRUCTOR /////
 
-    public Group() {}
+    public Group() {
+
+    }
+
+    public Group(Group_enum group) {
+        switch (group) {
+            case A:
+                this.group = 0;
+                break;
+            case B:
+                this.group = 1;
+                break;
+            case C:
+                this.group = 2;
+                break;
+            case D:
+                this.group = 3;
+                break;
+            case E:
+                this.group = 4;
+                break;
+            case F:
+                this.group = 5;
+                break;
+            case G:
+                this.group = 6;
+                break;
+            case H:
+                this.group = 7;
+                break;
+        }
+    }
 
 
     ///// GETTERS AND SETTERS /////
@@ -52,6 +81,10 @@ public class Group {
 
     public ArrayList<Match> getMatches() {
         return matches;
+    }
+
+    public int getGroup() {
+        return group;
     }
 
 

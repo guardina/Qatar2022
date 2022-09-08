@@ -9,11 +9,13 @@ public class Profile {
     public String userName;
     public int points;
     public int perfectResults;
-    private String uuid;
+    final private String uuid;
+    Prediction prediction;
 
     static Profile profile = null;
 
     private Profile() {
+        this.prediction = new Prediction();
         this.uuid = UUID.randomUUID().toString();
     }
 
@@ -38,6 +40,10 @@ public class Profile {
 
     public String getUuid() {
         return uuid;
+    }
+
+    public Prediction getPrediction() {
+        return prediction;
     }
 
     public void addPoints(int points) {

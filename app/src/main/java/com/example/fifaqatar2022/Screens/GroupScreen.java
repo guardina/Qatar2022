@@ -14,6 +14,7 @@ import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
+import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
@@ -322,6 +323,9 @@ public class GroupScreen extends AppCompatActivity {
 
                 editor.commit();
 
+                Profile profile = Profile.getProfile();
+
+                profile.getPrediction().setTeams(finalGroup.getPlacement().get(0), finalGroup.getPlacement().get(1), finalGroup.getGroup());
 
                 finalGroup.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
             }
