@@ -1,5 +1,7 @@
 package com.example.fifaqatar2022.Classes;
 
+import android.content.SharedPreferences;
+
 public class Prediction {
 
     final int A = 0;

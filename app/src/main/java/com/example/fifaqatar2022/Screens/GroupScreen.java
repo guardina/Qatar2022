@@ -18,6 +18,7 @@ import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -321,11 +322,25 @@ public class GroupScreen extends AppCompatActivity {
                     savePos++;
                 }
 
-                editor.commit();
+                //editor.commit();
 
                 Profile profile = Profile.getProfile();
+                Gson gson = new Gson();
+
+                for (int i = 0; i<8; i++) {
+                    profile.getPrediction().setTeams(gson.fromJson(sharedPreferences.getString("first team group " + i, ""), Team.class), gson.fromJson(sharedPreferences.getString("second team group " + i, ""), Team.class), i);
+                }
 
                 profile.getPrediction().setTeams(finalGroup.getPlacement().get(0), finalGroup.getPlacement().get(1), finalGroup.getGroup());
+
+
+                String firstTeam = gson.toJson(finalGroup.getPlacement().get(0));
+                String secondTeam = gson.toJson(finalGroup.getPlacement().get(1));
+
+                editor.putString("first team group " + finalGroup.getGroup(), firstTeam);
+                editor.putString("second team group " + finalGroup.getGroup(), secondTeam);
+
+                editor.commit();
 
                 finalGroup.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
             }
