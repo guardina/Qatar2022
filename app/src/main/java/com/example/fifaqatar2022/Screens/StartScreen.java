@@ -34,7 +34,7 @@ public class StartScreen extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-        if (!sharedPreferences.getBoolean(prevStarted, false)) {
+        if (sharedPreferences.getBoolean(prevStarted, false)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(prevStarted, Boolean.TRUE);
             editor.apply();

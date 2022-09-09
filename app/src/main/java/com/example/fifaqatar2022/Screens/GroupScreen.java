@@ -18,7 +18,6 @@ import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -26,38 +25,14 @@ import java.util.concurrent.ExecutionException;
 public class GroupScreen extends AppCompatActivity {
 
     static Group_enum selected_group = null;
-    static boolean executed = false;
-    static int test = 0;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_group);
 
-
-        ResultsRetriever rr = ResultsRetriever.getRR();
+        //ResultsRetriever rr = ResultsRetriever.getRR();
         PlacementsRetriever pr = PlacementsRetriever.getPR();
-
-
-        try {
-            ArrayList<Match> list = rr.execute().get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            if (!executed) {
-                ArrayList<Group> list = pr.execute().get();
-                executed = true;
-            }
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -103,12 +78,11 @@ public class GroupScreen extends AppCompatActivity {
 
         for (Match match : group.getMatches()) {
             scores.add(new ArrayList<>());
-            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), MODE_APPEND));
-            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), MODE_APPEND));
+            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), MODE_PRIVATE));
+            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), MODE_PRIVATE));
             posMatches++;
         }
         group.updateGroup(scores);
-        test++;
 
 
         ArrayList<ImageView> imageViewsPlacement = new ArrayList<>();
@@ -231,9 +205,6 @@ public class GroupScreen extends AppCompatActivity {
 
 
 
-
-
-
         ArrayList<ArrayList<TextView>> cells = new ArrayList<>();
         ArrayList<TextView> team1Info = new ArrayList<>();
         ArrayList<TextView> team2Info = new ArrayList<>();
@@ -274,8 +245,6 @@ public class GroupScreen extends AppCompatActivity {
         cells.add(team4Info);
 
         group.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
-
-
 
 
         Button saveButton = findViewById(R.id.saveButton);
@@ -322,20 +291,9 @@ public class GroupScreen extends AppCompatActivity {
                     savePos++;
                 }
 
-                //editor.commit();
 
-                Profile profile = Profile.getProfile();
-                Gson gson = new Gson();
-
-                for (int i = 0; i<8; i++) {
-                    profile.getPrediction().setTeams(gson.fromJson(sharedPreferences.getString("first team group " + i, ""), Team.class), gson.fromJson(sharedPreferences.getString("second team group " + i, ""), Team.class), i);
-                }
-
-                profile.getPrediction().setTeams(finalGroup.getPlacement().get(0), finalGroup.getPlacement().get(1), finalGroup.getGroup());
-
-
-                String firstTeam = gson.toJson(finalGroup.getPlacement().get(0));
-                String secondTeam = gson.toJson(finalGroup.getPlacement().get(1));
+                String firstTeam = finalGroup.getPlacement().get(0).getName();
+                String secondTeam = finalGroup.getPlacement().get(1).getName();
 
                 editor.putString("first team group " + finalGroup.getGroup(), firstTeam);
                 editor.putString("second team group " + finalGroup.getGroup(), secondTeam);

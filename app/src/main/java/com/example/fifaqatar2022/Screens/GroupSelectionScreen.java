@@ -1,37 +1,72 @@
 package com.example.fifaqatar2022.Screens;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
+import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
+import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class GroupSelectionScreen extends AppCompatActivity {
 
-    boolean executed = false;
+    static boolean executed = false;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_phase_selection);
 
+        ResultsRetriever rr = ResultsRetriever.getRR();
+        PlacementsRetriever pr = PlacementsRetriever.getPR();
+
+
+        try {
+            ArrayList<Match> list = rr.execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (!executed) {
+                ArrayList<Group> list = pr.execute().get();
+                executed = true;
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         Button chooseGroupsButton = findViewById(R.id.chooseGroupsButton);
         chooseGroupsButton.setSelected(true);
         Button chooseFinalsButton = findViewById(R.id.chooseFinalsButton);
 
         ScrollView groupsView = findViewById(R.id.groupsView);
-        ScrollView finalsView = findViewById(R.id.finalsView);
+        ScrollView finalsView = findViewById(R.id.eightsView);
         LinearLayout buttonLayout = findViewById(R.id.buttonLayout);
 
 
@@ -64,63 +99,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
         });
 
 
-        Button eightButton = findViewById(R.id.eigthButton);
-        Button fourthButton = findViewById(R.id.fourthButton);
-        Button semiButton = findViewById(R.id.semiButton);
-        Button finalButton = findViewById(R.id.finalButton);
-
-
-        eightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!eightButton.isSelected()) {
-                    eightButton.setSelected(true);
-                    fourthButton.setSelected(false);
-                    semiButton.setSelected(false);
-                    finalButton.setSelected(false);
-                }
-            }
-        });
-
-        fourthButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!fourthButton.isSelected()) {
-                    eightButton.setSelected(false);
-                    fourthButton.setSelected(true);
-                    semiButton.setSelected(false);
-                    finalButton.setSelected(false);
-                }
-            }
-        });
-
-        semiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!semiButton.isSelected()) {
-                    eightButton.setSelected(false);
-                    fourthButton.setSelected(false);
-                    semiButton.setSelected(true);
-                    finalButton.setSelected(false);
-                }
-            }
-        });
-
-        finalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!finalButton.isSelected()) {
-                    eightButton.setSelected(false);
-                    fourthButton.setSelected(false);
-                    semiButton.setSelected(false);
-                    finalButton.setSelected(true);
-                }
-            }
-        });
-
-
-
-
 
         Button buttonA = findViewById(R.id.buttonA);
         Button buttonB = findViewById(R.id.buttonB);
@@ -132,9 +110,9 @@ public class GroupSelectionScreen extends AppCompatActivity {
         Button buttonH = findViewById(R.id.buttonH);
 
 
-        ResultsRetriever rr = ResultsRetriever.getRR();
+        //ResultsRetriever rr = ResultsRetriever.getRR();
 
-        try {
+        /*try {
             if (!executed) {
                 ArrayList<Match> list = rr.execute().get();
                 executed = true;
@@ -143,9 +121,9 @@ public class GroupSelectionScreen extends AppCompatActivity {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        
+
 
         buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,5 +188,125 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 startActivity(new Intent(GroupSelectionScreen.this, GroupScreen.class));
             }
         });
+
+
+
+        Button eightButton = findViewById(R.id.eigthButton);
+        eightButton.setSelected(true);
+        Button fourthButton = findViewById(R.id.fourthButton);
+        Button semiButton = findViewById(R.id.semiButton);
+        Button finalButton = findViewById(R.id.finalButton);
+
+
+
+        ScrollView eightView = findViewById(R.id.eightsView);
+
+
+        ArrayList<ImageView> logosHome = new ArrayList<>();
+        ArrayList<TextView> namesHome = new ArrayList<>();
+
+        ArrayList<ImageView> logosVisitor = new ArrayList<>();
+        ArrayList<TextView> namesVisitor = new ArrayList<>();
+
+        LinearLayout test = findViewById(R.id.test);
+
+        logosHome.add(findViewById(R.id.eightLogoH1));
+        logosHome.add(findViewById(R.id.eightLogoH2));
+
+        ImageView eightLogoH = findViewById(R.id.eightLogoH1);
+        TextView eightNameH = findViewById(R.id.eightNameH1);
+        ImageView eightLogoV = findViewById(R.id.eightLogoV1);
+        TextView eightNameV = findViewById(R.id.eightNameV1);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        ArrayList<Group> allGroups = pr.getAllGroups();
+
+        int posGroup = 0;
+        for (Group group : allGroups) {
+
+            String firstTeam = sharedPreferences.getString("first team group " + posGroup, "");
+            String secondTeam = sharedPreferences.getString("second team group " + posGroup, "");
+
+
+            for (Team team : group.getTeams()) {
+                if (team.getName().equals(firstTeam)) {
+                    eightLogoH.setImageDrawable(team.getLogo());
+                    eightNameH.setText(team.getName());
+                }
+                if (team.getName().equals(secondTeam)) {
+                    eightLogoV.setImageDrawable(team.getLogo());
+                    eightNameV.setText(team.getName());
+                }
+            }
+        }
+
+
+
+
+        eightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!eightButton.isSelected()) {
+                    eightButton.setSelected(true);
+                    fourthButton.setSelected(false);
+                    semiButton.setSelected(false);
+                    finalButton.setSelected(false);
+
+                    eightView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        fourthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!fourthButton.isSelected()) {
+                    eightButton.setSelected(false);
+                    fourthButton.setSelected(true);
+                    semiButton.setSelected(false);
+                    finalButton.setSelected(false);
+                }
+            }
+        });
+
+        semiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!semiButton.isSelected()) {
+                    eightButton.setSelected(false);
+                    fourthButton.setSelected(false);
+                    semiButton.setSelected(true);
+                    finalButton.setSelected(false);
+                }
+            }
+        });
+
+        finalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!finalButton.isSelected()) {
+                    eightButton.setSelected(false);
+                    fourthButton.setSelected(false);
+                    semiButton.setSelected(false);
+                    finalButton.setSelected(true);
+                }
+            }
+        });
+
+
+
+        Button groupReloadButton = findViewById(R.id.groupReloadButton);
+
+        groupReloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
+
+
     }
 }

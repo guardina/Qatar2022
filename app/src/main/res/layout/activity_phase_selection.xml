@@ -11,28 +11,27 @@
         android:id="@+id/chooseGroupsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GRUPPI"
         android:background="@drawable/my_button"
+        android:text="GRUPPI"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/borderGroupSelectorTop"
         app:layout_constraintEnd_toStartOf="@+id/chooseFinalsButton"
         app:layout_constraintStart_toStartOf="@+id/borderGroupSelectionLeft"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/borderGroupSelectorTop"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/chooseFinalsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FINALI"
         android:background="@drawable/my_button"
+        android:text="FINALI"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/borderGroupSelectorTop"
         app:layout_constraintEnd_toStartOf="@+id/borderGroupSelectionRight"
         app:layout_constraintStart_toEndOf="@id/chooseGroupsButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/borderGroupSelectorTop"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ScrollView
@@ -40,6 +39,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="none"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -158,10 +158,10 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintBottom_toTopOf="@id/borderFinalsSelectorTop"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
-        app:layout_constraintTop_toBottomOf="@id/borderGroupSelectorTop"
-        app:layout_constraintBottom_toTopOf="@id/borderFinalsSelectorTop">
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toBottomOf="@id/borderGroupSelectorTop">
 
         <Button
             android:id="@+id/eigthButton"
@@ -172,65 +172,685 @@
             android:text="1/8"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/borderGroupSelectionLeft"
-            app:layout_constraintEnd_toStartOf="@id/fourthButton"/>
+            app:layout_constraintEnd_toStartOf="@id/fourthButton"
+            app:layout_constraintStart_toEndOf="@id/borderGroupSelectionLeft" />
 
         <Button
             android:id="@+id/fourthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="1/4"
             android:background="@drawable/my_button"
+            android:text="1/4"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/eigthButton"
-            app:layout_constraintEnd_toStartOf="@id/semiButton"/>
+            app:layout_constraintEnd_toStartOf="@id/semiButton"
+            app:layout_constraintStart_toEndOf="@id/eigthButton" />
 
         <Button
             android:id="@+id/semiButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="1/2"
             android:background="@drawable/my_button"
+            android:text="1/2"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/fourthButton"
-            app:layout_constraintEnd_toStartOf="@id/finalButton"/>
+            app:layout_constraintEnd_toStartOf="@id/finalButton"
+            app:layout_constraintStart_toEndOf="@id/fourthButton" />
 
         <Button
             android:id="@+id/finalButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="FINALE"
             android:background="@drawable/my_button"
+            android:text="FINALI"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/semiButton"
-            app:layout_constraintEnd_toStartOf="@id/borderGroupSelectionRight"/>
+            app:layout_constraintEnd_toStartOf="@id/borderGroupSelectionRight"
+            app:layout_constraintStart_toEndOf="@id/semiButton" />
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/finalsView"
+        android:id="@+id/eightsView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
         android:scrollbars="none"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
         app:layout_constraintTop_toTopOf="@id/borderFinalsSelectorTop">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@drawable/empty_divider"
             android:orientation="vertical"
-            android:showDividers="middle" />
+            android:showDividers="middle">
 
+
+            <LinearLayout
+                android:id="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH1"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH1"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV1"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV1"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH2"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH2"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV2"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV2"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH3"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH3"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV3"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV3"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH4"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH4"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV4"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV4"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH5"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH5"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV5"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV5"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH6"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH6"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH6"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV6"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV6"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV6"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH7"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH7"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH7"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV7"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV7"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV7"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/my_background"
+                android:minHeight="75dp">
+
+                <ImageView
+                    android:id="@+id/eightLogoH8"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+
+                <TextView
+                    android:id="@+id/eightNameH8"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreH8"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+
+                <EditText
+                    android:id="@+id/eightScoreV8"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/my_score_background"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+
+                <TextView
+                    android:id="@+id/eightNameV8"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+
+                <ImageView
+                    android:id="@+id/eightLogoV8"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
+                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.Guideline
@@ -238,16 +858,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/borderGroupSelectionRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-
+        app:layout_constraintGuide_percent="0.95" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -269,17 +887,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90"/>
+        app:layout_constraintGuide_percent="0.90" />
 
     <Button
         android:id="@+id/groupSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SALVA"
         android:background="@drawable/my_save_button"
-        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        android:text="SALVA"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
-        app:layout_constraintTop_toBottomOf="@id/scrollViewBottom"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/groupReloadButton"
+        app:layout_constraintTop_toBottomOf="@id/scrollViewBottom" />
+
+    <Button
+        android:id="@+id/groupReloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AGGIORNA"
+        android:background="@drawable/my_classic_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/groupSaveButton"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toBottomOf="@id/scrollViewBottom"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
