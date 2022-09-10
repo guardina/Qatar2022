@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.ThemedSpinnerAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +25,8 @@ import com.example.fifaqatar2022.R;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 public class GroupSelectionScreen extends AppCompatActivity {
@@ -57,8 +60,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
 
 
         Button chooseGroupsButton = findViewById(R.id.chooseGroupsButton);
@@ -200,6 +201,11 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
 
         ScrollView eightView = findViewById(R.id.eightsView);
+        LinearLayout fourthLayout = findViewById(R.id.fourthLayout);
+        LinearLayout semiLayout = findViewById(R.id.semiLayout);
+        LinearLayout finalsLayout = findViewById(R.id.finalsLayout);
+
+
 
 
         ArrayList<ImageView> logosHome = new ArrayList<>();
@@ -208,36 +214,76 @@ public class GroupSelectionScreen extends AppCompatActivity {
         ArrayList<ImageView> logosVisitor = new ArrayList<>();
         ArrayList<TextView> namesVisitor = new ArrayList<>();
 
-        LinearLayout test = findViewById(R.id.test);
-
         logosHome.add(findViewById(R.id.eightLogoH1));
         logosHome.add(findViewById(R.id.eightLogoH2));
+        logosHome.add(findViewById(R.id.eightLogoH3));
+        logosHome.add(findViewById(R.id.eightLogoH4));
+        logosHome.add(findViewById(R.id.eightLogoH5));
+        logosHome.add(findViewById(R.id.eightLogoH6));
+        logosHome.add(findViewById(R.id.eightLogoH7));
+        logosHome.add(findViewById(R.id.eightLogoH8));
 
-        ImageView eightLogoH = findViewById(R.id.eightLogoH1);
-        TextView eightNameH = findViewById(R.id.eightNameH1);
-        ImageView eightLogoV = findViewById(R.id.eightLogoV1);
-        TextView eightNameV = findViewById(R.id.eightNameV1);
+        namesHome.add(findViewById(R.id.eightNameH1));
+        namesHome.add(findViewById(R.id.eightNameH2));
+        namesHome.add(findViewById(R.id.eightNameH3));
+        namesHome.add(findViewById(R.id.eightNameH4));
+        namesHome.add(findViewById(R.id.eightNameH5));
+        namesHome.add(findViewById(R.id.eightNameH6));
+        namesHome.add(findViewById(R.id.eightNameH7));
+        namesHome.add(findViewById(R.id.eightNameH8));
+
+        logosVisitor.add(findViewById(R.id.eightLogoV1));
+        logosVisitor.add(findViewById(R.id.eightLogoV2));
+        logosVisitor.add(findViewById(R.id.eightLogoV3));
+        logosVisitor.add(findViewById(R.id.eightLogoV4));
+        logosVisitor.add(findViewById(R.id.eightLogoV5));
+        logosVisitor.add(findViewById(R.id.eightLogoV6));
+        logosVisitor.add(findViewById(R.id.eightLogoV7));
+        logosVisitor.add(findViewById(R.id.eightLogoV8));
+
+        namesVisitor.add(findViewById(R.id.eightNameV1));
+        namesVisitor.add(findViewById(R.id.eightNameV2));
+        namesVisitor.add(findViewById(R.id.eightNameV3));
+        namesVisitor.add(findViewById(R.id.eightNameV4));
+        namesVisitor.add(findViewById(R.id.eightNameV5));
+        namesVisitor.add(findViewById(R.id.eightNameV6));
+        namesVisitor.add(findViewById(R.id.eightNameV7));
+        namesVisitor.add(findViewById(R.id.eightNameV8));
+
+        ArrayList<String> firstOrder = new ArrayList<>();
+        Collections.addAll(firstOrder, "0", "2", "4", "6", "1", "3", "5", "7");
+        ArrayList<String> secondOrder = new ArrayList<>();
+        Collections.addAll(secondOrder, "1", "3", "5", "7", "0", "2", "4", "6");
+
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+
 
         ArrayList<Group> allGroups = pr.getAllGroups();
 
-        int posGroup = 0;
         for (Group group : allGroups) {
+            for (int posGroup = 0; posGroup < allGroups.size(); posGroup++) {
+                String firstTeam = sharedPreferences.getString("first team group " + firstOrder.get(posGroup), "");
+                String secondTeam = sharedPreferences.getString("second team group " + secondOrder.get(posGroup), "");
 
-            String firstTeam = sharedPreferences.getString("first team group " + posGroup, "");
-            String secondTeam = sharedPreferences.getString("second team group " + posGroup, "");
+                System.out.println("----------------------------");
+                System.out.println(firstTeam);
+                System.out.println(secondTeam);
+                System.out.println("----------------------------");
 
-
-            for (Team team : group.getTeams()) {
-                if (team.getName().equals(firstTeam)) {
-                    eightLogoH.setImageDrawable(team.getLogo());
-                    eightNameH.setText(team.getName());
-                }
-                if (team.getName().equals(secondTeam)) {
-                    eightLogoV.setImageDrawable(team.getLogo());
-                    eightNameV.setText(team.getName());
+                for (Team team : group.getTeams()) {
+                    if (firstTeam.equals("")) {
+                        namesHome.get(posGroup).setText("-");
+                    } else if (team.getName().equals(firstTeam)) {
+                        logosHome.get(posGroup).setImageDrawable(team.getLogo());
+                        namesHome.get(posGroup).setText(team.getName());
+                    }
+                    if (secondTeam.equals("")) {
+                        namesVisitor.get(posGroup).setText("-");
+                    } else if (team.getName().equals(secondTeam)) {
+                        logosVisitor.get(posGroup).setImageDrawable(team.getLogo());
+                        namesVisitor.get(posGroup).setText(team.getName());
+                    }
                 }
             }
         }
@@ -255,9 +301,14 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     finalButton.setSelected(false);
 
                     eightView.setVisibility(View.VISIBLE);
+                    fourthLayout.setVisibility(View.GONE);
+                    semiLayout.setVisibility(View.GONE);
+                    finalsLayout.setVisibility(View.GONE);
                 }
             }
         });
+
+
 
         fourthButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -267,6 +318,11 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     fourthButton.setSelected(true);
                     semiButton.setSelected(false);
                     finalButton.setSelected(false);
+
+                    eightView.setVisibility(View.GONE);
+                    fourthLayout.setVisibility(View.VISIBLE);
+                    semiLayout.setVisibility(View.GONE);
+                    finalsLayout.setVisibility(View.GONE);
                 }
             }
         });
@@ -279,6 +335,11 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     fourthButton.setSelected(false);
                     semiButton.setSelected(true);
                     finalButton.setSelected(false);
+
+                    eightView.setVisibility(View.GONE);
+                    fourthLayout.setVisibility(View.GONE);
+                    semiLayout.setVisibility(View.VISIBLE);
+                    finalsLayout.setVisibility(View.GONE);
                 }
             }
         });
@@ -291,6 +352,11 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     fourthButton.setSelected(false);
                     semiButton.setSelected(false);
                     finalButton.setSelected(true);
+
+                    eightView.setVisibility(View.GONE);
+                    fourthLayout.setVisibility(View.GONE);
+                    semiLayout.setVisibility(View.GONE);
+                    finalsLayout.setVisibility(View.VISIBLE);
                 }
             }
         });

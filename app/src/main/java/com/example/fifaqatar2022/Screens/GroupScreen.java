@@ -47,27 +47,35 @@ public class GroupScreen extends AppCompatActivity {
         switch (selected_group) {
             case A:
                 group = groups.get(0);
+                group.setGroup(Group_enum.A);
                 break;
             case B:
                 group = groups.get(1);
+                group.setGroup(Group_enum.B);
                 break;
             case C:
                 group = groups.get(2);
+                group.setGroup(Group_enum.C);
                 break;
             case D:
                 group = groups.get(3);
+                group.setGroup(Group_enum.D);
                 break;
             case E:
                 group = groups.get(4);
+                group.setGroup(Group_enum.E);
                 break;
             case F:
                 group = groups.get(5);
+                group.setGroup(Group_enum.F);
                 break;
             case G:
                 group = groups.get(6);
+                group.setGroup(Group_enum.H);
                 break;
             case H:
                 group = groups.get(7);
+                group.setGroup(Group_enum.G);
                 break;
         }
 

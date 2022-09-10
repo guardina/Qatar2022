@@ -23,7 +23,7 @@ public class Group {
 
     }
 
-    public Group(Group_enum group) {
+    public void setGroup(Group_enum group) {
         switch (group) {
             case A:
                 this.group = 0;

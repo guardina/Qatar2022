@@ -39,7 +39,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="none"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -218,7 +217,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:scrollbars="none"
-
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -226,6 +225,7 @@
 
 
         <LinearLayout
+            android:id="@+id/eightLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@drawable/empty_divider"
@@ -234,78 +234,77 @@
 
 
             <LinearLayout
-                android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH1"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH1"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH1"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV1"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV1"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV1"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -314,75 +313,75 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH2"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH2"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH2"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV2"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV2"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV2"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -391,75 +390,75 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH3"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH3"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH3"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV3"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV3"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV3"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -468,75 +467,75 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH4"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH4"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH4"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV4"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV4"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV4"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -545,75 +544,75 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH5"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH5"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH5"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV5"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV5"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV5"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -622,75 +621,75 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH6"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH6"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH6"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV6"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV6"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV6"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -699,75 +698,75 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH7"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH7"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH7"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV7"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV7"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV7"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
@@ -776,82 +775,755 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/my_background"
-                android:minHeight="75dp">
+                android:minHeight="75dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/eightLogoH8"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginStart="7dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameH1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/eightNameH8"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightLogoH1"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
                     android:id="@+id/eightScoreH8"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightNameH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
+                    app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
                 <EditText
                     android:id="@+id/eightScoreV8"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreH1"
-                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"/>
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/eightNameV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
                 <TextView
                     android:id="@+id/eightNameV8"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:layout_weight="1"
                     android:fontFamily="@font/helvetica_bold"
-                    android:textSize="14sp"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/eightScoreV1"
-                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"/>
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
+                    app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
                 <ImageView
                     android:id="@+id/eightLogoV8"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="7dp"
-                    app:layout_constraintStart_toEndOf="@id/eightNameV1"
-                    app:layout_constraintEnd_toStartOf="@id/parent"/>
+                    android:layout_weight="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/parent"
+                    app:layout_constraintStart_toEndOf="@id/eightNameV1" />
 
 
             </LinearLayout>
 
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/fourthLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:divider="@drawable/empty_divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/scrollViewBottom"
+        app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toBottomOf="@id/borderFinalsSelectorTop">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/fourthLogoH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/fourthNameH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
+                app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
+                app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
+
+            <TextView
+                android:id="@+id/fourthNameV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
+
+            <ImageView
+                android:id="@+id/fourthLogoV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/fourthNameV1" />
+
 
         </LinearLayout>
-    </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/fourthLogoH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/fourthNameH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
+                app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
+                app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
+
+            <TextView
+                android:id="@+id/fourthNameV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
+
+            <ImageView
+                android:id="@+id/fourthLogoV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/fourthNameV1" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/fourthLogoH3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/fourthNameH3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
+                app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreH3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
+                app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreV3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
+
+            <TextView
+                android:id="@+id/fourthNameV3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
+
+            <ImageView
+                android:id="@+id/fourthLogoV3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/fourthNameV1" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/fourthLogoH4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/fourthNameH4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
+                app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreH4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
+                app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
+
+            <EditText
+                android:id="@+id/fourthScoreV4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
+
+            <TextView
+                android:id="@+id/fourthNameV4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
+                app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
+
+            <ImageView
+                android:id="@+id/fourthLogoV4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/fourthNameV1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/semiLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:divider="@drawable/empty_divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/scrollViewBottom"
+        app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toBottomOf="@id/borderFinalsSelectorTop">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/semiLogoH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/semiNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/semiNameH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/semiScoreH1"
+                app:layout_constraintStart_toEndOf="@id/semiLogoH1" />
+
+            <EditText
+                android:id="@+id/semiScoreH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/semiScoreV1"
+                app:layout_constraintStart_toEndOf="@id/semiNameH1" />
+
+            <EditText
+                android:id="@+id/semiScoreV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/semiNameV1"
+                app:layout_constraintStart_toEndOf="@id/semiScoreH1" />
+
+            <TextView
+                android:id="@+id/semiNameV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/semiLogoV1"
+                app:layout_constraintStart_toEndOf="@id/semiScoreV1" />
+
+            <ImageView
+                android:id="@+id/semiLogoV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/semiNameV1" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/semiLogoH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/semiNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/semiNameH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/semiScoreH1"
+                app:layout_constraintStart_toEndOf="@id/semiLogoH1" />
+
+            <EditText
+                android:id="@+id/semiScoreH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/semiScoreV1"
+                app:layout_constraintStart_toEndOf="@id/semiNameH1" />
+
+            <EditText
+                android:id="@+id/semiScoreV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/semiNameV1"
+                app:layout_constraintStart_toEndOf="@id/semiScoreH1" />
+
+            <TextView
+                android:id="@+id/semiNameV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/semiLogoV1"
+                app:layout_constraintStart_toEndOf="@id/semiScoreV1" />
+
+            <ImageView
+                android:id="@+id/semiLogoV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/semiNameV1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/finalsLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:divider="@drawable/empty_divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/scrollViewBottom"
+        app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
+        app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
+        app:layout_constraintTop_toBottomOf="@id/borderFinalsSelectorTop">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/finalsLogoH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/finalsNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/finalsNameH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/finalsScoreH1"
+                app:layout_constraintStart_toEndOf="@id/finalsLogoH1" />
+
+            <EditText
+                android:id="@+id/finalsScoreH1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
+                app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
+
+            <EditText
+                android:id="@+id/finalsScoreV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
+                app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
+
+            <TextView
+                android:id="@+id/finalsNameV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/finalsLogoV1"
+                app:layout_constraintStart_toEndOf="@id/finalsScoreV1" />
+
+            <ImageView
+                android:id="@+id/finalsLogoV1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/finalsNameV1" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_background"
+            android:minHeight="75dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/finalsLogoH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/finalsNameH1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/finalsNameH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/finalsScoreH1"
+                app:layout_constraintStart_toEndOf="@id/finalsLogoH1" />
+
+            <EditText
+                android:id="@+id/finalsScoreH2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
+                app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
+
+            <EditText
+                android:id="@+id/finalsScoreV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/my_score_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
+                app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
+
+            <TextView
+                android:id="@+id/finalsNameV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/finalsLogoV1"
+                app:layout_constraintStart_toEndOf="@id/finalsScoreV1" />
+
+            <ImageView
+                android:id="@+id/finalsLogoV2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.5"
+                app:layout_constraintEnd_toStartOf="@id/parent"
+                app:layout_constraintStart_toEndOf="@id/finalsNameV1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/borderGroupSelectionLeft"
@@ -904,11 +1576,11 @@
         android:id="@+id/groupReloadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AGGIORNA"
         android:background="@drawable/my_classic_button"
+        android:text="AGGIORNA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/groupSaveButton"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
-        app:layout_constraintTop_toBottomOf="@id/scrollViewBottom"/>
+        app:layout_constraintTop_toBottomOf="@id/scrollViewBottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

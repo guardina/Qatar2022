@@ -47,19 +47,6 @@ public class MainScreen extends AppCompatActivity {
         });
 
 
-        //StorageReference pictureRef = storageReference.child("pictures/" + username + ".jpg");
-
-        /*pictureRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(MainScreen.this).load(uri).into(profilePic);
-            }
-        });*/
-
-
-
-
-
         predictionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
