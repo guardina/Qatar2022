@@ -6,6 +6,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.ThemedSpinnerAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
@@ -20,6 +22,7 @@ import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
+import com.example.fifaqatar2022.MatchEight;
 import com.example.fifaqatar2022.R;
 
 import org.w3c.dom.Text;
@@ -261,30 +264,111 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
         ArrayList<Group> allGroups = pr.getAllGroups();
 
+        ArrayList<MatchEight> matchEights = new ArrayList<>();
+
+        for (int i = 0; i<8; i++) {
+            matchEights.add(new MatchEight());
+        }
+
+
         for (Group group : allGroups) {
             for (int posGroup = 0; posGroup < allGroups.size(); posGroup++) {
                 String firstTeam = sharedPreferences.getString("first team group " + firstOrder.get(posGroup), "");
                 String secondTeam = sharedPreferences.getString("second team group " + secondOrder.get(posGroup), "");
 
-                System.out.println("----------------------------");
-                System.out.println(firstTeam);
-                System.out.println(secondTeam);
-                System.out.println("----------------------------");
+
 
                 for (Team team : group.getTeams()) {
                     if (firstTeam.equals("")) {
                         namesHome.get(posGroup).setText("-");
                     } else if (team.getName().equals(firstTeam)) {
+                        matchEights.get(posGroup).setHomeTeam(team);
                         logosHome.get(posGroup).setImageDrawable(team.getLogo());
                         namesHome.get(posGroup).setText(team.getName());
                     }
                     if (secondTeam.equals("")) {
                         namesVisitor.get(posGroup).setText("-");
                     } else if (team.getName().equals(secondTeam)) {
+                        matchEights.get(posGroup).setVisitorTeam(team);
                         logosVisitor.get(posGroup).setImageDrawable(team.getLogo());
                         namesVisitor.get(posGroup).setText(team.getName());
                     }
                 }
+            }
+        }
+
+
+
+        ArrayList<EditText> scoresHome = new ArrayList<>();
+        ArrayList<EditText> scoresVisitor = new ArrayList<>();
+
+        scoresHome.add(findViewById(R.id.eightScoreH1));
+        scoresHome.add(findViewById(R.id.eightScoreH2));
+        scoresHome.add(findViewById(R.id.eightScoreH3));
+        scoresHome.add(findViewById(R.id.eightScoreH4));
+        scoresHome.add(findViewById(R.id.eightScoreH5));
+        scoresHome.add(findViewById(R.id.eightScoreH6));
+        scoresHome.add(findViewById(R.id.eightScoreH7));
+        scoresHome.add(findViewById(R.id.eightScoreH8));
+
+        scoresVisitor.add(findViewById(R.id.eightScoreV1));
+        scoresVisitor.add(findViewById(R.id.eightScoreV2));
+        scoresVisitor.add(findViewById(R.id.eightScoreV3));
+        scoresVisitor.add(findViewById(R.id.eightScoreV4));
+        scoresVisitor.add(findViewById(R.id.eightScoreV5));
+        scoresVisitor.add(findViewById(R.id.eightScoreV6));
+        scoresVisitor.add(findViewById(R.id.eightScoreV7));
+        scoresVisitor.add(findViewById(R.id.eightScoreV8));
+
+
+
+
+
+        for (int posScore = 0; posScore < scoresHome.size(); posScore++) {
+            EditText home = scoresHome.get(posScore);
+            EditText visitor = scoresVisitor.get(posScore);
+            MatchEight matchEight = matchEights.get(posScore);
+
+            logosHome.get(posScore).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    home.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
+                    visitor.setBackground(getResources().getDrawable(R.drawable.my_score_background));
+                    matchEight.setPassesFirst(true);
+                }
+            });
+
+
+            logosVisitor.get(posScore).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    home.setBackground(getResources().getDrawable(R.drawable.my_score_background));
+                    visitor.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
+                    matchEight.setPassesFirst(false);
+                }
+            });
+        }
+
+
+        for (int posScore = 0; posScore < scoresHome.size(); posScore++) {
+
+            int scoreHome = 0;
+            int scoreVisitor = 0;
+
+            if (!scoresHome.get(posScore).getText().toString().equals("")) {
+                scoreHome = Integer.parseInt(scoresHome.get(posScore).getText().toString());
+            }
+
+            if (!scoresVisitor.get(posScore).getText().toString().equals("")) {
+                scoreVisitor = Integer.parseInt(scoresVisitor.get(posScore).getText().toString());
+            }
+
+            if (scoreHome > scoreVisitor) {
+                matchEights.get(posScore).setFirstWin(true);
+            } else if (scoreHome == scoreVisitor && matchEights.get(posScore).getPassesFirst()) {
+                matchEights.get(posScore).setFirstWin(true);
+            } else {
+                matchEights.get(posScore).setFirstWin(false);
             }
         }
 

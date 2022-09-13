@@ -39,6 +39,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="none"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -217,7 +218,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:scrollbars="none"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -258,7 +259,7 @@
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
+                    app:layout_constraintEnd_toStartOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
                 <EditText
@@ -270,6 +271,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -282,6 +286,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -347,6 +354,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -359,6 +369,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -424,6 +437,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -436,6 +452,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -501,6 +520,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -513,6 +535,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -578,6 +603,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -590,6 +618,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -655,6 +686,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -667,6 +701,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -732,6 +769,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -744,6 +784,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -809,6 +852,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreV1"
                     app:layout_constraintStart_toEndOf="@id/eightNameH1" />
 
@@ -821,6 +867,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/my_score_background"
                     android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toStartOf="@id/eightNameV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreH1" />
 
@@ -1027,6 +1076,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
             android:minHeight="75dp"
+            android:maxHeight="75dp"
             android:orientation="horizontal">
 
             <ImageView

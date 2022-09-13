@@ -71,11 +71,11 @@ public class GroupScreen extends AppCompatActivity {
                 break;
             case G:
                 group = groups.get(6);
-                group.setGroup(Group_enum.H);
+                group.setGroup(Group_enum.G);
                 break;
             case H:
                 group = groups.get(7);
-                group.setGroup(Group_enum.G);
+                group.setGroup(Group_enum.H);
                 break;
         }
 
