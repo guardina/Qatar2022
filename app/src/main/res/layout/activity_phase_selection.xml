@@ -235,6 +235,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -258,7 +259,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toStartOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -300,7 +301,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -318,6 +319,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -341,7 +343,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -383,7 +385,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -401,6 +403,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -424,7 +427,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -466,7 +469,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -484,6 +487,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -507,7 +511,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -549,7 +553,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -567,6 +571,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -590,7 +595,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -632,7 +637,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -650,6 +655,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -673,7 +679,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -715,7 +721,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -733,6 +739,7 @@
 
 
             <LinearLayout
+                android:id="@+id/eightLayout7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/my_background"
@@ -756,7 +763,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -798,7 +805,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -839,7 +846,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightScoreH1"
                     app:layout_constraintStart_toEndOf="@id/eightLogoH1" />
 
@@ -881,7 +888,7 @@
                     android:fontFamily="@font/helvetica_bold"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@id/eightLogoV1"
                     app:layout_constraintStart_toEndOf="@id/eightScoreV1" />
 
@@ -918,6 +925,7 @@
 
 
         <LinearLayout
+            android:id="@+id/fourthLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -941,7 +949,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
                 app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
 
@@ -954,6 +962,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
 
@@ -966,6 +975,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
 
@@ -977,7 +987,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
 
@@ -995,6 +1005,7 @@
 
 
         <LinearLayout
+            android:id="@+id/fourthLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -1018,7 +1029,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
                 app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
 
@@ -1031,6 +1042,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
 
@@ -1043,6 +1055,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
 
@@ -1054,7 +1067,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
 
@@ -1072,11 +1085,12 @@
 
 
         <LinearLayout
+            android:id="@+id/fourthLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
-            android:minHeight="75dp"
             android:maxHeight="75dp"
+            android:minHeight="75dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -1096,7 +1110,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
                 app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
 
@@ -1109,6 +1123,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
 
@@ -1121,6 +1136,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
 
@@ -1132,7 +1148,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
 
@@ -1150,6 +1166,7 @@
 
 
         <LinearLayout
+            android:id="@+id/fourthLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -1173,7 +1190,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthScoreH1"
                 app:layout_constraintStart_toEndOf="@id/fourthLogoH1" />
 
@@ -1186,6 +1203,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
 
@@ -1198,6 +1216,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
 
@@ -1209,7 +1228,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/fourthLogoV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreV1" />
 
@@ -1245,6 +1264,7 @@
 
 
         <LinearLayout
+            android:id="@+id/semiLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -1268,7 +1288,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/semiScoreH1"
                 app:layout_constraintStart_toEndOf="@id/semiLogoH1" />
 
@@ -1281,6 +1301,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiScoreV1"
                 app:layout_constraintStart_toEndOf="@id/semiNameH1" />
 
@@ -1293,6 +1314,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiNameV1"
                 app:layout_constraintStart_toEndOf="@id/semiScoreH1" />
 
@@ -1304,7 +1326,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/semiLogoV1"
                 app:layout_constraintStart_toEndOf="@id/semiScoreV1" />
 
@@ -1322,6 +1344,7 @@
 
 
         <LinearLayout
+            android:id="@+id/semiLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -1345,7 +1368,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/semiScoreH1"
                 app:layout_constraintStart_toEndOf="@id/semiLogoH1" />
 
@@ -1358,6 +1381,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiScoreV1"
                 app:layout_constraintStart_toEndOf="@id/semiNameH1" />
 
@@ -1370,6 +1394,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiNameV1"
                 app:layout_constraintStart_toEndOf="@id/semiScoreH1" />
 
@@ -1381,7 +1406,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/semiLogoV1"
                 app:layout_constraintStart_toEndOf="@id/semiScoreV1" />
 
@@ -1401,8 +1426,6 @@
     </LinearLayout>
 
 
-
-
     <LinearLayout
         android:id="@+id/finalsLayout"
         android:layout_width="0dp"
@@ -1419,6 +1442,7 @@
 
 
         <LinearLayout
+            android:id="@+id/finalsLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -1442,7 +1466,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/finalsScoreH1"
                 app:layout_constraintStart_toEndOf="@id/finalsLogoH1" />
 
@@ -1455,6 +1479,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
                 app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
 
@@ -1467,6 +1492,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
                 app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
 
@@ -1478,7 +1504,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/finalsLogoV1"
                 app:layout_constraintStart_toEndOf="@id/finalsScoreV1" />
 
@@ -1496,6 +1522,7 @@
 
 
         <LinearLayout
+            android:id="@+id/finalsLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_background"
@@ -1519,7 +1546,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/finalsScoreH1"
                 app:layout_constraintStart_toEndOf="@id/finalsLogoH1" />
 
@@ -1532,6 +1559,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
                 app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
 
@@ -1544,6 +1572,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
                 app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
 
@@ -1555,7 +1584,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/finalsLogoV1"
                 app:layout_constraintStart_toEndOf="@id/finalsScoreV1" />
 

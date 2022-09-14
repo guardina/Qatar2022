@@ -1,17 +1,15 @@
-package com.example.fifaqatar2022;
+package com.example.fifaqatar2022.Classes;
 
-import com.example.fifaqatar2022.Classes.Team;
-
-public class MatchEight {
+public class MatchFinals {
 
     Team homeTeam;
     Team visitorTeam;
 
     boolean passesFirst;
-    boolean firstWin;
+    boolean firstTeamWon;
 
 
-    public MatchEight() {
+    public MatchFinals() {
 
     }
 
@@ -23,15 +21,27 @@ public class MatchEight {
         return passesFirst;
     }
 
-    public void setFirstWin(boolean firstWin) {
-        this.firstWin = firstWin;
+    public void setFirstTeamWon(boolean firstWin) {
+        this.firstTeamWon = firstWin;
+    }
+
+    public boolean getFirstTeamWon() {
+        return firstTeamWon;
     }
 
     public void setHomeTeam(Team team) {
         this.homeTeam = team;
     }
 
+    public Team getHomeTeam() {
+        return homeTeam;
+    }
+
     public void setVisitorTeam(Team team) {
         this.visitorTeam = team;
+    }
+
+    public Team getVisitorTeam() {
+        return visitorTeam;
     }
 }
