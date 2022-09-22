@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,12 +22,18 @@ import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 public class GroupSelectionScreen extends AppCompatActivity {
+
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://qatar-2022-64fef-default-rtdb.europe-west1.firebasedatabase.app");
+    DatabaseReference myRef = firebaseDatabase.getReference();
 
     static boolean executed = false;
 
@@ -583,14 +590,16 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     if (match.getFirstTeamWon()) {
                         if (match.getHomeTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setHomeTeam(match.getHomeTeam());
-                            //all_logos.get(2 * (round + 1)).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
-                            //all_names.get(2 * (round + 1)).get(pos / 2).setText(match.getHomeTeam().getName());
+                            if (round == rounds.size() - 2 && match.getVisitorTeam() != null) {
+                                rounds.get(round + 1).get(1).setHomeTeam(match.getVisitorTeam());
+                            }
                         }
                     } else {
                         if (match.getVisitorTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setHomeTeam(match.getVisitorTeam());
-                            //all_logos.get(2 * (round + 1)).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
-                            //all_names.get(2 * (round + 1)).get(pos / 2).setText(match.getVisitorTeam().getName());
+                            if (round == rounds.size() - 2 && match.getHomeTeam() != null) {
+                                rounds.get(round + 1).get(1).setHomeTeam(match.getHomeTeam());
+                            }
                         }
                     }
                 } else {
@@ -598,14 +607,17 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     if (match.getFirstTeamWon()) {
                         if (match.getHomeTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setVisitorTeam(match.getHomeTeam());
-                            //all_logos.get(2 * (round + 1) + 1).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
-                            //all_names.get(2 * (round + 1) + 1).get(pos / 2).setText(match.getHomeTeam().getName());
+                            if (round == rounds.size() - 2 && match.getVisitorTeam() != null) {
+                                rounds.get(round + 1).get(1).setVisitorTeam(match.getVisitorTeam());
+                            }
+
                         }
                     } else {
                         if (match.getVisitorTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setVisitorTeam(match.getVisitorTeam());
-                            //all_logos.get(2 * (round + 1) + 1).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
-                            //all_names.get(2 * (round + 1) + 1).get(pos / 2).setText(match.getVisitorTeam().getName());
+                            if (round == rounds.size() - 2 && match.getHomeTeam() != null) {
+                                rounds.get(round + 1).get(1).setVisitorTeam(match.getHomeTeam());
+                            }
                         }
                     }
                 }
@@ -663,6 +675,8 @@ public class GroupSelectionScreen extends AppCompatActivity {
                         editor.commit();
                     }
                 }
+
+                Toast.makeText(GroupSelectionScreen.this, "Risultati salvati\nPremere AGGIORNA per visualizzarli", Toast.LENGTH_SHORT).show();
             }
         });
 
