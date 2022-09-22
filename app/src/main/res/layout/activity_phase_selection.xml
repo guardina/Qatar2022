@@ -39,7 +39,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="none"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -218,7 +218,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:scrollbars="none"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/scrollViewBottom"
         app:layout_constraintEnd_toEndOf="@id/borderGroupSelectionRight"
         app:layout_constraintStart_toStartOf="@id/borderGroupSelectionLeft"
@@ -962,6 +962,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
@@ -975,6 +977,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
@@ -1042,6 +1046,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
@@ -1055,6 +1061,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
@@ -1123,6 +1131,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
@@ -1136,6 +1146,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
@@ -1203,6 +1215,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthScoreV1"
                 app:layout_constraintStart_toEndOf="@id/fourthNameH1" />
@@ -1216,6 +1230,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/fourthNameV1"
                 app:layout_constraintStart_toEndOf="@id/fourthScoreH1" />
@@ -1301,6 +1317,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiScoreV1"
                 app:layout_constraintStart_toEndOf="@id/semiNameH1" />
@@ -1314,6 +1331,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiNameV1"
                 app:layout_constraintStart_toEndOf="@id/semiScoreH1" />
@@ -1381,6 +1399,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiScoreV1"
                 app:layout_constraintStart_toEndOf="@id/semiNameH1" />
@@ -1394,6 +1413,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/semiNameV1"
                 app:layout_constraintStart_toEndOf="@id/semiScoreH1" />
@@ -1479,6 +1499,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
                 app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
@@ -1492,6 +1514,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
                 app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
@@ -1559,6 +1583,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
                 app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
@@ -1572,6 +1598,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/my_score_background"
                 android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
                 app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
