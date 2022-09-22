@@ -557,11 +557,11 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 int scoreHome = 0;
                 int scoreVisitor = 0;
 
-                if (!all_scores.get(2 * round).get(posMatch).getText().toString().equals("")) {
+                if (!all_scores.get(2 * round).get(posMatch).getText().toString().equals("-")) {
                     scoreHome = Integer.parseInt(all_scores.get(2 * round).get(posMatch).getText().toString());
                 }
 
-                if (!all_scores.get(2 * round + 1).get(posMatch).getText().toString().equals("")) {
+                if (!all_scores.get(2 * round + 1).get(posMatch).getText().toString().equals("-")) {
                     scoreVisitor = Integer.parseInt(all_scores.get(2 * round + 1).get(posMatch).getText().toString());
                 }
 
@@ -582,29 +582,65 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 if (pos % 2 == 0) {
                     if (match.getFirstTeamWon()) {
                         if (match.getHomeTeam() != null) {
-                            all_logos.get(2 * (round + 1)).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
-                            all_names.get(2 * (round + 1)).get(pos / 2).setText(match.getHomeTeam().getName());
+                            rounds.get(round + 1).get(pos / 2).setHomeTeam(match.getHomeTeam());
+                            //all_logos.get(2 * (round + 1)).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
+                            //all_names.get(2 * (round + 1)).get(pos / 2).setText(match.getHomeTeam().getName());
                         }
                     } else {
                         if (match.getVisitorTeam() != null) {
-                            all_logos.get(2 * (round + 1)).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
-                            all_names.get(2 * (round + 1)).get(pos / 2).setText(match.getVisitorTeam().getName());
+                            rounds.get(round + 1).get(pos / 2).setHomeTeam(match.getVisitorTeam());
+                            //all_logos.get(2 * (round + 1)).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
+                            //all_names.get(2 * (round + 1)).get(pos / 2).setText(match.getVisitorTeam().getName());
                         }
                     }
                 } else {
+
                     if (match.getFirstTeamWon()) {
                         if (match.getHomeTeam() != null) {
-                            all_logos.get(2 * (round + 1) + 1).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
-                            all_names.get(2 * (round + 1) + 1).get(pos / 2).setText(match.getHomeTeam().getName());
+                            rounds.get(round + 1).get(pos / 2).setVisitorTeam(match.getHomeTeam());
+                            //all_logos.get(2 * (round + 1) + 1).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
+                            //all_names.get(2 * (round + 1) + 1).get(pos / 2).setText(match.getHomeTeam().getName());
                         }
                     } else {
                         if (match.getVisitorTeam() != null) {
-                            all_logos.get(2 * (round + 1) + 1).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
-                            all_names.get(2 * (round + 1) + 1).get(pos / 2).setText(match.getVisitorTeam().getName());
+                            rounds.get(round + 1).get(pos / 2).setVisitorTeam(match.getVisitorTeam());
+                            //all_logos.get(2 * (round + 1) + 1).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
+                            //all_names.get(2 * (round + 1) + 1).get(pos / 2).setText(match.getVisitorTeam().getName());
                         }
                     }
                 }
                 pos++;
+            }
+        }
+
+
+        for (int round = 0; round < rounds.size(); round++) {
+            int pos = 0;
+            for (MatchFinals match : rounds.get(round)) {
+                for (int i = 0; i < 2; i++) {
+                    if (pos % 2 == 0) {
+                        if (match.getHomeTeam() != null && i == 0) {
+                            all_logos.get(2 * (round)).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
+                            all_names.get(2 * (round)).get(pos / 2).setText(match.getHomeTeam().getName());
+                        } else {
+                            if (match.getVisitorTeam() != null) {
+                                all_logos.get(2 * (round)).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
+                                all_names.get(2 * (round)).get(pos / 2).setText(match.getVisitorTeam().getName());
+                            }
+                        }
+                    } else {
+                        if (match.getHomeTeam() != null && i == 0) {
+                            all_logos.get(2 * (round) + 1).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
+                            all_names.get(2 * (round) + 1).get(pos / 2).setText(match.getHomeTeam().getName());
+                        } else {
+                            if (match.getVisitorTeam() != null) {
+                                all_logos.get(2 * (round) + 1).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
+                                all_names.get(2 * (round) + 1).get(pos / 2).setText(match.getVisitorTeam().getName());
+                            }
+                        }
+                    }
+                    pos++;
+                }
             }
         }
 
