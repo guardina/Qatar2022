@@ -15,6 +15,7 @@ import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
 import com.example.fifaqatar2022.Classes.Profile;
+import com.example.fifaqatar2022.Classes.Result;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
@@ -151,7 +152,6 @@ public class GroupScreen extends AppCompatActivity {
         textViewsMatchesVisitors.add(findViewById(R.id.nameV6));
 
 
-
         int posMatch = 0;
 
         for (Match match : group.getMatches()) {
@@ -212,7 +212,6 @@ public class GroupScreen extends AppCompatActivity {
         });
 
 
-
         ArrayList<ArrayList<TextView>> cells = new ArrayList<>();
         ArrayList<TextView> team1Info = new ArrayList<>();
         ArrayList<TextView> team2Info = new ArrayList<>();
@@ -268,6 +267,8 @@ public class GroupScreen extends AppCompatActivity {
 
                 for (Match match : finalGroup.getMatches()) {
 
+                    Result result = new Result();
+
                     int scoreHome = 0;
                     int scoreVisitor = 0;
 
@@ -283,6 +284,12 @@ public class GroupScreen extends AppCompatActivity {
                         scoresVisitors.get(savePos).setText("0");
                     }
 
+                    result.setHomeTeam(match.getFirst_team());
+                    result.setVisitorTeam(match.getSecond_team());
+
+                    result.setHomeScore(String.valueOf(scoreHome));
+                    result.setVisitorScore(String.valueOf(scoreVisitor));
+
                     editor.putInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), scoreHome);
                     editor.putInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), scoreVisitor);
                     match.setFirst_score(String.valueOf(scoreHome));
@@ -297,8 +304,9 @@ public class GroupScreen extends AppCompatActivity {
                     }
 
                     savePos++;
+                    
+                    Profile.getProfile().getPrediction().addGroup_result(result, selected_group);
                 }
-
 
                 String firstTeam = finalGroup.getPlacement().get(0).getName();
                 String secondTeam = finalGroup.getPlacement().get(1).getName();
