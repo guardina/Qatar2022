@@ -37,6 +37,7 @@
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
         <activity android:name=".Screens.ProfileScreen"/>
+        <activity android:name=".Screens.PlacementScreen"/>
     </application>
 
 </manifest>

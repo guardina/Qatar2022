@@ -69,6 +69,7 @@ public class ProfileScreen extends AppCompatActivity {
                 profile.setFirstName(firstNameChanger.getText().toString());
                 profile.setLastName(lastNameChanger.getText().toString());
                 profile.setUserName(userNameChanger.getText().toString());
+                profile.setUuid(uuid);
 
                 myRef.child("users").child(uuid).setValue(profile);
                 finish();

@@ -18,6 +18,7 @@ import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -27,6 +28,7 @@ public class StartScreen extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://qatar-2022-64fef-default-rtdb.europe-west1.firebasedatabase.app");
     DatabaseReference myRef = database.getReference();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     //FirebaseStorage storage = FirebaseStorage.getInstance();
     //StorageReference storageReference = storage.getReference();
 
@@ -89,6 +91,7 @@ public class StartScreen extends AppCompatActivity {
 
                 //StorageReference profilePicsRef = storageReference.child("pictures/" + userName + ".jpg");
 
+                db.collection("users").add(newProfile);
                 myRef.child("users").child(newProfile.getUuid()).setValue(newProfile);
 
                 /*Bitmap bitmap = ((BitmapDrawable) picture).getBitmap();

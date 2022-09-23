@@ -54,5 +54,15 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        Button placementButton = findViewById(R.id.generalPlacementButton);
+
+        placementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainScreen.this, PlacementScreen.class));
+            }
+        });
     }
 }

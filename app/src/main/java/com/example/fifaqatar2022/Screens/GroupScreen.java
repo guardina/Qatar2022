@@ -304,7 +304,7 @@ public class GroupScreen extends AppCompatActivity {
                     }
 
                     savePos++;
-                    
+
                     Profile.getProfile().getPrediction().addGroup_result(result, selected_group);
                 }
 

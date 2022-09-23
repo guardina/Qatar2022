@@ -9,7 +9,7 @@ public class Profile {
     public String userName;
     public int points;
     public int perfectResults;
-    final private String uuid;
+    private String uuid;
 
     private Prediction prediction;
 
@@ -41,6 +41,10 @@ public class Profile {
 
     public String getUuid() {
         return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public void addPoints(int points) {
