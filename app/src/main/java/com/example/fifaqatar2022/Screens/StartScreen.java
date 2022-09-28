@@ -22,13 +22,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class StartScreen extends AppCompatActivity {
 
     String prevStarted = "yes";
 
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://qatar-2022-64fef-default-rtdb.europe-west1.firebasedatabase.app");
     DatabaseReference myRef = database.getReference();
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     //FirebaseStorage storage = FirebaseStorage.getInstance();
     //StorageReference storageReference = storage.getReference();
 
@@ -36,7 +38,7 @@ public class StartScreen extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(prevStarted, false)) {
+        if (!sharedPreferences.getBoolean(prevStarted, false)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(prevStarted, Boolean.TRUE);
             editor.apply();
@@ -91,7 +93,6 @@ public class StartScreen extends AppCompatActivity {
 
                 //StorageReference profilePicsRef = storageReference.child("pictures/" + userName + ".jpg");
 
-                db.collection("users").add(newProfile);
                 myRef.child("users").child(newProfile.getUuid()).setValue(newProfile);
 
                 /*Bitmap bitmap = ((BitmapDrawable) picture).getBitmap();

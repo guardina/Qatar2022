@@ -35,15 +35,17 @@
         app:layout_constraintGuide_percent="0.95"/>
 
     <ScrollView
+        android:id="@+id/placementView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/my_background"
-        app:layout_constraintStart_toStartOf="@id/leftBorderPlacement"
+        app:layout_constraintBottom_toTopOf="@id/bottomBorderPlacement"
         app:layout_constraintEnd_toEndOf="@id/rightBorderPlacement"
-        app:layout_constraintTop_toBottomOf="@id/topBorderPlacement"
-        app:layout_constraintBottom_toTopOf="@id/bottomBorderPlacement">
+        app:layout_constraintStart_toStartOf="@id/leftBorderPlacement"
+        app:layout_constraintTop_toBottomOf="@id/topBorderPlacement">
 
         <LinearLayout
+            android:id="@+id/placementLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
