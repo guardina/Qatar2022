@@ -40,7 +40,7 @@ public class StartScreen extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         if (!sharedPreferences.getBoolean(prevStarted, false)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(prevStarted, Boolean.TRUE);
+            //editor.putBoolean(prevStarted, Boolean.TRUE);
             editor.apply();
         } else {
             moveToSecondary();
@@ -106,6 +106,8 @@ public class StartScreen extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
                 editor.putString("uuid", newProfile.getUuid());
+                editor.putBoolean(prevStarted, Boolean.TRUE);
+
                 editor.apply();
 
                 startActivity(new Intent(StartScreen.this, MainScreen.class));
