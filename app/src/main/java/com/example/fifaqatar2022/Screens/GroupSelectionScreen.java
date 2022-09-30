@@ -71,7 +71,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
         Button chooseFinalsButton = findViewById(R.id.chooseFinalsButton);
 
         ScrollView groupsView = findViewById(R.id.groupsView);
-        ScrollView finalsView = findViewById(R.id.eightsView);
+        ScrollView eightsView = findViewById(R.id.eightsView);
+        LinearLayout fourthLayout = findViewById(R.id.fourthLayout);
+        LinearLayout semiLayout = findViewById(R.id.semiLayout);
+        LinearLayout finalsLayout = findViewById(R.id.finalsLayout);
         LinearLayout buttonLayout = findViewById(R.id.buttonLayout);
 
 
@@ -83,7 +86,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     chooseFinalsButton.setSelected(false);
                 }
                 groupsView.setVisibility(View.VISIBLE);
-                finalsView.setVisibility(View.GONE);
+                eightsView.setVisibility(View.GONE);
+                fourthLayout.setVisibility(View.GONE);
+                semiLayout.setVisibility(View.GONE);
+                finalsLayout.setVisibility(View.GONE);
                 buttonLayout.setVisibility(View.GONE);
             }
         });
@@ -96,7 +102,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     chooseFinalsButton.setSelected(true);
                     chooseGroupsButton.setSelected(false);
                 }
-                finalsView.setVisibility(View.VISIBLE);
+                eightsView.setVisibility(View.VISIBLE);
+                fourthLayout.setVisibility(View.GONE);
+                semiLayout.setVisibility(View.GONE);
+                finalsLayout.setVisibility(View.GONE);
                 groupsView.setVisibility(View.GONE);
                 buttonLayout.setVisibility(View.VISIBLE);
             }
@@ -192,10 +201,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
         });
 
 
-        ScrollView eightView = findViewById(R.id.eightsView);
-        LinearLayout fourthLayout = findViewById(R.id.fourthLayout);
-        LinearLayout semiLayout = findViewById(R.id.semiLayout);
-        LinearLayout finalsLayout = findViewById(R.id.finalsLayout);
+        //ScrollView eightView = findViewById(R.id.eightsView);
 
 
         /////////////////////                           EIGHT FINALS SCREEN                        ////////////////////
@@ -690,7 +696,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     semiButton.setSelected(false);
                     finalButton.setSelected(false);
 
-                    eightView.setVisibility(View.VISIBLE);
+                    eightsView.setVisibility(View.VISIBLE);
                     fourthLayout.setVisibility(View.GONE);
                     semiLayout.setVisibility(View.GONE);
                     finalsLayout.setVisibility(View.GONE);
@@ -708,7 +714,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     semiButton.setSelected(false);
                     finalButton.setSelected(false);
 
-                    eightView.setVisibility(View.GONE);
+                    eightsView.setVisibility(View.GONE);
                     fourthLayout.setVisibility(View.VISIBLE);
                     semiLayout.setVisibility(View.GONE);
                     finalsLayout.setVisibility(View.GONE);
@@ -725,7 +731,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     semiButton.setSelected(true);
                     finalButton.setSelected(false);
 
-                    eightView.setVisibility(View.GONE);
+                    eightsView.setVisibility(View.GONE);
                     fourthLayout.setVisibility(View.GONE);
                     semiLayout.setVisibility(View.VISIBLE);
                     finalsLayout.setVisibility(View.GONE);
@@ -742,7 +748,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     semiButton.setSelected(false);
                     finalButton.setSelected(true);
 
-                    eightView.setVisibility(View.GONE);
+                    eightsView.setVisibility(View.GONE);
                     fourthLayout.setVisibility(View.GONE);
                     semiLayout.setVisibility(View.GONE);
                     finalsLayout.setVisibility(View.VISIBLE);

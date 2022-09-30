@@ -3,29 +3,24 @@ package com.example.fifaqatar2022.Screens;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.fifaqatar2022.R;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.api.Distribution;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SnapshotMetadata;
-import com.squareup.okhttp.internal.DiskLruCache;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 public class PlacementScreen extends AppCompatActivity {
 
@@ -55,29 +50,43 @@ public class PlacementScreen extends AppCompatActivity {
                     HashMap<String, String> user = (HashMap) current.getValue();
 
                     LinearLayout newView = new LinearLayout(PlacementScreen.this);
-                    newView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 100));
+                    newView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 150));
                     newView.setOrientation(LinearLayout.HORIZONTAL);
+                    newView.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+                    newView.setDividerDrawable(getResources().getDrawable(R.drawable.empty_divider));
 
 
                     TextView placeView = new TextView(PlacementScreen.this);
-                    placeView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+                    TextView usernameView = new TextView(PlacementScreen.this);
+                    TextView pointsView = new TextView(PlacementScreen.this);
+
+                    placeView.setId(View.generateViewId());
+                    //usernameView.setId(View.generateViewId());
+                    //pointsView.setId(View.generateViewId());
+
+
+
+                    placeView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
                     placeView.setText(String.valueOf(counter++));
                     placeView.setTextColor(getResources().getColor(R.color.black));
                     placeView.setGravity(Gravity.CENTER_VERTICAL);
+                    placeView.setTypeface(getResources().getFont(R.font.helvetica_bold));
 
 
-                    TextView usernameView = new TextView(PlacementScreen.this);
-                    usernameView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+                    //TextView usernameView = new TextView(PlacementScreen.this);
+                    usernameView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
                     usernameView.setText(user.get("userName"));
                     usernameView.setTextColor(getResources().getColor(R.color.black));
                     usernameView.setGravity(Gravity.CENTER_VERTICAL);
+                    usernameView.setTypeface(getResources().getFont(R.font.helvetica_bold));
 
 
-                    TextView pointsView = new TextView(PlacementScreen.this);
-                    pointsView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+                    //TextView pointsView = new TextView(PlacementScreen.this);
+                    pointsView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
                     pointsView.setText(String.valueOf(user.get("points")));
                     pointsView.setTextColor(getResources().getColor(R.color.black));
                     pointsView.setGravity(Gravity.CENTER_VERTICAL);
+                    pointsView.setTypeface(getResources().getFont(R.font.helvetica_bold));
 
 
                     newView.addView(placeView);
