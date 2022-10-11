@@ -22,7 +22,8 @@ public class Profile {
 
     static public Profile getProfile() {
         if (profile == null) {
-            return new Profile();
+            profile = new Profile();
+            return profile;
         }
         return profile;
     }

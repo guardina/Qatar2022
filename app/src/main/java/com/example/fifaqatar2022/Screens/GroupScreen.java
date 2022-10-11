@@ -265,6 +265,8 @@ public class GroupScreen extends AppCompatActivity {
                 finalGroup.resetInfo();
                 int savePos = 0;
 
+                Profile.getProfile().getPrediction().resetGroup_result(selected_group);
+
                 for (Match match : finalGroup.getMatches()) {
 
                     Result result = new Result();
@@ -290,6 +292,8 @@ public class GroupScreen extends AppCompatActivity {
                     result.setHomeScore(String.valueOf(scoreHome));
                     result.setVisitorScore(String.valueOf(scoreVisitor));
 
+                    result.setId(match.getFirst_team().getName()+match.getSecond_team().getName());
+
                     editor.putInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), scoreHome);
                     editor.putInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), scoreVisitor);
                     match.setFirst_score(String.valueOf(scoreHome));
@@ -307,6 +311,8 @@ public class GroupScreen extends AppCompatActivity {
 
                     Profile.getProfile().getPrediction().addGroup_result(result, selected_group);
                 }
+
+                Profile temp = Profile.getProfile();
 
                 String firstTeam = finalGroup.getPlacement().get(0).getName();
                 String secondTeam = finalGroup.getPlacement().get(1).getName();

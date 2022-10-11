@@ -18,7 +18,8 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match
 
     static public ResultsRetriever getRR() {
         if (ir == null) {
-            return new ResultsRetriever();
+            ir = new ResultsRetriever();
+            return ir;
         }
         return ir;
     }

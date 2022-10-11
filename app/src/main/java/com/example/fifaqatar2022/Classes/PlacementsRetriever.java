@@ -20,7 +20,8 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
 
     static public PlacementsRetriever getPR() {
         if (pr == null) {
-            return new PlacementsRetriever();
+            pr = new PlacementsRetriever();
+            return pr;
         }
         return pr;
     }

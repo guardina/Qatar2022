@@ -8,6 +8,8 @@ public class Result {
     String homeScore;
     String visitorScore;
 
+    String id;
+
     public Team getHomeTeam() {
         return homeTeam;
     }
@@ -38,5 +40,13 @@ public class Result {
 
     public void setVisitorScore(String visitorScore) {
         this.visitorScore = visitorScore;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

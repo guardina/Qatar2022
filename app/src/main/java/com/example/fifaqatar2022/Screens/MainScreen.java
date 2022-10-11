@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -64,5 +65,10 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(new Intent(MainScreen.this, PlacementScreen.class));
             }
         });
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+        String uuid = sharedPreferences.getString("uuid", "");
+        Profile.getProfile().setUuid(uuid);
     }
 }

@@ -60,6 +60,39 @@ public class Prediction {
         group_results.get(group).add(group_result);
     }
 
+
+    public void resetGroup_result(Group_enum group_enum) {
+        int group = 0;
+
+        switch (group_enum) {
+            case A:
+                group = 0;
+                break;
+            case B:
+                group = 1;
+                break;
+            case C:
+                group = 2;
+                break;
+            case D:
+                group = 3;
+                break;
+            case E:
+                group = 4;
+                break;
+            case F:
+                group = 5;
+                break;
+            case G:
+                group = 6;
+                break;
+            case H:
+                group = 7;
+                break;
+        }
+        group_results.get(group).clear();
+    }
+
     public void resetGroup_results() {
         this.group_results = new ArrayList<>();
     }

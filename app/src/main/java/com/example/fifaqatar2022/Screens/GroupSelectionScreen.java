@@ -19,6 +19,9 @@ import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.MatchFinals;
 import com.example.fifaqatar2022.Classes.PlacementsRetriever;
+import com.example.fifaqatar2022.Classes.Profile;
+import com.example.fifaqatar2022.Classes.Result;
+import com.example.fifaqatar2022.Classes.ResultData;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
@@ -680,6 +683,24 @@ public class GroupSelectionScreen extends AppCompatActivity {
                         }
                         editor.commit();
                     }
+                }
+
+
+                String[] group_names = {"A","B","C","D","E","F","G","H"};
+                int i = 0;
+
+                for (ArrayList<Result> group_matches : Profile.getProfile().getPrediction().getGroup_results()) {
+                    for (Result result : group_matches) {
+                        ResultData data = new ResultData();
+
+                        data.setHomeTeamName(result.getHomeTeam().getName());
+                        data.setVisitorTeamName(result.getVisitorTeam().getName());
+                        data.setHomeTeamScore(result.getHomeScore());
+                        data.setVisitorTeamScore(result.getVisitorScore());
+
+                        myRef.child("predictions").child(Profile.getProfile().getUuid()).child("group").child(group_names[i]).child(result.getId()).setValue(data);
+                    }
+                    i++;
                 }
 
                 Toast.makeText(GroupSelectionScreen.this, "Risultati salvati\nPremere AGGIORNA per visualizzarli", Toast.LENGTH_SHORT).show();
