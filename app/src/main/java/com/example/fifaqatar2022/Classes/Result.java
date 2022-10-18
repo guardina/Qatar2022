@@ -2,27 +2,27 @@ package com.example.fifaqatar2022.Classes;
 
 public class Result {
 
-    Team homeTeam;
-    Team visitorTeam;
+    String homeTeam;
+    String visitorTeam;
 
     String homeScore;
     String visitorScore;
 
     String id;
 
-    public Team getHomeTeam() {
+    public String getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(Team homeTeam) {
+    public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public Team getVisitorTeam() {
+    public String getVisitorTeam() {
         return visitorTeam;
     }
 
-    public void setVisitorTeam(Team visitorTeam) {
+    public void setVisitorTeam(String visitorTeam) {
         this.visitorTeam = visitorTeam;
     }
 

@@ -134,7 +134,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="POINTS"
+            android:text="PUNTI"
             android:textColor="@color/black"
             android:gravity="center_vertical"
             android:fontFamily="@font/helvetica_bold"

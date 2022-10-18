@@ -253,7 +253,6 @@ public class GroupScreen extends AppCompatActivity {
 
         group.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
 
-
         Button saveButton = findViewById(R.id.saveButton);
 
         Group finalGroup = group;
@@ -286,8 +285,8 @@ public class GroupScreen extends AppCompatActivity {
                         scoresVisitors.get(savePos).setText("0");
                     }
 
-                    result.setHomeTeam(match.getFirst_team());
-                    result.setVisitorTeam(match.getSecond_team());
+                    result.setHomeTeam(match.getFirst_team().getName());
+                    result.setVisitorTeam(match.getSecond_team().getName());
 
                     result.setHomeScore(String.valueOf(scoreHome));
                     result.setVisitorScore(String.valueOf(scoreVisitor));
@@ -311,8 +310,6 @@ public class GroupScreen extends AppCompatActivity {
 
                     Profile.getProfile().getPrediction().addGroup_result(result, selected_group);
                 }
-
-                Profile temp = Profile.getProfile();
 
                 String firstTeam = finalGroup.getPlacement().get(0).getName();
                 String secondTeam = finalGroup.getPlacement().get(1).getName();

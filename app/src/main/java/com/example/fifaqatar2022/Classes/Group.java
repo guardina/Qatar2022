@@ -237,6 +237,8 @@ public class Group {
             int scoreHome = (int) list.get(0);
             int scoreVisitor = (int) list.get(1);
             Match match = matches.get(posMatch);
+            match.setFirst_score(String.valueOf(scoreHome));
+            match.setSecond_score(String.valueOf(scoreVisitor));
 
             if (scoreHome > scoreVisitor) {
                 this.match_result(Group.Result.ONE, match);

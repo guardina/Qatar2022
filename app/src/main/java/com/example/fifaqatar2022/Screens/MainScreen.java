@@ -14,13 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.fifaqatar2022.Classes.Profile;
+import com.example.fifaqatar2022.Classes.Result;
 import com.example.fifaqatar2022.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class MainScreen extends AppCompatActivity {
 
@@ -67,8 +75,42 @@ public class MainScreen extends AppCompatActivity {
         });
 
 
+        //Profile myProfile = Profile.getProfile();
+
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         String uuid = sharedPreferences.getString("uuid", "");
         Profile.getProfile().setUuid(uuid);
+
+        List<String> group_names = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H");
+
+        for (String group_name : group_names) {
+            ArrayList<DataSnapshot> snapshots = new ArrayList<>();
+            myRef.child("predictions").child(Profile.getProfile().getUuid()).child("group").child(group_name).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                @Override
+                public void onSuccess(DataSnapshot dataSnapshot) {
+                    Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+
+                    while (iter.hasNext()) {
+                        snapshots.add(iter.next());
+                    }
+
+                    for (int i = 0; i < snapshots.size(); i++) {
+                        DataSnapshot current = snapshots.get(i);
+
+                        HashMap<String, String> group_pred = (HashMap) current.getValue();
+
+                        Result result = new Result();
+
+                        result.setHomeTeam(group_pred.get("homeTeamName"));
+                        result.setHomeScore(group_pred.get("homeTeamScore"));
+                        result.setVisitorTeam(group_pred.get("visitorTeamName"));
+                        result.setVisitorScore(group_pred.get("visitorTeamScore"));
+                        result.setId(group_pred.get("homeTeamName") + group_pred.get("visitorTeamName"));
+
+                        Profile.getProfile().getPrediction().getGroup_results().get(group_names.indexOf(group_name)).add(result);
+                    }
+                }
+            });
+        }
     }
 }

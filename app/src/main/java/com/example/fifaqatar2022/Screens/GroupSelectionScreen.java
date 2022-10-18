@@ -50,7 +50,9 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
 
         try {
-            ArrayList<Match> list = rr.execute().get();
+            if (!executed) {
+                ArrayList<Match> list = rr.execute().get();
+            }
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -690,18 +692,24 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 int i = 0;
 
                 for (ArrayList<Result> group_matches : Profile.getProfile().getPrediction().getGroup_results()) {
+                    int match_num = 0;
                     for (Result result : group_matches) {
                         ResultData data = new ResultData();
 
-                        data.setHomeTeamName(result.getHomeTeam().getName());
-                        data.setVisitorTeamName(result.getVisitorTeam().getName());
+                        data.setHomeTeamName(result.getHomeTeam());
+                        data.setVisitorTeamName(result.getVisitorTeam());
                         data.setHomeTeamScore(result.getHomeScore());
                         data.setVisitorTeamScore(result.getVisitorScore());
 
+                        editor.putString("group " + group_names[i] + " match " + match_num++, result.getId());
+                        System.out.println("-------> " + Profile.getProfile().getUuid());
+                        System.out.println("----> " + group_names[i]);
+                        System.out.println("--> " + result.getId());
                         myRef.child("predictions").child(Profile.getProfile().getUuid()).child("group").child(group_names[i]).child(result.getId()).setValue(data);
                     }
                     i++;
                 }
+                editor.commit();
 
                 Toast.makeText(GroupSelectionScreen.this, "Risultati salvati\nPremere AGGIORNA per visualizzarli", Toast.LENGTH_SHORT).show();
             }
