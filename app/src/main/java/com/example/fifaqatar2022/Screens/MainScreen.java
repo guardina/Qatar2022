@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.Result;
+import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +31,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainScreen extends AppCompatActivity {
 
@@ -37,11 +40,27 @@ public class MainScreen extends AppCompatActivity {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReference();
 
+    static boolean executed = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        ResultsRetriever rr = ResultsRetriever.getRR();
+
+        try {
+            if (!executed) {
+                ArrayList<Match> list = rr.execute().get();
+                executed = true;
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         Button predictionButton = findViewById(R.id.predButton);
@@ -70,16 +89,67 @@ public class MainScreen extends AppCompatActivity {
         placementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Profile profile = Profile.getProfile();
+                for(ArrayList<Result> group_results : profile.getPrediction().getGroup_results()) {
+                    for (Result prediction : group_results) {
+                        for (Match match : ResultsRetriever.getRR().getAllMatches()) {
+
+                            int homeScorePredicted = Integer.parseInt(prediction.getHomeScore());
+                            int visitorScorePredicted = Integer.parseInt(prediction.getVisitorScore());
+
+                            int actualHomeScore = -1;
+                            int actualVisitorScore = -1;
+
+                            if (!match.getHomeScore().equals("-") && !match.getVisitorScore().equals("-")) {
+                                actualHomeScore = Integer.parseInt(match.getHomeScore());
+                                actualVisitorScore = Integer.parseInt(match.getHomeScore());
+                            }
+
+                            if (match.getId().equals(prediction.getId())) {
+                                if (actualHomeScore != -1 && actualVisitorScore != -1) {
+                                    if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
+                                        profile.addPoints(2);
+                                    } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
+                                        profile.addPoints(1);
+                                    } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
+                                        profile.addPoints(1);
+                                    } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
+                                        profile.addPoints(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                myRef.child("users").child(profile.getUuid()).setValue(profile);
+
                 startActivity(new Intent(MainScreen.this, PlacementScreen.class));
             }
         });
 
 
-        //Profile myProfile = Profile.getProfile();
-
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         String uuid = sharedPreferences.getString("uuid", "");
         Profile.getProfile().setUuid(uuid);
+
+
+        myRef.child("users").child(uuid).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                HashMap<String, String> my_user = (HashMap) dataSnapshot.getValue();
+
+                Profile profile = Profile.getProfile();
+
+                profile.setFirstName(my_user.get("firstName"));
+                profile.setLastName(my_user.get("lastName"));
+                profile.setUserName(my_user.get("userName"));
+            }
+        });
+
+
+
 
         List<String> group_names = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H");
 

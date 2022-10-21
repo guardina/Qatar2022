@@ -45,10 +45,11 @@ public class GroupSelectionScreen extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_phase_selection);
 
-        ResultsRetriever rr = ResultsRetriever.getRR();
+        //ResultsRetriever rr = ResultsRetriever.getRR();
         PlacementsRetriever pr = PlacementsRetriever.getPR();
 
 
+        /*
         try {
             if (!executed) {
                 ArrayList<Match> list = rr.execute().get();
@@ -58,6 +59,8 @@ public class GroupSelectionScreen extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
+
 
         try {
             if (!executed) {
@@ -702,9 +705,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                         data.setVisitorTeamScore(result.getVisitorScore());
 
                         editor.putString("group " + group_names[i] + " match " + match_num++, result.getId());
-                        System.out.println("-------> " + Profile.getProfile().getUuid());
-                        System.out.println("----> " + group_names[i]);
-                        System.out.println("--> " + result.getId());
+
                         myRef.child("predictions").child(Profile.getProfile().getUuid()).child("group").child(group_names[i]).child(result.getId()).setValue(data);
                     }
                     i++;

@@ -87,8 +87,8 @@ public class GroupScreen extends AppCompatActivity {
 
         for (Match match : group.getMatches()) {
             scores.add(new ArrayList<>());
-            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), MODE_PRIVATE));
-            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), MODE_PRIVATE));
+            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getHomeTeam().getName(), MODE_PRIVATE));
+            scores.get(posMatches).add(sharedPreferences.getInt("goals " + match.getDate() + " " + match.getVisitorTeam().getName(), MODE_PRIVATE));
             posMatches++;
         }
         group.updateGroup(scores);
@@ -155,11 +155,11 @@ public class GroupScreen extends AppCompatActivity {
         int posMatch = 0;
 
         for (Match match : group.getMatches()) {
-            imageViewsMatchesHome.get(posMatch).setImageDrawable(match.getFirst_team().getLogo());
-            imageViewsMatchesVisitors.get(posMatch).setImageDrawable(match.getSecond_team().getLogo());
+            imageViewsMatchesHome.get(posMatch).setImageDrawable(match.getHomeTeam().getLogo());
+            imageViewsMatchesVisitors.get(posMatch).setImageDrawable(match.getVisitorTeam().getLogo());
 
-            textViewsMatchesHome.get(posMatch).append(match.getFirst_team().getName());
-            textViewsMatchesVisitors.get(posMatch).append(match.getSecond_team().getName());
+            textViewsMatchesHome.get(posMatch).append(match.getHomeTeam().getName());
+            textViewsMatchesVisitors.get(posMatch).append(match.getVisitorTeam().getName());
 
             posMatch++;
         }
@@ -285,18 +285,18 @@ public class GroupScreen extends AppCompatActivity {
                         scoresVisitors.get(savePos).setText("0");
                     }
 
-                    result.setHomeTeam(match.getFirst_team().getName());
-                    result.setVisitorTeam(match.getSecond_team().getName());
+                    result.setHomeTeam(match.getHomeTeam().getName());
+                    result.setVisitorTeam(match.getVisitorTeam().getName());
 
                     result.setHomeScore(String.valueOf(scoreHome));
                     result.setVisitorScore(String.valueOf(scoreVisitor));
 
-                    result.setId(match.getFirst_team().getName()+match.getSecond_team().getName());
+                    result.setId(match.getHomeTeam().getName()+match.getVisitorTeam().getName());
 
-                    editor.putInt("goals " + match.getDate() + " " + match.getFirst_team().getName(), scoreHome);
-                    editor.putInt("goals " + match.getDate() + " " + match.getSecond_team().getName(), scoreVisitor);
-                    match.setFirst_score(String.valueOf(scoreHome));
-                    match.setSecond_score(String.valueOf(scoreVisitor));
+                    editor.putInt("goals " + match.getDate() + " " + match.getHomeTeam().getName(), scoreHome);
+                    editor.putInt("goals " + match.getDate() + " " + match.getVisitorTeam().getName(), scoreVisitor);
+                    match.setHomeScore(String.valueOf(scoreHome));
+                    match.setVisitorScore(String.valueOf(scoreVisitor));
 
                     if (scoreHome > scoreVisitor) {
                         finalGroup.match_result(Group.Result.ONE, match);

@@ -2,52 +2,54 @@ package com.example.fifaqatar2022.Classes;
 
 public class Match {
 
-    private Team first_team;
-    private Team second_team;
+    private Team homeTeam;
+    private Team visitorTeam;
 
-    private String first_score;
-    private String second_score;
+    private String homeScore;
+    private String visitorScore;
 
     String matchday;
     String date;
+
+    private String id;
 
     public Match(String matchday) {
         this.matchday = matchday;
     }
 
-    public void setFirst_team(Team first_team) {
-        this.first_team = first_team;
+    public void setHomeTeam(Team homeTeam) {
+        this.homeTeam = homeTeam;
     }
 
-    public Team getFirst_team() {
-        return first_team;
+    public Team getHomeTeam() {
+        return homeTeam;
     }
 
-    public void setFirst_score(String first_score) {
-        this.first_score = first_score;
+    public void setHomeScore(String homeScore) {
+        this.homeScore = homeScore;
     }
 
-    public String getFirst_score() {
-        return first_score;
-    }
-
-
-
-    public void setSecond_team(Team second_team) {
-        this.second_team = second_team;
-    }
-
-    public Team getSecond_team() {
-        return second_team;
+    public String getHomeScore() {
+        return homeScore;
     }
 
 
-    public void setSecond_score(String second_score) {
-        this.second_score = second_score;
+
+    public void setVisitorTeam(Team visitorTeam) {
+        this.visitorTeam = visitorTeam;
     }
 
-    public String getSecond_score() {
-        return second_score;
+    public Team getVisitorTeam() {
+        return visitorTeam;
+    }
+
+
+    public void setVisitorScore(String visitorScore) {
+        this.visitorScore = visitorScore;
+    }
+
+    public String getVisitorScore() {
+        return visitorScore;
     }
 
 
@@ -62,5 +64,13 @@ public class Match {
 
     public String getMatchday() {
         return matchday;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }

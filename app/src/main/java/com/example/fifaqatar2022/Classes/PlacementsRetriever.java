@@ -72,7 +72,7 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
                 ArrayList<Match> matches = rr.getAllMatches();
 
                 for (Match match : matches) {
-                    if (newGroup.getTeam_names().contains(match.getFirst_team().getName())) {
+                    if (newGroup.getTeam_names().contains(match.getHomeTeam().getName())) {
                         newGroup.add_match(match);
                     }
                 }
@@ -87,6 +87,9 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
         all_groups = placements;
         return placements;
     }
+
+
+
 
     public ArrayList<Group> getAllGroups() {
         return all_groups;

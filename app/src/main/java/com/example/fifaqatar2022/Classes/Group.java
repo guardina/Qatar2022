@@ -93,10 +93,10 @@ public class Group {
 
     public void add_match(Match match) {
         for (Team team : this.teams) {
-            if (team.getName().equals(match.getFirst_team().getName())) {
-                match.getFirst_team().setLogo(team.getLogo());
-            } else if (team.getName().equals(match.getSecond_team().getName())) {
-                match.getSecond_team().setLogo(team.getLogo());
+            if (team.getName().equals(match.getHomeTeam().getName())) {
+                match.getHomeTeam().setLogo(team.getLogo());
+            } else if (team.getName().equals(match.getVisitorTeam().getName())) {
+                match.getVisitorTeam().setLogo(team.getLogo());
             }
         }
         this.matches.add(match);
@@ -107,19 +107,19 @@ public class Group {
         int goalsHome = 0;
         int goalsVisitor = 0;
 
-        if (!match.getFirst_score().equals("-")) {
-            goalsHome = Integer.parseInt(match.getFirst_score());
+        if (!match.getHomeScore().equals("-")) {
+            goalsHome = Integer.parseInt(match.getHomeScore());
         }
-        if (!match.getSecond_score().equals("-")) {
-            goalsVisitor = Integer.parseInt(match.getSecond_score());
+        if (!match.getVisitorScore().equals("-")) {
+            goalsVisitor = Integer.parseInt(match.getVisitorScore());
         }
 
         for (Team team : teams) {
-            if (team.getName().equals(match.getFirst_team().getName())) {
+            if (team.getName().equals(match.getHomeTeam().getName())) {
                 team.getTeamInfo()[Team.GOALDIFF] += goalsHome - goalsVisitor;
                 team.scored_goals(goalsHome);
 
-            } else if (team.getName().equals(match.getSecond_team().getName())) {
+            } else if (team.getName().equals(match.getVisitorTeam().getName())) {
                 team.getTeamInfo()[Team.GOALDIFF] += goalsVisitor - goalsHome;
                 team.scored_goals(goalsVisitor);
             }
@@ -129,11 +129,11 @@ public class Group {
         switch (result) {
             case ONE:
                 for (Team team : teams) {
-                    if (team.getName().equals(match.getFirst_team().getName())) {
+                    if (team.getName().equals(match.getHomeTeam().getName())) {
                         team.getTeamInfo()[Team.POINTS] += 3;
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.WINS]++;
-                    } else if (team.getName().equals(match.getSecond_team().getName())) {
+                    } else if (team.getName().equals(match.getVisitorTeam().getName())) {
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.LOSSES]++;
                     }
@@ -142,7 +142,7 @@ public class Group {
 
             case X:
                 for (Team team : teams) {
-                    if (team.getName().equals(match.getFirst_team().getName()) || team.getName().equals(match.getSecond_team().getName())) {
+                    if (team.getName().equals(match.getHomeTeam().getName()) || team.getName().equals(match.getVisitorTeam().getName())) {
                         team.getTeamInfo()[Team.POINTS] += 1;
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.DRAWS]++;
@@ -152,11 +152,11 @@ public class Group {
 
             case TWO:
                 for (Team team : teams) {
-                    if (team.getName().equals(match.getSecond_team().getName())) {
+                    if (team.getName().equals(match.getVisitorTeam().getName())) {
                         team.getTeamInfo()[Team.POINTS] += 3;
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.WINS]++;
-                    } else if (team.getName().equals(match.getFirst_team().getName())) {
+                    } else if (team.getName().equals(match.getHomeTeam().getName())) {
                         team.getTeamInfo()[Team.GAMES]++;
                         team.getTeamInfo()[Team.LOSSES]++;
                     }
@@ -237,8 +237,8 @@ public class Group {
             int scoreHome = (int) list.get(0);
             int scoreVisitor = (int) list.get(1);
             Match match = matches.get(posMatch);
-            match.setFirst_score(String.valueOf(scoreHome));
-            match.setSecond_score(String.valueOf(scoreVisitor));
+            match.setHomeScore(String.valueOf(scoreHome));
+            match.setVisitorScore(String.valueOf(scoreVisitor));
 
             if (scoreHome > scoreVisitor) {
                 this.match_result(Group.Result.ONE, match);

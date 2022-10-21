@@ -60,24 +60,25 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match
 
 
                         if (first) {
-                            m.setFirst_team(newTeam);
+                            m.setHomeTeam(newTeam);
 
                             if (score.equals("")) {
                                 score = "-";
                             }
 
-                            m.setFirst_score(score);
+                            m.setHomeScore(score);
                         } else {
-                            m.setSecond_team(newTeam);
+                            m.setVisitorTeam(newTeam);
 
                             if (score.equals("")) {
                                 score = "-";
                             }
 
-                            m.setSecond_score(score);
+                            m.setVisitorScore(score);
                         }
                         first = false;
                     }
+                    m.setId(m.getHomeTeam().getName()+m.getVisitorTeam().getName());
                     results.add(m);
                 }
             }
