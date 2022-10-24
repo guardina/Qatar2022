@@ -47,7 +47,7 @@ public class ProfileScreen extends AppCompatActivity {
                 firstNameChanger.setText(profile.firstName);
                 lastNameChanger.setText(profile.lastName);
                 userNameChanger.setText(profile.userName);
-                pointsShower.setText("Punti: \n" + profile.points);
+                pointsShower.setText("Punti: \n" + profile.getPoints());
                 perfectResultsShower.setText("Risultati esatti:   \n" + profile.perfectResults);
             }
 

@@ -557,11 +557,8 @@ public class GroupSelectionScreen extends AppCompatActivity {
                             all_names.get(2 * round + 1).get(i).setText(team.getName());
                         }
                     }
-
-
                 }
             }
-
         }
 
 

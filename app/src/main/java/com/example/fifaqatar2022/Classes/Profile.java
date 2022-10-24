@@ -7,7 +7,7 @@ public class Profile {
     public String firstName;
     public String lastName;
     public String userName;
-    public int points;
+    private int points;
     public int perfectResults;
     private String uuid;
 
@@ -50,6 +50,10 @@ public class Profile {
 
     public void addPoints(int points) {
         this.points += points;
+    }
+
+    public int getPoints() {
+        return points;
     }
 
     public void gotPerfectResult() {

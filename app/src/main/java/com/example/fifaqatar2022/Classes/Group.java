@@ -92,14 +92,24 @@ public class Group {
 
 
     public void add_match(Match match) {
+        Match newMatch = new Match(match.getMatchday());
+        newMatch.setId(match.getId());
+        newMatch.setDate(match.getDate());
+
+        newMatch.setHomeTeam(match.getHomeTeam());
+        newMatch.setVisitorTeam(match.getVisitorTeam());
+
+        newMatch.setHomeScore(match.getHomeScore());
+        newMatch.setVisitorScore(match.getVisitorScore());
+
         for (Team team : this.teams) {
             if (team.getName().equals(match.getHomeTeam().getName())) {
-                match.getHomeTeam().setLogo(team.getLogo());
+                newMatch.getHomeTeam().setLogo(team.getLogo());
             } else if (team.getName().equals(match.getVisitorTeam().getName())) {
-                match.getVisitorTeam().setLogo(team.getLogo());
+                newMatch.getVisitorTeam().setLogo(team.getLogo());
             }
         }
-        this.matches.add(match);
+        this.matches.add(newMatch);
     }
 
     public void match_result(Result result, Match match) {
