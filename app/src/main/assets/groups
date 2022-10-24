@@ -1,0 +1,164 @@
+{
+  "group": [
+    {
+      "A": {
+        "first": {
+          "name": "Ecuador",
+          "logo": "ecuador.png"
+        },
+        "second": {
+          "name": "Olanda",
+          "logo": "olanda.png"
+        },
+        "third": {
+          "name": "Qatar",
+          "logo": "qatar.png"
+        },
+        "fourth": {
+          "name": "Senegal",
+          "logo": "senegal.png"
+        }
+      }
+    },
+    {
+      "B": {
+        "first": {
+          "name": "Galles",
+          "logo": "galles.png"
+        },
+        "second": {
+          "name": "Inghilterra",
+          "logo": "inghilterra.png"
+        },
+        "third": {
+          "name": "Iran",
+          "logo": "iran.png"
+        },
+        "fourt": {
+          "name": "Stati Uniti",
+          "logo": "usa.png"
+        }
+      }
+    },
+    {
+      "C": {
+        "first": {
+          "name": "Arabia Saudita",
+          "logo": "arabia.png"
+        },
+        "second": {
+          "name": "Argentina",
+          "logo": "argentina.png"
+        },
+        "third": {
+          "name": "Messico",
+          "logo": "messico.png"
+        },
+        "fourth": {
+          "name": "Polonia",
+          "logo": "polonia.png"
+        }
+      }
+    },
+    {
+      "D": {
+        "first": {
+          "name": "Australia",
+          "logo": "australia.png"
+        },
+        "second": {
+          "name": "Danimarca",
+          "logo": "danimarca.png"
+        },
+        "third": {
+          "name": "Francia",
+          "logo": "francia.png"
+        },
+        "fourth": {
+          "name": "Tunisia",
+          "logo": "tunisia.png"
+        }
+      }
+    },
+    {
+      "E": {
+        "first": {
+          "name": "Costa Rica",
+          "logo": "costarica.png"
+        },
+        "second": {
+          "name": "Germania",
+          "logo": "germania.png"
+        },
+        "third": {
+          "name": "Giappone",
+          "logo": "giappone.png"
+        },
+        "fourth": {
+          "name": "Spagna",
+          "logo": "spagna.png"
+        }
+      }
+    },
+    {
+      "F": {
+        "first": {
+          "name": "Belgio",
+          "logo": "belgio.png"
+        },
+        "second": {
+          "name": "Canada",
+          "logo": "canada.png"
+        },
+        "third": {
+          "name": "Croazia",
+          "logo": "croazia.png"
+        },
+        "fourth": {
+          "name": "Marocco",
+          "logo": "marocco.png"
+        }
+      }
+    },
+    {
+      "G": {
+        "first": {
+          "name": "Brasile",
+          "logo": "brasile.png"
+        },
+        "second": {
+          "name": "Camerun",
+          "logo": "camerun.png"
+        },
+        "third": {
+          "name": "Serbia",
+          "logo": "serbia.png"
+        },
+        "fourth": {
+          "name": "Svizzera",
+          "logo": "svizzera.png"
+        }
+      }
+    },
+    {
+      "H": {
+        "first": {
+          "name": "Ghana",
+          "logo": "ghana.png"
+        },
+        "second": {
+          "name": "Portogallo",
+          "logo": "portogallo.png"
+        },
+        "third": {
+          "name": "Corea del Sud",
+          "logo": "coreadelsud.png"
+        },
+        "fourth": {
+          "name": "Uruguay",
+          "logo": "uruguay.png"
+        }
+      }
+    }
+  ]
+}

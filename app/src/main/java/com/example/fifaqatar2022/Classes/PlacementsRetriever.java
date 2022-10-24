@@ -3,14 +3,22 @@ package com.example.fifaqatar2022.Classes;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+
+
 
 public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Group>> {
 
@@ -26,6 +34,11 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
         return pr;
     }
 
+    private JSONObject obj;
+
+    public void setObj(JSONObject obj) {
+        this.obj = obj;
+    }
 
     static ArrayList<Group> all_groups = new ArrayList<>();
 
@@ -40,6 +53,18 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
             for (Element group : doc.select("[class*=xpa-layout-container__switch--standings]")) {
 
                 Group newGroup = new Group();
+
+                JSONArray teams_JSON = obj.getJSONArray("group");
+
+                for (int i = 0; i < teams_JSON.length(); i++) {
+                    JSONObject json = teams_JSON.getJSONObject(i);
+                    System.out.println(json);
+                }
+
+
+
+
+
 
                 String group_name = group.select("[class*=standings__table-header-text]").text();
                 newGroup.setName(group_name);
@@ -82,6 +107,8 @@ public class PlacementsRetriever extends AsyncTask<String, Integer, ArrayList<Gr
 
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException j) {
+            j.printStackTrace();
         }
 
         all_groups = placements;
