@@ -2,7 +2,7 @@ package com.example.fifaqatar2022.Screens;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,18 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
-import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.MatchFinals;
-import com.example.fifaqatar2022.Classes.PlacementsRetriever;
+import com.example.fifaqatar2022.Classes.GroupCreator;
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.Result;
 import com.example.fifaqatar2022.Classes.ResultData;
-import com.example.fifaqatar2022.Classes.ResultsRetriever;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -52,43 +51,52 @@ public class GroupSelectionScreen extends AppCompatActivity {
         setContentView(R.layout.activity_phase_selection);
 
         //ResultsRetriever rr = ResultsRetriever.getRR();
-        PlacementsRetriever pr = PlacementsRetriever.getPR();
+        GroupCreator gc = GroupCreator.getGC();
 
         JSONObject obj = null;
 
+
         try {
             obj = new JSONObject(loadJSONFromAsset("groups"));
-        } catch (JSONException j) {
-            j.printStackTrace();
-        }
 
-        pr.setObj(obj);
+            JSONArray teams_JSON = obj.getJSONArray("group");
+            String[] groups = {"A", "B", "C", "D", "E", "F", "G", "H"};
+            String[] squads = {"first", "second", "third", "fourth"};
 
-        /*
-        try {
-            if (!executed) {
-                ArrayList<Match> list = rr.execute().get();
+            ArrayList<ArrayList<Drawable>> logos = new ArrayList<>();
+            ArrayList<ArrayList<String>> names = new ArrayList<>();
+
+
+
+            for (int i = 0; i < teams_JSON.length(); i++) {
+                logos.add(new ArrayList<>());
+                names.add(new ArrayList<>());
+
+                JSONObject json = teams_JSON.getJSONObject(i);
+                if (json.has(groups[i])) {
+                    for (String squad : squads) {
+                        String team_name = (String) json.getJSONObject(groups[i]).getJSONObject(squad).get("name");
+                        String logo_link = (String) json.getJSONObject(groups[i]).getJSONObject(squad).get("logo");
+
+                        System.out.println(getResources().getIdentifier(logo_link, "drawable", getApplicationContext().getPackageName()));
+
+                        Drawable logo = getResources().getDrawable(getResources().getIdentifier(logo_link, "drawable", getApplicationContext().getPackageName()));
+
+                        names.get(i).add(team_name);
+                        logos.get(i).add(logo);
+                    }
+                }
             }
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
+
+            gc.setNames(names);
+            gc.setLogos(logos);
 
 
-
-
-        try {
-            if (!executed) {
-                ArrayList<Group> list = pr.execute().get();
-                executed = true;
-            }
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        gc.create_groups();
 
 
         Button chooseGroupsButton = findViewById(R.id.chooseGroupsButton);
@@ -461,7 +469,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
         Collections.addAll(secondOrder, "1", "3", "5", "7", "0", "2", "4", "6");
 
 
-        ArrayList<Group> allGroups = pr.getAllGroups();
+        ArrayList<Group> allGroups = gc.getAllGroups();
 
 
         ArrayList<MatchFinals> matchesEight = new ArrayList<>();

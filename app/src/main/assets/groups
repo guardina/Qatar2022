@@ -4,19 +4,19 @@
       "A": {
         "first": {
           "name": "Ecuador",
-          "logo": "ecuador.png"
+          "logo": "ecuador"
         },
         "second": {
           "name": "Olanda",
-          "logo": "olanda.png"
+          "logo": "olanda"
         },
         "third": {
           "name": "Qatar",
-          "logo": "qatar.png"
+          "logo": "qatar"
         },
         "fourth": {
           "name": "Senegal",
-          "logo": "senegal.png"
+          "logo": "senegal"
         }
       }
     },
@@ -24,19 +24,19 @@
       "B": {
         "first": {
           "name": "Galles",
-          "logo": "galles.png"
+          "logo": "galles"
         },
         "second": {
           "name": "Inghilterra",
-          "logo": "inghilterra.png"
+          "logo": "inghilterra"
         },
         "third": {
           "name": "Iran",
-          "logo": "iran.png"
+          "logo": "iran"
         },
-        "fourt": {
+        "fourth": {
           "name": "Stati Uniti",
-          "logo": "usa.png"
+          "logo": "usa"
         }
       }
     },
@@ -44,19 +44,19 @@
       "C": {
         "first": {
           "name": "Arabia Saudita",
-          "logo": "arabia.png"
+          "logo": "arabia"
         },
         "second": {
           "name": "Argentina",
-          "logo": "argentina.png"
+          "logo": "argentina"
         },
         "third": {
           "name": "Messico",
-          "logo": "messico.png"
+          "logo": "messico"
         },
         "fourth": {
           "name": "Polonia",
-          "logo": "polonia.png"
+          "logo": "polonia"
         }
       }
     },
@@ -64,19 +64,19 @@
       "D": {
         "first": {
           "name": "Australia",
-          "logo": "australia.png"
+          "logo": "australia"
         },
         "second": {
           "name": "Danimarca",
-          "logo": "danimarca.png"
+          "logo": "danimarca"
         },
         "third": {
           "name": "Francia",
-          "logo": "francia.png"
+          "logo": "francia"
         },
         "fourth": {
           "name": "Tunisia",
-          "logo": "tunisia.png"
+          "logo": "tunisia"
         }
       }
     },
@@ -84,19 +84,19 @@
       "E": {
         "first": {
           "name": "Costa Rica",
-          "logo": "costarica.png"
+          "logo": "costarica"
         },
         "second": {
           "name": "Germania",
-          "logo": "germania.png"
+          "logo": "germania"
         },
         "third": {
           "name": "Giappone",
-          "logo": "giappone.png"
+          "logo": "giappone"
         },
         "fourth": {
           "name": "Spagna",
-          "logo": "spagna.png"
+          "logo": "spagna"
         }
       }
     },
@@ -104,19 +104,19 @@
       "F": {
         "first": {
           "name": "Belgio",
-          "logo": "belgio.png"
+          "logo": "belgio"
         },
         "second": {
           "name": "Canada",
-          "logo": "canada.png"
+          "logo": "canada"
         },
         "third": {
           "name": "Croazia",
-          "logo": "croazia.png"
+          "logo": "croazia"
         },
         "fourth": {
           "name": "Marocco",
-          "logo": "marocco.png"
+          "logo": "marocco"
         }
       }
     },
@@ -124,19 +124,19 @@
       "G": {
         "first": {
           "name": "Brasile",
-          "logo": "brasile.png"
+          "logo": "brasile"
         },
         "second": {
           "name": "Camerun",
-          "logo": "camerun.png"
+          "logo": "camerun"
         },
         "third": {
           "name": "Serbia",
-          "logo": "serbia.png"
+          "logo": "serbia"
         },
         "fourth": {
           "name": "Svizzera",
-          "logo": "svizzera.png"
+          "logo": "svizzera"
         }
       }
     },
@@ -144,19 +144,19 @@
       "H": {
         "first": {
           "name": "Ghana",
-          "logo": "ghana.png"
+          "logo": "ghana"
         },
         "second": {
           "name": "Portogallo",
-          "logo": "portogallo.png"
+          "logo": "portogallo"
         },
         "third": {
           "name": "Corea del Sud",
-          "logo": "coreadelsud.png"
+          "logo": "coreadelsud"
         },
         "fourth": {
           "name": "Uruguay",
-          "logo": "uruguay.png"
+          "logo": "uruguay"
         }
       }
     }
