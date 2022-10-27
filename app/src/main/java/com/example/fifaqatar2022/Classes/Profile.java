@@ -52,6 +52,10 @@ public class Profile {
         this.points += points;
     }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
     public int getPoints() {
         return points;
     }

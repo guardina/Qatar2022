@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.fifaqatar2022.Classes.Entity;
 import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.Result;
@@ -145,6 +146,7 @@ public class MainScreen extends AppCompatActivity {
                 profile.setFirstName(my_user.get("firstName"));
                 profile.setLastName(my_user.get("lastName"));
                 profile.setUserName(my_user.get("userName"));
+                profile.setPoints(Integer.parseInt(String.valueOf(my_user.get("points"))));
             }
         });
 
@@ -182,5 +184,27 @@ public class MainScreen extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+        String uuid = sharedPreferences.getString("uuid", "");
+
+        myRef.child("users").child(uuid).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                HashMap<String, String> my_user = (HashMap) dataSnapshot.getValue();
+
+                Profile profile = Profile.getProfile();
+
+                profile.setFirstName(my_user.get("firstName"));
+                profile.setLastName(my_user.get("lastName"));
+                profile.setUserName(my_user.get("userName"));
+                profile.setPoints(Integer.parseInt(String.valueOf(my_user.get("points"))));
+            }
+        });
     }
 }
