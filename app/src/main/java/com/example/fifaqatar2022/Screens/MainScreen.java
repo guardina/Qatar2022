@@ -92,6 +92,7 @@ public class MainScreen extends AppCompatActivity {
             public void onClick(View view) {
 
                 Profile profile = Profile.getProfile();
+                profile.resetPoints();
                 for(ArrayList<Result> group_results : profile.getPrediction().getGroup_results()) {
                     for (Result prediction : group_results) {
                         for (Match match : ResultsRetriever.getRR().getAllMatches()) {
@@ -104,13 +105,13 @@ public class MainScreen extends AppCompatActivity {
 
                             if (!match.getHomeScore().equals("-") && !match.getVisitorScore().equals("-")) {
                                 actualHomeScore = Integer.parseInt(match.getHomeScore());
-                                actualVisitorScore = Integer.parseInt(match.getHomeScore());
+                                actualVisitorScore = Integer.parseInt(match.getVisitorScore());
                             }
 
                             if (match.getId().equals(prediction.getId())) {
                                 if (actualHomeScore != -1 && actualVisitorScore != -1) {
                                     if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
-                                        profile.addPoints(2);
+                                        profile.addPoints(3);
                                     } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
                                         profile.addPoints(1);
                                     } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {

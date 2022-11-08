@@ -67,7 +67,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
             ArrayList<ArrayList<String>> names = new ArrayList<>();
 
 
-
             for (int i = 0; i < teams_JSON.length(); i++) {
                 logos.add(new ArrayList<>());
                 names.add(new ArrayList<>());
@@ -700,20 +699,48 @@ public class GroupSelectionScreen extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                boolean firstTime = true;
+
+                ArrayList<Result> tempResult = null;
+
                 for (int round = 0; round < all_scores.size(); round++) {
+
+                    if (firstTime) {
+                        tempResult = new ArrayList<>();
+                        for (int i = 0; i < all_scores.get(round).size(); i++) {
+                            tempResult.add(new Result());
+                        }
+                    }
 
                     for (int posEditText = 0; posEditText < all_scores.get(round).size(); posEditText++) {
                         if (round % 2 == 0) {
                             editor.putString("Home score " + round / 2 + ", " + posEditText, all_scores.get(round).get(posEditText).getText().toString());
+                            tempResult.get(posEditText).setHomeScore(all_scores.get(round).get(posEditText).getText().toString());
+                            tempResult.get(posEditText).setHomeTeam(all_names.get(round).get(posEditText).getText().toString());
                         } else {
                             editor.putString("Visitor score " + round / 2 + ", " + posEditText, all_scores.get(round).get(posEditText).getText().toString());
+                            tempResult.get(posEditText).setVisitorScore(all_scores.get(round).get(posEditText).getText().toString());
+                            tempResult.get(posEditText).setVisitorTeam(all_names.get(round).get(posEditText).getText().toString());
+                            String tempId = tempResult.get(posEditText).getHomeTeam()+tempResult.get(posEditText).getVisitorTeam();
+                            tempResult.get(posEditText).setId(tempId);
                         }
                         editor.commit();
+                    }
+
+                    if (round % 2 == 0) {
+                        firstTime = false;
+                    } else {
+                        firstTime = true;
+                        for (Result result : tempResult) {
+                            Profile.getProfile().getPrediction().addFinals_result(result, round/2);
+                        }
                     }
                 }
 
 
-                String[] group_names = {"A","B","C","D","E","F","G","H"};
+                ////////// SAVE GROUP PREDICTIONS ///////////
+
+                String[] group_names = {"A", "B", "C", "D", "E", "F", "G", "H"};
                 int i = 0;
 
                 for (ArrayList<Result> group_matches : Profile.getProfile().getPrediction().getGroup_results()) {
@@ -732,6 +759,68 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     }
                     i++;
                 }
+
+                ////////// SAVE EIGHTS PREDICTIONS /////////////////
+
+                for (Result result : Profile.getProfile().getPrediction().getEight_results()) {
+
+                    ResultData data = new ResultData();
+
+                    data.setHomeTeamName(result.getHomeTeam());
+                    data.setVisitorTeamName(result.getVisitorTeam());
+                    data.setHomeTeamScore(result.getHomeScore());
+                    data.setVisitorTeamScore(result.getVisitorScore());
+
+                    myRef.child("predictions").child(Profile.getProfile().getUuid()).child("eight").child(result.getId()).setValue(data);
+                }
+
+
+                ////////// SAVE FOURTH PREDICTIONS /////////////////
+
+                for (Result result : Profile.getProfile().getPrediction().getFourth_results()) {
+
+                    ResultData data = new ResultData();
+
+                    data.setHomeTeamName(result.getHomeTeam());
+                    data.setVisitorTeamName(result.getVisitorTeam());
+                    data.setHomeTeamScore(result.getHomeScore());
+                    data.setVisitorTeamScore(result.getVisitorScore());
+
+                    myRef.child("predictions").child(Profile.getProfile().getUuid()).child("fourth").child(result.getId()).setValue(data);
+                }
+
+
+
+                ////////// SAVE SEMI PREDICTIONS /////////////////
+
+                for (Result result : Profile.getProfile().getPrediction().getSemi_results()) {
+
+                    ResultData data = new ResultData();
+
+                    data.setHomeTeamName(result.getHomeTeam());
+                    data.setVisitorTeamName(result.getVisitorTeam());
+                    data.setHomeTeamScore(result.getHomeScore());
+                    data.setVisitorTeamScore(result.getVisitorScore());
+
+                    myRef.child("predictions").child(Profile.getProfile().getUuid()).child("semi").child(result.getId()).setValue(data);
+                }
+
+
+                ////////// SAVE FINAL PREDICTIONS /////////////////
+
+                for (Result result : Profile.getProfile().getPrediction().getFinal_results()) {
+
+                    ResultData data = new ResultData();
+
+                    data.setHomeTeamName(result.getHomeTeam());
+                    data.setVisitorTeamName(result.getVisitorTeam());
+                    data.setHomeTeamScore(result.getHomeScore());
+                    data.setVisitorTeamScore(result.getVisitorScore());
+
+                    myRef.child("predictions").child(Profile.getProfile().getUuid()).child("final").child(result.getId()).setValue(data);
+                }
+
+
                 editor.commit();
 
                 Toast.makeText(GroupSelectionScreen.this, "Risultati salvati\nPremere AGGIORNA per visualizzarli", Toast.LENGTH_SHORT).show();

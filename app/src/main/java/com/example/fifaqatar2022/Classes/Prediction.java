@@ -61,6 +61,32 @@ public class Prediction {
     }
 
 
+    public void addFinals_result(Result result, int round) {
+        ArrayList<Result> ref;
+
+        switch (round) {
+            case 0:
+                ref = eight_results;
+                break;
+            case 1:
+                ref = fourth_results;
+                break;
+            case 2:
+                ref = semi_results;
+                break;
+            case 3:
+                ref = final_results;
+                break;
+            default:
+                ref = null;
+        }
+
+        if (ref != null) {
+            ref.add(result);
+        }
+    }
+
+
     public void resetGroup_result(Group_enum group_enum) {
         int group = 0;
 
