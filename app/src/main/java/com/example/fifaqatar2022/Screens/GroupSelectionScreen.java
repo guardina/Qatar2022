@@ -56,6 +56,17 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
         FinalsResultsRetriever frr = FinalsResultsRetriever.getFRR();
 
+        try {
+            if (!executed) {
+                ArrayList<ArrayList<Result>> list = frr.execute().get();
+                executed = true;
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         GroupCreator gc = GroupCreator.getGC();
 
@@ -701,22 +712,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                try {
-                    if (!executed) {
-                        ArrayList<ArrayList<Result>> list = frr.execute().get();
-                        executed = true;
-                    }
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-
-
-
-
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
                 boolean firstTime = true;
@@ -784,6 +779,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 for (Result result : Profile.getProfile().getPrediction().getEight_results()) {
 
+                    if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
+                        continue;
+                    }
+
                     ResultData data = new ResultData();
 
                     data.setHomeTeamName(result.getHomeTeam());
@@ -798,6 +797,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 ////////// SAVE FOURTH PREDICTIONS /////////////////
 
                 for (Result result : Profile.getProfile().getPrediction().getFourth_results()) {
+
+                    if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
+                        continue;
+                    }
 
                     ResultData data = new ResultData();
 
@@ -815,6 +818,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 for (Result result : Profile.getProfile().getPrediction().getSemi_results()) {
 
+                    if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
+                        continue;
+                    }
+
                     ResultData data = new ResultData();
 
                     data.setHomeTeamName(result.getHomeTeam());
@@ -829,6 +836,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 ////////// SAVE FINAL PREDICTIONS /////////////////
 
                 for (Result result : Profile.getProfile().getPrediction().getFinal_results()) {
+
+                    if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
+                        continue;
+                    }
 
                     ResultData data = new ResultData();
 

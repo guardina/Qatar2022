@@ -70,8 +70,8 @@ public class FinalsResultsRetriever extends AsyncTask<String, Integer, ArrayList
             results.add(new ArrayList<>());
         }
 
+        int round = 0;
         for (ArrayList<String> round_links : all_links) {
-            int round = 0;
             for (String link : round_links) {
                 System.out.println(link);
                 try {
@@ -84,18 +84,19 @@ public class FinalsResultsRetriever extends AsyncTask<String, Integer, ArrayList
 
                         if (competition_name.equals("Mondiale")) {
 
-                            for (Element match : competition.children()) {
+                            Elements matches = competition.select("[class=simple-match-card__content]");
+
+                            for (Element match : matches) {
                                 Result result = new Result();
 
                                 Elements teams = match.select("[class*=teams-content]");
 
                                 boolean first = true;
+                                boolean done = false;
 
                                 for (Element team : teams.select("[class=simple-match-card-team]")) {
                                     String team_name = team.select("[class*=team__name]").text();
                                     String team_score = team.select("[class*=team__score]").text();
-
-                                    System.out.println(team_name + "    " + team_score);
 
                                     if (first) {
                                         result.setHomeTeam(team_name);
@@ -116,12 +117,16 @@ public class FinalsResultsRetriever extends AsyncTask<String, Integer, ArrayList
                                         }
 
                                         result.setVisitorScore(team_score);
+                                        done = true;
                                     }
-                                }
 
-                                if (!(result.getHomeTeam() == null && result.getVisitorTeam() == null)) {
-                                    result.setId(result.getHomeTeam()+result.getVisitorTeam());
-                                    results.get(round).add(result);
+                                    if (done) {
+                                        if (result.getHomeTeam() != null && result.getVisitorTeam() != null) {
+                                            result.setId(result.getHomeTeam()+result.getVisitorTeam());
+                                            results.get(round).add(result);
+                                            break;
+                                        }
+                                    }
                                 }
                             }
                         }

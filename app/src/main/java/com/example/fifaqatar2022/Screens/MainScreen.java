@@ -190,6 +190,64 @@ public class MainScreen extends AppCompatActivity {
                 }
             });
         }
+
+
+        String[] stages = {"eight", "fourth", "semi", "final"};
+
+        ArrayList<Result> curPredictions;
+
+        for (String stage : stages) {
+
+            switch (stage) {
+                case "eight":
+                    curPredictions = Profile.getProfile().getPrediction().getEight_results();
+                    break;
+                case "fourth":
+                    curPredictions = Profile.getProfile().getPrediction().getFourth_results();
+                    break;
+                case "semi":
+                    curPredictions = Profile.getProfile().getPrediction().getSemi_results();
+                    break;
+                case "final":
+                    curPredictions = Profile.getProfile().getPrediction().getFinal_results();
+                    break;
+                default:
+                    curPredictions = null;
+                    break;
+            }
+
+            final ArrayList<Result> tempCurPredictions = curPredictions;
+
+            if (curPredictions != null) {
+                myRef.child("predictions").child(Profile.getProfile().getUuid()).child(stage).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot dataSnapshot) {
+                        Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+
+                        while (iter.hasNext()) {
+                            DataSnapshot current = iter.next();
+
+                            HashMap<String, String> stage_pred = (HashMap) current.getValue();
+
+                            Result result = new Result();
+
+                            result.setHomeTeam(stage_pred.get("homeTeamName"));
+                            result.setHomeScore(stage_pred.get("homeTeamScore"));
+                            result.setVisitorTeam(stage_pred.get("visitorTeamName"));
+                            result.setVisitorScore(stage_pred.get("visitorTeamScore"));
+                            result.setId(stage_pred.get("homeTeamName") + stage_pred.get("visitorTeamName"));
+
+                            tempCurPredictions.add(result);
+                        }
+                    }
+                });
+            }
+        }
+
+        Profile profile = Profile.getProfile();
+
+        int i = 0;
+
     }
 
     @Override
