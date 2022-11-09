@@ -2,13 +2,13 @@ package com.example.fifaqatar2022.Classes;
 
 public class Result {
 
-    String homeTeam;
-    String visitorTeam;
+    private String homeTeam;
+    private String visitorTeam;
 
-    String homeScore;
-    String visitorScore;
+    private String homeScore;
+    private String visitorScore;
 
-    String id;
+    private String id;
 
     public String getHomeTeam() {
         return homeTeam;

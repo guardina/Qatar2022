@@ -134,6 +134,11 @@ public class MainScreen extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         String uuid = sharedPreferences.getString("uuid", "");
+
+        if (uuid == null) {
+            startActivity(new Intent(MainScreen.this, StartScreen.class));
+        }
+
         Profile.getProfile().setUuid(uuid);
 
 

@@ -12,16 +12,16 @@ import java.util.ArrayList;
 
 public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match>> {
 
-    private static ResultsRetriever ir = null;
+    private static ResultsRetriever rr = null;
 
     public ResultsRetriever() {}
 
     static public ResultsRetriever getRR() {
-        if (ir == null) {
-            ir = new ResultsRetriever();
-            return ir;
+        if (rr == null) {
+            rr = new ResultsRetriever();
+            return rr;
         }
-        return ir;
+        return rr;
     }
 
     static ArrayList<Match> all_matches = new ArrayList();
@@ -54,7 +54,7 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match
 
                     for (Element team : teams.select("[class=simple-match-card-team]")) {
                         String team_name = team.select("[class*=team__name]").text();
-                        String score = team.select(("[class*=team__score]")).text();
+                        String team_score = team.select("[class*=team__score]").text();
 
                         Team newTeam = new Team(team_name);
 
@@ -62,19 +62,19 @@ public class ResultsRetriever extends AsyncTask<String, Integer, ArrayList<Match
                         if (first) {
                             m.setHomeTeam(newTeam);
 
-                            if (score.equals("")) {
-                                score = "-";
+                            if (team_score.equals("")) {
+                                team_score = "-";
                             }
 
-                            m.setHomeScore(score);
+                            m.setHomeScore(team_score);
                         } else {
                             m.setVisitorTeam(newTeam);
 
-                            if (score.equals("")) {
-                                score = "-";
+                            if (team_score.equals("")) {
+                                team_score = "-";
                             }
 
-                            m.setVisitorScore(score);
+                            m.setVisitorScore(team_score);
                         }
                         first = false;
                     }

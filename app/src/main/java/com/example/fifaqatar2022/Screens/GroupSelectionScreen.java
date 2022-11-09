@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fifaqatar2022.Classes.FinalsResultsRetriever;
 import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
+import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.MatchFinals;
 import com.example.fifaqatar2022.Classes.GroupCreator;
 import com.example.fifaqatar2022.Classes.Profile;
@@ -51,6 +53,10 @@ public class GroupSelectionScreen extends AppCompatActivity {
         setContentView(R.layout.activity_phase_selection);
 
         //ResultsRetriever rr = ResultsRetriever.getRR();
+
+        FinalsResultsRetriever frr = FinalsResultsRetriever.getFRR();
+
+
         GroupCreator gc = GroupCreator.getGC();
 
         JSONObject obj = null;
@@ -231,9 +237,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
-
-        //ScrollView eightView = findViewById(R.id.eightsView);
 
 
         /////////////////////                           EIGHT FINALS SCREEN                        ////////////////////
@@ -697,6 +700,23 @@ public class GroupSelectionScreen extends AppCompatActivity {
         groupSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                try {
+                    if (!executed) {
+                        ArrayList<ArrayList<Result>> list = frr.execute().get();
+                        executed = true;
+                    }
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
                 boolean firstTime = true;
