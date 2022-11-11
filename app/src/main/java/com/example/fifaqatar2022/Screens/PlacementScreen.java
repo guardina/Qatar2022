@@ -23,7 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class PlacementScreen extends AppCompatActivity {
+public class
+
+PlacementScreen extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://qatar-2022-64fef-default-rtdb.europe-west1.firebasedatabase.app");
     DatabaseReference myRef = database.getReference();

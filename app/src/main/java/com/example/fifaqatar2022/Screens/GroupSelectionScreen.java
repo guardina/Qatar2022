@@ -54,19 +54,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
         //ResultsRetriever rr = ResultsRetriever.getRR();
 
-        FinalsResultsRetriever frr = FinalsResultsRetriever.getFRR();
-
-        try {
-            if (!executed) {
-                ArrayList<ArrayList<Result>> list = frr.execute().get();
-                executed = true;
-            }
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
 
         GroupCreator gc = GroupCreator.getGC();
 
@@ -93,8 +80,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     for (String squad : squads) {
                         String team_name = (String) json.getJSONObject(groups[i]).getJSONObject(squad).get("name");
                         String logo_link = (String) json.getJSONObject(groups[i]).getJSONObject(squad).get("logo");
-
-                        System.out.println(getResources().getIdentifier(logo_link, "drawable", getApplicationContext().getPackageName()));
 
                         Drawable logo = getResources().getDrawable(getResources().getIdentifier(logo_link, "drawable", getApplicationContext().getPackageName()));
 
@@ -777,6 +762,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 ////////// SAVE EIGHTS PREDICTIONS /////////////////
 
+                myRef.child("predictions").child(Profile.getProfile().getUuid()).child("eight").removeValue();
                 for (Result result : Profile.getProfile().getPrediction().getEight_results()) {
 
                     if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
@@ -796,6 +782,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 ////////// SAVE FOURTH PREDICTIONS /////////////////
 
+                myRef.child("predictions").child(Profile.getProfile().getUuid()).child("fourth").removeValue();
                 for (Result result : Profile.getProfile().getPrediction().getFourth_results()) {
 
                     if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
@@ -816,6 +803,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 ////////// SAVE SEMI PREDICTIONS /////////////////
 
+                myRef.child("predictions").child(Profile.getProfile().getUuid()).child("semi").removeValue();
                 for (Result result : Profile.getProfile().getPrediction().getSemi_results()) {
 
                     if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {
@@ -835,6 +823,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 ////////// SAVE FINAL PREDICTIONS /////////////////
 
+                myRef.child("predictions").child(Profile.getProfile().getUuid()).child("final").removeValue();
                 for (Result result : Profile.getProfile().getPrediction().getFinal_results()) {
 
                     if (result.getHomeTeam().equals("-") || result.getVisitorTeam().equals("-")) {

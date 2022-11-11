@@ -73,7 +73,6 @@ public class FinalsResultsRetriever extends AsyncTask<String, Integer, ArrayList
         int round = 0;
         for (ArrayList<String> round_links : all_links) {
             for (String link : round_links) {
-                System.out.println(link);
                 try {
                     Document doc = Jsoup.connect(link).get();
 
