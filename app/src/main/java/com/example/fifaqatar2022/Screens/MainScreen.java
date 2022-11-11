@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -437,6 +438,10 @@ public class MainScreen extends AppCompatActivity {
             public void onSuccess(DataSnapshot dataSnapshot) {
                 HashMap<String, String> my_user = (HashMap) dataSnapshot.getValue();
 
+                if (my_user == null) {
+                    Toast.makeText(MainScreen.this, uuid + "\nPOINTS " + profile.getPoints(), Toast.LENGTH_LONG).show();
+                }
+
                 Profile profile = Profile.getProfile();
 
                 profile.setFirstName(my_user.get("firstName"));
@@ -465,6 +470,10 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
                 HashMap<String, String> my_user = (HashMap) dataSnapshot.getValue();
+
+                if (my_user == null) {
+                    Toast.makeText(MainScreen.this, uuid + "\nPOINTS " + Profile.getProfile().getPoints(), Toast.LENGTH_LONG).show();
+                }
 
                 Profile profile = Profile.getProfile();
 
