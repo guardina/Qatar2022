@@ -563,11 +563,14 @@ public class GroupSelectionScreen extends AppCompatActivity {
         ////////////////////////////////              SETUP ALL ONCLICK FOR IMAGES IN THE FINAL STAGES         //////////////////////////
 
         for (int round = 0; round < rounds.size(); round++) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
             for (int numMatches = 0; numMatches < rounds.get(round).size(); numMatches++) {
                 EditText home = all_scores.get(2 * round).get(numMatches);
                 EditText visitor = all_scores.get(2 * round + 1).get(numMatches);
                 MatchFinals match = rounds.get(round).get(numMatches);
 
+                final int finalRound = round;
+                final int finalNumMatches = numMatches;
 
                 all_logos.get(2 * round).get(numMatches).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -575,6 +578,8 @@ public class GroupSelectionScreen extends AppCompatActivity {
                         home.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
                         visitor.setBackground(getResources().getDrawable(R.drawable.my_score_background));
                         match.setPassesFirst(true);
+                        editor.putString("First Team winner " + finalRound + ", " + finalNumMatches, "true");
+                        editor.commit();
                     }
                 });
 
@@ -585,6 +590,8 @@ public class GroupSelectionScreen extends AppCompatActivity {
                         home.setBackground(getResources().getDrawable(R.drawable.my_score_background));
                         visitor.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
                         match.setPassesFirst(false);
+                        editor.putString("First Team winner " + finalRound + ", " + finalNumMatches, "false");
+                        editor.commit();
                     }
                 });
             }
@@ -606,6 +613,22 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     scoreVisitor = Integer.parseInt(all_scores.get(2 * round + 1).get(posMatch).getText().toString());
                 }
 
+                String firstTeamWin = sharedPreferences.getString("First Team winner " + round + ", " + posMatch, "");
+
+                EditText home = all_scores.get(2 * round).get(posMatch);
+                EditText visitor = all_scores.get(2 * round + 1).get(posMatch);
+
+
+                if (firstTeamWin.equals("true")) {
+                    rounds.get(round).get(posMatch).setPassesFirst(true);
+                    home.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
+                    visitor.setBackground(getResources().getDrawable(R.drawable.my_score_background));
+                } else if (firstTeamWin.equals("false")) {
+                    rounds.get(round).get(posMatch).setPassesFirst(false);
+                    home.setBackground(getResources().getDrawable(R.drawable.my_score_background));
+                    visitor.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
+                }
+
                 if (scoreHome > scoreVisitor) {
                     rounds.get(round).get(posMatch).setFirstTeamWon(true);
                 } else if (scoreHome == scoreVisitor && rounds.get(round).get(posMatch).getPassesFirst()) {
@@ -613,6 +636,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 } else {
                     rounds.get(round).get(posMatch).setFirstTeamWon(false);
                 }
+
             }
         }
 
@@ -721,7 +745,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                             editor.putString("Visitor score " + round / 2 + ", " + posEditText, all_scores.get(round).get(posEditText).getText().toString());
                             tempResult.get(posEditText).setVisitorScore(all_scores.get(round).get(posEditText).getText().toString());
                             tempResult.get(posEditText).setVisitorTeam(all_names.get(round).get(posEditText).getText().toString());
-                            String tempId = tempResult.get(posEditText).getHomeTeam()+tempResult.get(posEditText).getVisitorTeam();
+                            String tempId = tempResult.get(posEditText).getHomeTeam() + tempResult.get(posEditText).getVisitorTeam();
                             tempResult.get(posEditText).setId(tempId);
                         }
                         editor.commit();
@@ -731,8 +755,9 @@ public class GroupSelectionScreen extends AppCompatActivity {
                         firstTime = false;
                     } else {
                         firstTime = true;
+
                         for (Result result : tempResult) {
-                            Profile.getProfile().getPrediction().addFinals_result(result, round/2);
+                            Profile.getProfile().getPrediction().addFinals_result(result, round / 2);
                         }
                     }
                 }
@@ -798,7 +823,6 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                     myRef.child("predictions").child(Profile.getProfile().getUuid()).child("fourth").child(result.getId()).setValue(data);
                 }
-
 
 
                 ////////// SAVE SEMI PREDICTIONS /////////////////
