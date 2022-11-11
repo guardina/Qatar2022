@@ -170,6 +170,7 @@ public class MainScreen extends AppCompatActivity {
                     }
 
                     final ArrayList<Result> tempCurPredictions = curPredictions;
+                    curPredictions.clear();
 
                     if (curPredictions != null) {
                         myRef.child("predictions").child(Profile.getProfile().getUuid()).child(stage).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
@@ -212,7 +213,7 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
-
+        boolean isFinal = true;
 
         placementButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,8 +279,10 @@ public class MainScreen extends AppCompatActivity {
                                 actualVisitorScore = Integer.parseInt(actual_result.getVisitorScore());
                             }
 
+                            String invertedId = actual_result.getVisitorTeam()+actual_result.getHomeTeam();
+
                             if (round == 0) {
-                                if (actual_result.getId().equals(pred_result.getId())) {
+                                if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
                                     profile.addPoints(2);
                                     if (actualHomeScore != -1 && actualVisitorScore != -1) {
                                         if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
@@ -295,12 +298,114 @@ public class MainScreen extends AppCompatActivity {
                                 }
 
                             } else if (round == 1) {
+                                if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
+                                    profile.addPoints(2);
+                                }
 
+                                if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
+                                    profile.addPoints(2);
+                                }
+
+                                if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
+                                    profile.addPoints(2);
+                                    if (actualHomeScore != -1 && actualVisitorScore != -1) {
+                                        if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
+                                            profile.addPoints(5);
+                                        } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
+                                            profile.addPoints(2);
+                                        } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
+                                            profile.addPoints(2);
+                                        } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
+                                            profile.addPoints(2);
+                                        }
+                                    }
+                                }
 
                             } else if (round == 2) {
+                                if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
+                                    profile.addPoints(3);
+                                }
+
+                                if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
+                                    profile.addPoints(3);
+                                }
+
+                                if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
+                                    profile.addPoints(2);
+                                    if (actualHomeScore != -1 && actualVisitorScore != -1) {
+                                        if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
+                                            profile.addPoints(5);
+                                        } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
+                                            profile.addPoints(2);
+                                        } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
+                                            profile.addPoints(2);
+                                        } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
+                                            profile.addPoints(2);
+                                        }
+                                    }
+                                }
 
                             } else {
+                                if (isFinal) {
+                                    if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
+                                        profile.addPoints(4);
+                                    }
 
+                                    if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
+                                        profile.addPoints(4);
+                                    }
+
+                                    if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
+                                        profile.addPoints(2);
+                                        if (actualHomeScore != -1 && actualVisitorScore != -1) {
+                                            if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
+                                                profile.addPoints(5);
+                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                    profile.addPoints(6);
+                                                }
+                                            } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
+                                                profile.addPoints(2);
+                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                    profile.addPoints(6);
+                                                }
+                                            } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
+                                                profile.addPoints(2);
+                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                    profile.addPoints(6);
+                                                }
+                                            } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
+                                                profile.addPoints(2);
+                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                    profile.addPoints(6);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                } else {
+                                    if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
+                                        profile.addPoints(2);
+                                    }
+
+                                    if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
+                                        profile.addPoints(2);
+                                    }
+
+                                    if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
+                                        profile.addPoints(2);
+                                        if (actualHomeScore != -1 && actualVisitorScore != -1) {
+                                            if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
+                                                profile.addPoints(5);
+                                            } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
+                                                profile.addPoints(2);
+                                            } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
+                                                profile.addPoints(2);
+                                            } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
+                                                profile.addPoints(2);
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

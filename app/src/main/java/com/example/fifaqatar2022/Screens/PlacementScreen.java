@@ -89,7 +89,6 @@ PlacementScreen extends AppCompatActivity {
 
 
                         all_usernames.add(user.get("userName"));
-                        //TextView usernameView = new TextView(PlacementScreen.this);
                         usernameView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
                         usernameView.setText(user.get("userName"));
                         usernameView.setTextColor(getResources().getColor(R.color.black));
@@ -98,7 +97,6 @@ PlacementScreen extends AppCompatActivity {
 
 
                         all_points.add(String.valueOf(user.get("points")));
-                        //TextView pointsView = new TextView(PlacementScreen.this);
 
                         pointsView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
                         pointsView.setText(String.valueOf(user.get("points")));
