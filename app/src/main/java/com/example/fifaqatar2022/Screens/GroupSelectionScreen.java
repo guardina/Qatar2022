@@ -21,6 +21,7 @@ import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.MatchFinals;
 import com.example.fifaqatar2022.Classes.GroupCreator;
+import com.example.fifaqatar2022.Classes.MyTimer;
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.Result;
 import com.example.fifaqatar2022.Classes.ResultData;
@@ -390,22 +391,16 @@ public class GroupSelectionScreen extends AppCompatActivity {
         ArrayList<EditText> finalsScoresVisitor = new ArrayList<>();
 
         finalsLogosHome.add(findViewById(R.id.finalsLogoH1));
-        finalsLogosHome.add(findViewById(R.id.finalsLogoH2));
 
         finalsLogosVisitor.add(findViewById(R.id.finalsLogoV1));
-        finalsLogosVisitor.add(findViewById(R.id.finalsLogoV2));
 
         finalsNamesHome.add(findViewById(R.id.finalsNameH1));
-        finalsNamesHome.add(findViewById(R.id.finalsNameH2));
 
         finalsNamesVisitor.add(findViewById(R.id.finalsNameV1));
-        finalsNamesVisitor.add(findViewById(R.id.finalsNameV2));
 
         finalsScoresHome.add(findViewById(R.id.finalsScoreH1));
-        finalsScoresHome.add(findViewById(R.id.finalsScoreH2));
 
         finalsScoresVisitor.add(findViewById(R.id.finalsScoreV1));
-        finalsScoresVisitor.add(findViewById(R.id.finalsScoreV2));
 
 
         ArrayList<ArrayList<EditText>> all_scores = new ArrayList<>();
@@ -450,6 +445,9 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     String score = sharedPreferences.getString("Visitor score " + round / 2 + ", " + posEditText, "0");
                     all_scores.get(round).get(posEditText).setText(score);
                 }
+                if (MyTimer.getTimer().tooLate()) {
+                    all_scores.get(round).get(posEditText).setEnabled(false);
+                }
             }
         }
 
@@ -492,8 +490,9 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
         for (int i = 0; i < 2; i++) {
             matchesSemi.add(new MatchFinals());
-            matchesFinal.add(new MatchFinals());
         }
+
+        matchesFinal.add(new MatchFinals());
 
 
         ///////////////////////////////                      SETUP EIGHT OF FINALS ACCORDING TO GROUP PLACEMENTS               //////////////////////////
@@ -575,11 +574,13 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 all_logos.get(2 * round).get(numMatches).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        home.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
-                        visitor.setBackground(getResources().getDrawable(R.drawable.my_score_background));
-                        match.setPassesFirst(true);
-                        editor.putString("First Team winner " + finalRound + ", " + finalNumMatches, "true");
-                        editor.commit();
+                        if (!MyTimer.getTimer().tooLate()) {
+                            home.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
+                            visitor.setBackground(getResources().getDrawable(R.drawable.my_score_background));
+                            match.setPassesFirst(true);
+                            editor.putString("First Team winner " + finalRound + ", " + finalNumMatches, "true");
+                            editor.commit();
+                        }
                     }
                 });
 
@@ -587,11 +588,13 @@ public class GroupSelectionScreen extends AppCompatActivity {
                 all_logos.get(2 * round + 1).get(numMatches).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        home.setBackground(getResources().getDrawable(R.drawable.my_score_background));
-                        visitor.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
-                        match.setPassesFirst(false);
-                        editor.putString("First Team winner " + finalRound + ", " + finalNumMatches, "false");
-                        editor.commit();
+                        if (!MyTimer.getTimer().tooLate()) {
+                            home.setBackground(getResources().getDrawable(R.drawable.my_score_background));
+                            visitor.setBackground(getResources().getDrawable(R.drawable.my_pass_background));
+                            match.setPassesFirst(false);
+                            editor.putString("First Team winner " + finalRound + ", " + finalNumMatches, "false");
+                            editor.commit();
+                        }
                     }
                 });
             }
@@ -648,34 +651,20 @@ public class GroupSelectionScreen extends AppCompatActivity {
                     if (match.getFirstTeamWon()) {
                         if (match.getHomeTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setHomeTeam(match.getHomeTeam());
-                            if (round == rounds.size() - 2 && match.getVisitorTeam() != null) {
-                                rounds.get(round + 1).get(1).setHomeTeam(match.getVisitorTeam());
-                            }
                         }
                     } else {
                         if (match.getVisitorTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setHomeTeam(match.getVisitorTeam());
-                            if (round == rounds.size() - 2 && match.getHomeTeam() != null) {
-                                rounds.get(round + 1).get(1).setHomeTeam(match.getHomeTeam());
-                            }
                         }
                     }
                 } else {
-
                     if (match.getFirstTeamWon()) {
                         if (match.getHomeTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setVisitorTeam(match.getHomeTeam());
-                            if (round == rounds.size() - 2 && match.getVisitorTeam() != null) {
-                                rounds.get(round + 1).get(1).setVisitorTeam(match.getVisitorTeam());
-                            }
-
                         }
                     } else {
                         if (match.getVisitorTeam() != null) {
                             rounds.get(round + 1).get(pos / 2).setVisitorTeam(match.getVisitorTeam());
-                            if (round == rounds.size() - 2 && match.getHomeTeam() != null) {
-                                rounds.get(round + 1).get(1).setVisitorTeam(match.getHomeTeam());
-                            }
                         }
                     }
                 }
@@ -693,7 +682,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                             all_logos.get(2 * (round)).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
                             all_names.get(2 * (round)).get(pos / 2).setText(match.getHomeTeam().getName());
                         } else {
-                            if (match.getVisitorTeam() != null) {
+                            if (match.getVisitorTeam() != null && i == 1) {
                                 all_logos.get(2 * (round)).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
                                 all_names.get(2 * (round)).get(pos / 2).setText(match.getVisitorTeam().getName());
                             }
@@ -703,7 +692,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
                             all_logos.get(2 * (round) + 1).get(pos / 2).setImageDrawable(match.getHomeTeam().getLogo());
                             all_names.get(2 * (round) + 1).get(pos / 2).setText(match.getHomeTeam().getName());
                         } else {
-                            if (match.getVisitorTeam() != null) {
+                            if (match.getVisitorTeam() != null && i == 1) {
                                 all_logos.get(2 * (round) + 1).get(pos / 2).setImageDrawable(match.getVisitorTeam().getLogo());
                                 all_names.get(2 * (round) + 1).get(pos / 2).setText(match.getVisitorTeam().getName());
                             }
@@ -867,7 +856,7 @@ public class GroupSelectionScreen extends AppCompatActivity {
 
                 editor.commit();
 
-                Toast.makeText(GroupSelectionScreen.this, "Risultati salvati\nPremere AGGIORNA per visualizzarli", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GroupSelectionScreen.this, "Risultati salvati\nPremere AGGIORNA per visualizzarli", Toast.LENGTH_LONG).show();
             }
         });
 

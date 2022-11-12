@@ -1,5 +1,6 @@
 package com.example.fifaqatar2022.Classes;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Profile {
@@ -7,17 +8,19 @@ public class Profile {
     public String firstName;
     public String lastName;
     public String userName;
-    private int points;
+    private double points;
     public int perfectResults;
     private String uuid;
 
     private Prediction prediction;
+    private ArrayList<String> bombers;
 
     static Profile profile = null;
 
     private Profile() {
         this.uuid = UUID.randomUUID().toString();
         this.prediction = new Prediction();
+        this.bombers = new ArrayList<>();
     }
 
     static public Profile getProfile() {
@@ -48,7 +51,7 @@ public class Profile {
         this.uuid = uuid;
     }
 
-    public void addPoints(int points) {
+    public void addPoints(double points) {
         this.points += points;
     }
 
@@ -56,16 +59,24 @@ public class Profile {
         this.points = 0;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(double points) {
         this.points = points;
     }
 
-    public int getPoints() {
+    public double getPoints() {
         return points;
     }
 
     public void gotPerfectResult() {
         this.perfectResults++;
+    }
+
+    public ArrayList<String> getBombers() {
+        return bombers;
+    }
+
+    public void addBomber(String bomber) {
+        this.bombers.add(bomber);
     }
 
     public Prediction getPrediction() {

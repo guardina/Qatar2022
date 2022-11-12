@@ -57,6 +57,19 @@
         app:srcCompat="@drawable/fifa" />
 
     <Button
+        android:id="@+id/bomberButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_button"
+        android:text="BOMBER"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@id/mainBorderLeft"
+        app:layout_constraintEnd_toStartOf="@id/mainBorderRight"
+        app:layout_constraintTop_toBottomOf="@id/mainLogo"
+        app:layout_constraintBottom_toTopOf="@id/predButton"/>
+
+    <Button
         android:id="@+id/predButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -36,8 +36,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
-        <activity android:name=".Screens.ProfileScreen"/>
-        <activity android:name=".Screens.PlacementScreen"/>
+        <activity android:name=".Screens.ProfileScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screens.PlacementScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screens.BomberScreen"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

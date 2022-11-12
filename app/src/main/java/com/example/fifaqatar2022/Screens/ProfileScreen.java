@@ -2,10 +2,12 @@ package com.example.fifaqatar2022.Screens;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +36,7 @@ public class ProfileScreen extends AppCompatActivity {
         EditText firstNameChanger = findViewById(R.id.firstNameChanger);
         EditText lastNameChanger = findViewById(R.id.lastNameChanger);
         EditText userNameChanger = findViewById(R.id.userNameChanger);
+        userNameChanger.setFilters(new InputFilter[] { new InputFilter.LengthFilter(10) });
         TextView pointsShower = findViewById(R.id.pointsShower);
         TextView perfectResultsShower = findViewById(R.id.perfectResultsShower);
 
@@ -66,6 +69,11 @@ public class ProfileScreen extends AppCompatActivity {
             String uuid = sharedPreferences.getString("uuid", "");
             @Override
             public void onClick(View view) {
+                if (firstNameChanger.getText().toString().equals("") || userNameChanger.getText().toString().equals("")) {
+                    Toast.makeText(ProfileScreen.this, "Nome e/o username mancanti", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 profile.setFirstName(firstNameChanger.getText().toString());
                 profile.setLastName(lastNameChanger.getText().toString());
                 profile.setUserName(userNameChanger.getText().toString());

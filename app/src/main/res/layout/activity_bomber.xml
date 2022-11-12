@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#610e2a">
+
+    <EditText
+        android:id="@+id/bomber1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="BOMBER 1"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/leftBomberBorder"
+        app:layout_constraintEnd_toStartOf="@id/rightBomberBorder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bomber2"/>
+
+    <EditText
+        android:id="@+id/bomber2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="BOMBER 2"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/leftBomberBorder"
+        app:layout_constraintEnd_toStartOf="@id/rightBomberBorder"
+        app:layout_constraintTop_toBottomOf="@id/bomber1"
+        app:layout_constraintBottom_toTopOf="@id/bomber3"/>
+
+    <EditText
+        android:id="@+id/bomber3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="BOMBER 3"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/leftBomberBorder"
+        app:layout_constraintEnd_toStartOf="@id/rightBomberBorder"
+        app:layout_constraintTop_toBottomOf="@id/bomber2"
+        app:layout_constraintBottom_toTopOf="@id/saveBomberButton"/>
+
+    <Button
+        android:id="@+id/saveBomberButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_save_button"
+        android:text="SALVA"
+        app:layout_constraintStart_toEndOf="@id/leftBomberButton"
+        app:layout_constraintEnd_toStartOf="@id/rightBomberButton"
+        app:layout_constraintTop_toBottomOf="@id/bomber3"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftBomberBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightBomberBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftBomberButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightBomberButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

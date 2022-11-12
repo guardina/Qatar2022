@@ -15,6 +15,7 @@ import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.Result;
 import com.example.fifaqatar2022.Classes.ResultsRetriever;
+import com.example.fifaqatar2022.Classes.Scorer;
 import com.example.fifaqatar2022.Classes.Team;
 import com.example.fifaqatar2022.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +30,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class MainScreen extends AppCompatActivity {
@@ -40,15 +42,12 @@ public class MainScreen extends AppCompatActivity {
 
     static boolean executed_FRR = false;
     static boolean executed_RR = false;
-    static boolean executed_PR = false;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         FinalsResultsRetriever frr = FinalsResultsRetriever.getFRR();
@@ -79,7 +78,6 @@ public class MainScreen extends AppCompatActivity {
         }
 
 
-        Button predictionButton = findViewById(R.id.predButton);
         ImageView profilePic = findViewById(R.id.profilePic);
 
 
@@ -91,11 +89,22 @@ public class MainScreen extends AppCompatActivity {
         });
 
 
+        Button bomberButton = findViewById(R.id.bomberButton);
+
+        bomberButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainScreen.this, BomberScreen.class));
+            }
+        });
+
+
+        Button predictionButton = findViewById(R.id.predButton);
+
         predictionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainScreen.this, GroupSelectionScreen.class);
-                startActivity(intent);
+                startActivity(new Intent(MainScreen.this, GroupSelectionScreen.class));
             }
         });
 
@@ -103,15 +112,54 @@ public class MainScreen extends AppCompatActivity {
         Profile profile = Profile.getProfile();
 
 
-
         Button downloadButton = findViewById(R.id.downloadButton);
         Button placementButton = findViewById(R.id.generalPlacementButton);
 
 
+        ArrayList<Scorer> scorers = new ArrayList<>();
 
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                myRef.child("bombers").child(profile.getUuid()).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot dataSnapshot) {
+                        Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+
+                        profile.getBombers().clear();
+
+
+                        while (iter.hasNext()) {
+                            DataSnapshot current = iter.next();
+
+                            String bomber = (String) current.getValue();
+
+                            profile.addBomber(bomber);
+                        }
+                    }
+                });
+
+
+                myRef.child("scorers").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot dataSnapshot) {
+                        Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+
+                        scorers.clear();
+                        while (iter.hasNext()) {
+                            DataSnapshot current = iter.next();
+
+                            String name = current.getKey();
+                            int goals = Integer.parseInt(String.valueOf(current.getValue()));
+
+                            Scorer scorer = new Scorer(name, goals);
+
+                            scorers.add(scorer);
+                        }
+                    }
+                });
+
 
                 List<String> group_names = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H");
 
@@ -214,14 +262,12 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
-        boolean isFinal = true;
-
         placementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 profile.resetPoints();
-                for(ArrayList<Result> group_results : profile.getPrediction().getGroup_results()) {
+                for (ArrayList<Result> group_results : profile.getPrediction().getGroup_results()) {
                     for (Result prediction : group_results) {
                         for (Match match : ResultsRetriever.getRR().getAllMatches()) {
 
@@ -240,6 +286,7 @@ public class MainScreen extends AppCompatActivity {
                                 if (actualHomeScore != -1 && actualVisitorScore != -1) {
                                     if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
                                         profile.addPoints(3);
+                                        profile.gotPerfectResult();
                                     } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
                                         profile.addPoints(1);
                                     } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
@@ -280,7 +327,7 @@ public class MainScreen extends AppCompatActivity {
                                 actualVisitorScore = Integer.parseInt(actual_result.getVisitorScore());
                             }
 
-                            String invertedId = actual_result.getVisitorTeam()+actual_result.getHomeTeam();
+                            String invertedId = actual_result.getVisitorTeam() + actual_result.getHomeTeam();
 
                             if (round == 0) {
                                 if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
@@ -288,6 +335,7 @@ public class MainScreen extends AppCompatActivity {
                                     if (actualHomeScore != -1 && actualVisitorScore != -1) {
                                         if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
                                             profile.addPoints(3);
+                                            profile.gotPerfectResult();
                                         } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
                                             profile.addPoints(1);
                                         } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
@@ -312,6 +360,7 @@ public class MainScreen extends AppCompatActivity {
                                     if (actualHomeScore != -1 && actualVisitorScore != -1) {
                                         if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
                                             profile.addPoints(5);
+                                            profile.gotPerfectResult();
                                         } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
                                             profile.addPoints(2);
                                         } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
@@ -336,6 +385,7 @@ public class MainScreen extends AppCompatActivity {
                                     if (actualHomeScore != -1 && actualVisitorScore != -1) {
                                         if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
                                             profile.addPoints(5);
+                                            profile.gotPerfectResult();
                                         } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
                                             profile.addPoints(2);
                                         } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
@@ -347,62 +397,39 @@ public class MainScreen extends AppCompatActivity {
                                 }
 
                             } else {
-                                if (isFinal) {
-                                    if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
-                                        profile.addPoints(4);
-                                    }
 
-                                    if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
-                                        profile.addPoints(4);
-                                    }
+                                if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
+                                    profile.addPoints(4);
+                                }
 
-                                    if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
-                                        profile.addPoints(2);
-                                        if (actualHomeScore != -1 && actualVisitorScore != -1) {
-                                            if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
-                                                profile.addPoints(5);
-                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
-                                                    profile.addPoints(6);
-                                                }
-                                            } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
-                                                profile.addPoints(2);
-                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
-                                                    profile.addPoints(6);
-                                                }
-                                            } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
-                                                profile.addPoints(2);
-                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
-                                                    profile.addPoints(6);
-                                                }
-                                            } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
-                                                profile.addPoints(2);
-                                                if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
-                                                    profile.addPoints(6);
-                                                }
+                                if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
+                                    profile.addPoints(4);
+                                }
+
+                                if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
+                                    profile.addPoints(2);
+                                    if (actualHomeScore != -1 && actualVisitorScore != -1) {
+                                        if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
+                                            profile.addPoints(5);
+                                            profile.gotPerfectResult();
+                                            if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                profile.addPoints(6);
                                             }
-                                        }
-                                    }
-
-                                } else {
-                                    if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
-                                        profile.addPoints(2);
-                                    }
-
-                                    if (pred_result.getVisitorTeam().equals(actual_result.getHomeTeam()) || pred_result.getVisitorTeam().equals(actual_result.getVisitorTeam())) {
-                                        profile.addPoints(2);
-                                    }
-
-                                    if (actual_result.getId().equals(pred_result.getId()) || invertedId.equals(pred_result.getId())) {
-                                        profile.addPoints(2);
-                                        if (actualHomeScore != -1 && actualVisitorScore != -1) {
-                                            if (homeScorePredicted == actualHomeScore && visitorScorePredicted == actualVisitorScore) {
-                                                profile.addPoints(5);
-                                            } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
-                                                profile.addPoints(2);
-                                            } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
-                                                profile.addPoints(2);
-                                            } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
-                                                profile.addPoints(2);
+                                        } else if (homeScorePredicted > visitorScorePredicted && actualHomeScore > actualVisitorScore) {
+                                            profile.addPoints(2);
+                                            if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                profile.addPoints(6);
+                                            }
+                                        } else if (homeScorePredicted == visitorScorePredicted && actualHomeScore == actualVisitorScore) {
+                                            profile.addPoints(2);
+                                            profile.gotPerfectResult();
+                                            if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                profile.addPoints(6);
+                                            }
+                                        } else if (homeScorePredicted < visitorScorePredicted && actualHomeScore < actualVisitorScore) {
+                                            profile.addPoints(2);
+                                            if (actual_result.getHomeTeam().equals(pred_result.getHomeTeam()) || actual_result.getVisitorTeam().equals(pred_result.getVisitorTeam())) {
+                                                profile.addPoints(6);
                                             }
                                         }
                                     }
@@ -414,6 +441,14 @@ public class MainScreen extends AppCompatActivity {
                     round++;
                 }
 
+
+                for (Scorer scorer : scorers) {
+                    for (String bomber : profile.getBombers()) {
+                        if (bomber.toLowerCase(Locale.ROOT).equals(scorer.getName().toLowerCase(Locale.ROOT))) {
+                            profile.addPoints(scorer.getGoals() * .5);
+                        }
+                    }
+                }
 
 
                 myRef.child("users").child(profile.getUuid()).setValue(profile);
@@ -447,7 +482,7 @@ public class MainScreen extends AppCompatActivity {
                 profile.setFirstName(my_user.get("firstName"));
                 profile.setLastName(my_user.get("lastName"));
                 profile.setUserName(my_user.get("userName"));
-                profile.setPoints(Integer.parseInt(String.valueOf(my_user.get("points"))));
+                profile.setPoints(Double.parseDouble(String.valueOf(my_user.get("points"))));
             }
         });
 
@@ -480,7 +515,7 @@ public class MainScreen extends AppCompatActivity {
                 profile.setFirstName(my_user.get("firstName"));
                 profile.setLastName(my_user.get("lastName"));
                 profile.setUserName(my_user.get("userName"));
-                profile.setPoints(Integer.parseInt(String.valueOf(my_user.get("points"))));
+                profile.setPoints(Double.parseDouble(String.valueOf(my_user.get("points"))));
             }
         });
     }

@@ -50,7 +50,8 @@
             android:layout_height="match_parent"
             android:divider="@drawable/empty_divider"
             android:orientation="vertical"
-            android:showDividers="middle">
+            android:showDividers="middle"
+            android:visibility="visible">
 
             <Button
                 android:id="@+id/buttonA"
@@ -205,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/my_button"
-            android:text="FINALI"
+            android:text="FINALE"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/borderGroupSelectionRight"
@@ -1534,90 +1535,6 @@
 
             <ImageView
                 android:id="@+id/finalsLogoV1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="7dp"
-                android:layout_weight="0.5"
-                app:layout_constraintEnd_toStartOf="@id/parent"
-                app:layout_constraintStart_toEndOf="@id/finalsNameV1" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/finalsLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/my_background"
-            android:minHeight="75dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/finalsLogoH2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="7dp"
-                android:layout_weight="0.5"
-                app:layout_constraintEnd_toStartOf="@id/finalsNameH1"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/finalsNameH2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/helvetica_bold"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/finalsScoreH1"
-                app:layout_constraintStart_toEndOf="@id/finalsLogoH1" />
-
-            <EditText
-                android:id="@+id/finalsScoreH2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/my_score_background"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="2"
-                android:textColor="#000000"
-                app:layout_constraintEnd_toStartOf="@id/finalsScoreV1"
-                app:layout_constraintStart_toEndOf="@id/finalsNameH1" />
-
-            <EditText
-                android:id="@+id/finalsScoreV2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/my_score_background"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="2"
-                android:textColor="#000000"
-                app:layout_constraintEnd_toStartOf="@id/finalsNameV1"
-                app:layout_constraintStart_toEndOf="@id/finalsScoreH1" />
-
-            <TextView
-                android:id="@+id/finalsNameV2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/helvetica_bold"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/finalsLogoV1"
-                app:layout_constraintStart_toEndOf="@id/finalsScoreV1" />
-
-            <ImageView
-                android:id="@+id/finalsLogoV2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="7dp"

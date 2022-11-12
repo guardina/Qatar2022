@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import com.example.fifaqatar2022.Classes.Group;
 import com.example.fifaqatar2022.Classes.Group_enum;
 import com.example.fifaqatar2022.Classes.Match;
 import com.example.fifaqatar2022.Classes.GroupCreator;
+import com.example.fifaqatar2022.Classes.MyTimer;
 import com.example.fifaqatar2022.Classes.Profile;
 import com.example.fifaqatar2022.Classes.Result;
 import com.example.fifaqatar2022.Classes.Team;
@@ -30,7 +32,6 @@ public class GroupScreen extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_group);
 
-        //ResultsRetriever rr = ResultsRetriever.getRR();
         GroupCreator pr = GroupCreator.getGC();
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
@@ -185,12 +186,18 @@ public class GroupScreen extends AppCompatActivity {
         for (EditText scoreH : scoresHome) {
             scoreH.setText(String.valueOf(scores.get(posScoreH).get(0)));
             posScoreH++;
+            if (MyTimer.getTimer().tooLate()) {
+                scoreH.setEnabled(false);
+            }
         }
 
         int posScoreV = 0;
         for (EditText scoreV : scoresVisitors) {
             scoreV.setText(String.valueOf(scores.get(posScoreV).get(1)));
             posScoreV++;
+            if (MyTimer.getTimer().tooLate()) {
+                scoreV.setEnabled(false);
+            }
         }
 
 
@@ -199,12 +206,14 @@ public class GroupScreen extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (EditText score : scoresHome) {
-                    score.setText("");
-                }
+                if (!MyTimer.getTimer().tooLate()) {
+                    for (EditText score : scoresHome) {
+                        score.setText("");
+                    }
 
-                for (EditText score : scoresVisitors) {
-                    score.setText("");
+                    for (EditText score : scoresVisitors) {
+                        score.setText("");
+                    }
                 }
             }
         });
@@ -318,6 +327,8 @@ public class GroupScreen extends AppCompatActivity {
                 editor.commit();
 
                 finalGroup.updatePlacementView(imageViewsPlacement, textViewsPlacement, cells);
+
+                Toast.makeText(GroupScreen.this, "Risultati salvati!", Toast.LENGTH_SHORT).show();
             }
         });
 

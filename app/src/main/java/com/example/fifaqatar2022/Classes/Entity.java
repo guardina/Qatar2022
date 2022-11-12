@@ -3,11 +3,11 @@ package com.example.fifaqatar2022.Classes;
 public class Entity {
 
     String username;
-    int points;
+    double points;
 
     public Entity(String username, String points) {
         this.username = username;
-        this.points = Integer.parseInt(points);
+        this.points = Double.parseDouble(points);
     }
 
     public boolean betterThan(Entity other) {
@@ -18,11 +18,11 @@ public class Entity {
         return username;
     }
 
-    public int getPoints() {
+    public double getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(double points) {
         this.points = points;
     }
 }
