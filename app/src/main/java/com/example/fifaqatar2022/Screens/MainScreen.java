@@ -43,8 +43,6 @@ public class MainScreen extends AppCompatActivity {
     static boolean executed_FRR = false;
     static boolean executed_RR = false;
 
-    static int test = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class MainScreen extends AppCompatActivity {
 
         FinalsResultsRetriever frr = FinalsResultsRetriever.getFRR();
 
-        /*
+
         try {
             if (!executed_FRR) {
                 ArrayList<ArrayList<Result>> list = frr.execute().get();
@@ -66,13 +64,10 @@ public class MainScreen extends AppCompatActivity {
             e.printStackTrace();
         }
 
-         */
-
 
 
         ResultsRetriever rr = ResultsRetriever.getRR();
 
-        /*
         try {
             if (!executed_RR) {
                 ArrayList<Match> list = rr.execute().get();
@@ -83,8 +78,6 @@ public class MainScreen extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-         */
 
 
         ImageView profilePic = findViewById(R.id.profilePic);
@@ -408,7 +401,6 @@ public class MainScreen extends AppCompatActivity {
                                 }
 
                             } else {
-
                                 if (pred_result.getHomeTeam().equals(actual_result.getHomeTeam()) || pred_result.getHomeTeam().equals(actual_result.getVisitorTeam())) {
                                     profile.addPoints(4);
                                 }
@@ -463,8 +455,6 @@ public class MainScreen extends AppCompatActivity {
 
 
                 myRef.child("users").child(profile.getUuid()).setValue(profile);
-
-                test++;
 
                 startActivity(new Intent(MainScreen.this, PlacementScreen.class));
             }
