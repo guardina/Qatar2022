@@ -13,6 +13,8 @@ public class Match {
 
     private String id;
 
+    public Match() {}
+
     public Match(String matchday) {
         this.matchday = matchday;
     }

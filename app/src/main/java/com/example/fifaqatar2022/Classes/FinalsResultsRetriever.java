@@ -34,7 +34,7 @@ public class FinalsResultsRetriever extends AsyncTask<String, Integer, ArrayList
     ArrayList<String> semi_links = new ArrayList<>();
     ArrayList<String> final_links = new ArrayList<>();
 
-    static ArrayList<ArrayList<Result>> all_final_results = new ArrayList<>();
+    ArrayList<ArrayList<Result>> all_final_results = new ArrayList<>();
 
     void initialize() {
 
@@ -61,6 +61,72 @@ public class FinalsResultsRetriever extends AsyncTask<String, Integer, ArrayList
         for (int i = 0; i<4; i++) {
             all_final_results.add(new ArrayList<>());
         }
+
+
+        Result result1 = new Result();
+        result1.setId("OlandaStati Uniti");
+        result1.setHomeTeam("Olanda");
+        result1.setVisitorTeam("Stati Uniti");
+        result1.setHomeScore("0");
+        result1.setVisitorScore("0");
+
+        Result result2 = new Result();
+        result2.setId("ArgentinaDanimarca");
+        result2.setHomeTeam("Argentina");
+        result2.setVisitorTeam("Danimarca");
+        result2.setHomeScore("0");
+        result2.setVisitorScore("1");
+
+        Result result3 = new Result();
+        result3.setId("SpagnaCanada");
+        result3.setHomeTeam("Spagna");
+        result3.setVisitorTeam("Canada");
+        result3.setHomeScore("2");
+        result3.setVisitorScore("0");
+
+        Result result4 = new Result();
+        result4.setId("SvizzeraPortogallo");
+        result4.setHomeTeam("Svizzera");
+        result4.setVisitorTeam("Portogallo");
+        result4.setHomeScore("0");
+        result4.setVisitorScore("2");
+
+        Result result5 = new Result();
+        result5.setId("InghilterraQatar");
+        result5.setHomeTeam("Inghilterra");
+        result5.setVisitorTeam("Qatar");
+        result5.setHomeScore("4");
+        result5.setVisitorScore("1");
+
+        Result result6 = new Result();
+        result6.setId("FranciaPolonia");
+        result6.setHomeTeam("Francia");
+        result6.setVisitorTeam("Polonia");
+        result6.setHomeScore("2");
+        result6.setVisitorScore("1");
+
+        Result result7 = new Result();
+        result7.setId("BelgioGermania");
+        result7.setHomeTeam("Belgio");
+        result7.setVisitorTeam("Germania");
+        result7.setHomeScore("2");
+        result7.setVisitorScore("3");
+
+        Result result8 = new Result();
+        result8.setId("UruguayBrasile");
+        result8.setHomeTeam("Uruguay");
+        result8.setVisitorTeam("Brasile");
+        result8.setHomeScore("1");
+        result8.setVisitorScore("2");
+
+        all_final_results.get(0).add(result1);
+        all_final_results.get(0).add(result2);
+        all_final_results.get(0).add(result3);
+        all_final_results.get(0).add(result4);
+        all_final_results.get(0).add(result5);
+        all_final_results.get(0).add(result6);
+        all_final_results.get(0).add(result7);
+        all_final_results.get(0).add(result8);
     }
 
     @Override

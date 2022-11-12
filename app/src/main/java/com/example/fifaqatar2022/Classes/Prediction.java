@@ -119,10 +119,6 @@ public class Prediction {
         group_results.get(group).clear();
     }
 
-    public void resetGroup_results() {
-        this.group_results = new ArrayList<>();
-    }
-
     public ArrayList<Result> getEight_results() {
         return eight_results;
     }

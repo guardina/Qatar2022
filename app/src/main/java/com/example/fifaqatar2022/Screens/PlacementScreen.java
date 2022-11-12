@@ -127,7 +127,7 @@ PlacementScreen extends AppCompatActivity {
                         for (int i = 0; i < user_placement.size(); i++) {
 
                             if (user_placement.get(i).getUsername().equals(user.get("userName"))) {
-                                user_placement.get(i).setPoints(Integer.parseInt(String.valueOf(user.get("points"))));
+                                user_placement.get(i).setPoints(Double.parseDouble(String.valueOf(user.get("points"))));
 
                                 LinearLayout newView = new LinearLayout(PlacementScreen.this);
                                 newView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 150));
